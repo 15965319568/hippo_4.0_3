@@ -11,3 +11,8 @@ artifacts/
 *.egg-info/
 dist/
 bin/
+
+# Local task execution outputs
+**/__pycache__/
+.pytest_cache/
+out/

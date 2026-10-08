@@ -42,6 +42,11 @@ class TelemetryStatsAggregator:
         self._telemetry_dicts = telemetry_dicts
         self._aggregate()
 
+    @staticmethod
+    def measurement_capacity(root, policy):
+        from genai_perf.release_audit.telemetry import capacity
+        return capacity(root, policy)
+
     def _get_gpu_ids(self, metric_name: str) -> set:
         """
         Acquires the list of unique GPU IDs for a given metric from the telemetry dictionaries.

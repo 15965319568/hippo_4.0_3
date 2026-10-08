@@ -1,0 +1,3 @@
+﻿worker,boot,tick0,tick1,ns0,ns1,valid_lo,valid_hi
+worker-0,boot-b,100,200,0,200000,100,40000100
+worker-0,boot-a,100,200,0,100000,100,40000100

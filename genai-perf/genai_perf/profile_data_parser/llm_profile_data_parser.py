@@ -98,6 +98,7 @@ class LLMProfileDataParser(ProfileDataParser):
             load_level = experiment["experiment"]["value"]
             requests = experiment["requests"]
 
+            self._capture_window_ns = experiment.get("capture_window_ns")
             llm_metrics = self._parse_requests(requests)
 
             # aggregate and calculate statistics
@@ -111,6 +112,9 @@ class LLMProfileDataParser(ProfileDataParser):
 
     def _parse_requests(self, requests: dict) -> LLMMetrics:
         """Parse each requests in profile export data to extract key metrics."""
+        if getattr(self, "_capture_window_ns", None) is not None:
+            from genai_perf.release_audit.reporting import capture_metrics
+            return capture_metrics(requests, self._goodput_constraints, self._capture_window_ns)
         parser_result = ParserResult()
         min_req_timestamp, max_res_timestamp = float("inf"), 0
         request_latencies: List[int] = []

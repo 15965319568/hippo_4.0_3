@@ -1,0 +1,80 @@
+{
+  "cutoff_ns": 20000000000,
+  "runs": {
+    "control": {
+      "start_ns": 0,
+      "end_ns": 10000000000,
+      "version": "blue"
+    },
+    "canary": {
+      "start_ns": 0,
+      "end_ns": 10000000000,
+      "version": "green"
+    }
+  },
+  "cohorts": {
+    "short": {
+      "ttft_ms": 200,
+      "latency_ms": 500,
+      "tpot_ms": 50
+    },
+    "long": {
+      "ttft_ms": 400,
+      "latency_ms": 850,
+      "tpot_ms": 80
+    }
+  },
+  "profile_slos": {
+    "time_to_first_token": 200,
+    "request_latency": 500,
+    "inter_token_latency": 50
+  },
+  "population": {
+    "short": 500,
+    "long": 500
+  },
+  "z": 1.96,
+  "min_effective_n": 10,
+  "baseline": "blue",
+  "candidate": "green",
+  "regression_margin": 0.12,
+  "max_mix_tv": 0.4,
+  "calibration_window_ns": [
+    0,
+    1000000000
+  ],
+  "max_scrape_gap_ns": 600000000,
+  "gpus": {
+    "GPU-A": {
+      "slots": 2,
+      "power_limit_w": 250
+    },
+    "GPU-B": {
+      "slots": 1,
+      "power_limit_w": 250
+    },
+    "GPU-C": {
+      "slots": 2,
+      "power_limit_w": 250
+    }
+  },
+  "scenarios": {
+    "normal": {
+      "budget": 14,
+      "unavailable_gpus": [],
+      "target_effective_n": 96
+    },
+    "budget_cut": {
+      "budget": 8,
+      "unavailable_gpus": [],
+      "target_effective_n": 96
+    },
+    "lose_a": {
+      "budget": 14,
+      "unavailable_gpus": [
+        "GPU-A"
+      ],
+      "target_effective_n": 96
+    }
+  }
+}
