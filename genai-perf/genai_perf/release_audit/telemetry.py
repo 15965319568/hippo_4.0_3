@@ -46,4 +46,5 @@ def capacity(root, policy):
                         "energy_j": energy / 1000, "average_power_w": average,
                         "eligible": complete and average <= spec["power_limit_w"],
                         "slots": spec["slots"]}
-    return result
+    from .serving import resource_view
+    return resource_view(root, result, policy.get('_evidence_cutoff_ns'))

@@ -1,0 +1,1 @@
+{"baseline": "blue", "candidate": "green", "epochs": [{"id": "e0", "start_ns": 0, "end_ns": 10000000000, "cohorts": ["short", "long"], "recipes": {"blue": "m0/t0/c0/s0", "green": "m1/t0/c0/s0"}, "waste_limit": ".4", "margin": 0, "alpha": ".125", "bets": [{"lambda": ".25", "mass": 1}, {"lambda": ".75", "mass": 3}], "min_units": 2, "max_contamination": ".2"}]}

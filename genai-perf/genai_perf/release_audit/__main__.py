@@ -21,11 +21,18 @@ def main():
     monitoring, planned_rows = apply_monitor(rows, gate, args.input)
     from genai_perf.metrics.telemetry_stats_aggregator import TelemetryStatsAggregator
     telemetry = TelemetryStatsAggregator.measurement_capacity(args.input, policy)
+    from .kv_reconcile import constrain_gate
+    if 'serving' in audit:
+        constrain_gate(gate, audit['serving'])
     probes = plan(planned_rows, policy, telemetry, args.input)
     args.output.mkdir(parents=True, exist_ok=True)
     artifacts = {**({"monitor.json": monitoring} if monitoring is not None else {}), "requests.json": rows, "capture-audit.json": audit, "cohorts.json": cohorts,
                  "gate.json": gate, "profile.json": export_profile(rows, policy),
                  "telemetry.json": telemetry, "measurement-plan.json": probes}
+    if 'serving' in audit:
+        from .serving import plan_recovery
+        artifacts['serving-ledger.json'] = audit['serving']
+        artifacts['recovery-plan.json'] = plan_recovery(args.input, planned_rows, telemetry, policy.get('_evidence_cutoff_ns'))
     for name, value in artifacts.items():
         (args.output / name).write_text(json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + "\n", encoding="utf-8")
     (args.output / "metrics.prom").write_text(prometheus(rows, policy, gate), encoding="utf-8")

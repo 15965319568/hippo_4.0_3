@@ -1,0 +1,715 @@
+{
+  "manifest": {
+    "models": {
+      "gqa": {
+        "layers": 3,
+        "kv_heads": 3,
+        "head_dim": 7,
+        "kv_bits": 4,
+        "page_tokens": 4,
+        "page_metadata_bytes": 13
+      }
+    },
+    "devices": {
+      "GPU-A": {
+        "tensor_parallel": 2,
+        "alignment_bytes": 16,
+        "capacity_bytes": 12000,
+        "reserved_bytes": 0,
+        "epoch": 1,
+        "slot_bytes": 300
+      },
+      "GPU-B": {
+        "tensor_parallel": 4,
+        "alignment_bytes": 32,
+        "capacity_bytes": 9000,
+        "reserved_bytes": 0,
+        "epoch": 1,
+        "slot_bytes": 300
+      }
+    },
+    "sources": {
+      "allocator": {
+        "format": "csv",
+        "time_unit": "us",
+        "rank": 3,
+        "allow_ops": [
+          "open",
+          "prefill",
+          "append",
+          "draft",
+          "verify",
+          "seal",
+          "evict",
+          "transfer",
+          "ack",
+          "close",
+          "reset"
+        ],
+        "devices": [
+          "GPU-A",
+          "GPU-B"
+        ],
+        "files": [
+          "allocator-0.csv",
+          "allocator-1.csv",
+          "allocator-2.csv"
+        ]
+      },
+      "scheduler": {
+        "format": "sqlite",
+        "time_unit": "ns",
+        "rank": 2,
+        "allow_ops": [
+          "open",
+          "prefill",
+          "append",
+          "draft",
+          "verify",
+          "seal",
+          "evict",
+          "transfer",
+          "ack",
+          "close",
+          "reset"
+        ],
+        "devices": [
+          "GPU-A",
+          "GPU-B"
+        ],
+        "files": [
+          "scheduler-0.sqlite",
+          "scheduler-1.sqlite",
+          "scheduler-2.sqlite"
+        ]
+      },
+      "migration": {
+        "format": "jsonl",
+        "time_unit": "ms",
+        "rank": 3,
+        "allow_ops": [
+          "open",
+          "prefill",
+          "append",
+          "draft",
+          "verify",
+          "seal",
+          "evict",
+          "transfer",
+          "ack",
+          "close",
+          "reset"
+        ],
+        "devices": [
+          "GPU-A",
+          "GPU-B"
+        ],
+        "files": [
+          "migration-0.jsonl.gz",
+          "migration-1.jsonl.gz",
+          "migration-2.jsonl.gz"
+        ]
+      },
+      "dashboard": {
+        "format": "jsonl",
+        "time_unit": "ns",
+        "rank": 1,
+        "allow_ops": [
+          "open",
+          "prefill",
+          "append",
+          "draft",
+          "verify",
+          "seal",
+          "evict",
+          "transfer",
+          "ack",
+          "close",
+          "reset"
+        ],
+        "devices": [
+          "GPU-A",
+          "GPU-B"
+        ],
+        "files": [
+          "dashboard-0.jsonl",
+          "dashboard-1.jsonl",
+          "dashboard-2.jsonl"
+        ]
+      }
+    },
+    "query": {
+      "observed_ns": 2000000000,
+      "valid_ns": 150
+    },
+    "require_receipts": [],
+    "recovery": {
+      "targets": {
+        "short": 3,
+        "long": 3
+      },
+      "jobs": [
+        {
+          "id": "job-0",
+          "cohort": "short",
+          "utility": 7,
+          "tenant": "tenant-a",
+          "model": "gqa",
+          "adapter": "base",
+          "tokenizer": "v1",
+          "rope": "long",
+          "prompt_tokens": [
+            7,
+            7
+          ],
+          "max_new_tokens": 3,
+          "exclusive_group": "mode",
+          "choices": [
+            {
+              "id": "a",
+              "device": "GPU-A",
+              "cache": "prefix-a",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "id": "b",
+              "device": "GPU-B",
+              "cache": null,
+              "start": 1,
+              "end": 3
+            }
+          ]
+        },
+        {
+          "id": "job-1",
+          "cohort": "long",
+          "utility": 7,
+          "tenant": "tenant-a",
+          "model": "gqa",
+          "adapter": "base",
+          "tokenizer": "v1",
+          "rope": "long",
+          "prompt_tokens": [
+            7,
+            7,
+            0
+          ],
+          "max_new_tokens": 4,
+          "exclusive_group": null,
+          "choices": [
+            {
+              "id": "a",
+              "device": "GPU-A",
+              "cache": null,
+              "start": 1,
+              "end": 3
+            },
+            {
+              "id": "b",
+              "device": "GPU-B",
+              "cache": null,
+              "start": 2,
+              "end": 4
+            }
+          ]
+        },
+        {
+          "id": "job-2",
+          "cohort": "short",
+          "utility": 1,
+          "tenant": "tenant-a",
+          "model": "gqa",
+          "adapter": "base",
+          "tokenizer": "v1",
+          "rope": "long",
+          "prompt_tokens": [
+            7,
+            7,
+            0,
+            1
+          ],
+          "max_new_tokens": 5,
+          "exclusive_group": null,
+          "choices": [
+            {
+              "id": "a",
+              "device": "GPU-A",
+              "cache": null,
+              "start": 2,
+              "end": 4
+            },
+            {
+              "id": "b",
+              "device": "GPU-B",
+              "cache": null,
+              "start": 1,
+              "end": 3
+            }
+          ]
+        },
+        {
+          "id": "job-3",
+          "cohort": "long",
+          "utility": 5,
+          "tenant": "tenant-a",
+          "model": "gqa",
+          "adapter": "base",
+          "tokenizer": "v1",
+          "rope": "long",
+          "prompt_tokens": [
+            7,
+            7,
+            0,
+            1,
+            2
+          ],
+          "max_new_tokens": 3,
+          "exclusive_group": "mode",
+          "choices": [
+            {
+              "id": "a",
+              "device": "GPU-A",
+              "cache": "prefix-a",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "id": "b",
+              "device": "GPU-B",
+              "cache": null,
+              "start": 2,
+              "end": 4
+            }
+          ]
+        },
+        {
+          "id": "job-4",
+          "cohort": "short",
+          "utility": 9,
+          "tenant": "tenant-a",
+          "model": "gqa",
+          "adapter": "base",
+          "tokenizer": "v1",
+          "rope": "long",
+          "prompt_tokens": [
+            7,
+            7
+          ],
+          "max_new_tokens": 4,
+          "exclusive_group": null,
+          "choices": [
+            {
+              "id": "a",
+              "device": "GPU-A",
+              "cache": null,
+              "start": 1,
+              "end": 3
+            },
+            {
+              "id": "b",
+              "device": "GPU-B",
+              "cache": null,
+              "start": 1,
+              "end": 3
+            }
+          ]
+        },
+        {
+          "id": "job-5",
+          "cohort": "long",
+          "utility": 8,
+          "tenant": "tenant-a",
+          "model": "gqa",
+          "adapter": "base",
+          "tokenizer": "v1",
+          "rope": "long",
+          "prompt_tokens": [
+            7,
+            7,
+            0
+          ],
+          "max_new_tokens": 5,
+          "exclusive_group": null,
+          "choices": [
+            {
+              "id": "a",
+              "device": "GPU-A",
+              "cache": null,
+              "start": 2,
+              "end": 4
+            },
+            {
+              "id": "b",
+              "device": "GPU-B",
+              "cache": null,
+              "start": 2,
+              "end": 4
+            }
+          ]
+        },
+        {
+          "id": "job-6",
+          "cohort": "short",
+          "utility": 7,
+          "tenant": "tenant-a",
+          "model": "gqa",
+          "adapter": "base",
+          "tokenizer": "v1",
+          "rope": "long",
+          "prompt_tokens": [
+            7,
+            7,
+            0,
+            1
+          ],
+          "max_new_tokens": 3,
+          "exclusive_group": null,
+          "choices": [
+            {
+              "id": "a",
+              "device": "GPU-A",
+              "cache": "prefix-a",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "id": "b",
+              "device": "GPU-B",
+              "cache": null,
+              "start": 1,
+              "end": 3
+            }
+          ]
+        }
+      ],
+      "worlds": [
+        {
+          "memory_reserve": {
+            "GPU-A": 8000,
+            "GPU-B": 6000
+          },
+          "token_budget": {
+            "GPU-A": 13,
+            "GPU-B": 11
+          }
+        },
+        {
+          "memory_reserve": {
+            "GPU-A": 8500,
+            "GPU-B": 5000
+          },
+          "token_budget": {
+            "GPU-A": 11,
+            "GPU-B": 14
+          }
+        }
+      ]
+    }
+  },
+  "records": [
+    {
+      "record_id": "event-000-root",
+      "event": "event-000",
+      "source": "allocator",
+      "revision": 0,
+      "observed_ns": 10000000,
+      "valid_from_ns": 0,
+      "valid_until_ns": null,
+      "approved": true,
+      "parents": [],
+      "payload": {
+        "step": 0,
+        "operations": [
+          {
+            "op": "open",
+            "device": "GPU-A",
+            "epoch": 1,
+            "sequence": "q",
+            "tenant": "tenant-a",
+            "model": "gqa",
+            "adapter": "base",
+            "tokenizer": "v1",
+            "rope": "long",
+            "run": "canary",
+            "request_id": "q",
+            "attempt": 0,
+            "cache": null
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "event-001-root",
+      "event": "event-001",
+      "source": "allocator",
+      "revision": 0,
+      "observed_ns": 10000000,
+      "valid_from_ns": 0,
+      "valid_until_ns": null,
+      "approved": true,
+      "parents": [],
+      "payload": {
+        "step": 1,
+        "operations": [
+          {
+            "op": "prefill",
+            "device": "GPU-A",
+            "epoch": 1,
+            "sequence": "q",
+            "tokens": [
+              7,
+              7
+            ],
+            "slots": [
+              0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "event-002-root",
+      "event": "event-002",
+      "source": "allocator",
+      "revision": 0,
+      "observed_ns": 10000000,
+      "valid_from_ns": 0,
+      "valid_until_ns": null,
+      "approved": true,
+      "parents": [],
+      "payload": {
+        "step": 2,
+        "operations": [
+          {
+            "op": "seal",
+            "device": "GPU-A",
+            "epoch": 1,
+            "sequence": "q",
+            "cache": "prefix-a"
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "event-003-root",
+      "event": "event-003",
+      "source": "allocator",
+      "revision": 0,
+      "observed_ns": 10000000,
+      "valid_from_ns": 0,
+      "valid_until_ns": null,
+      "approved": true,
+      "parents": [],
+      "payload": {
+        "step": 3,
+        "operations": [
+          {
+            "op": "open",
+            "device": "GPU-A",
+            "epoch": 1,
+            "sequence": "r",
+            "tenant": "tenant-a",
+            "model": "gqa",
+            "adapter": "base",
+            "tokenizer": "v1",
+            "rope": "long",
+            "run": "canary",
+            "request_id": "r",
+            "attempt": 0,
+            "cache": "prefix-a"
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "event-004-root",
+      "event": "event-004",
+      "source": "allocator",
+      "revision": 0,
+      "observed_ns": 10000000,
+      "valid_from_ns": 0,
+      "valid_until_ns": null,
+      "approved": true,
+      "parents": [],
+      "payload": {
+        "step": 4,
+        "operations": [
+          {
+            "op": "append",
+            "device": "GPU-A",
+            "epoch": 1,
+            "sequence": "r",
+            "tokens": [
+              7,
+              8,
+              9
+            ],
+            "slots": [
+              1,
+              2
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "ledger_shape": {
+    "devices": {
+      "GPU-A": {
+        "epoch": 1,
+        "used_bytes": 205,
+        "free_bytes": 11795
+      },
+      "GPU-B": {
+        "epoch": 1,
+        "used_bytes": 205,
+        "free_bytes": 8795
+      }
+    },
+    "pages": [
+      {
+        "id": "GPU-A/0",
+        "references": 2,
+        "device": "GPU-A",
+        "model": "gqa",
+        "slot": 0,
+        "generation": 1,
+        "epoch": 1,
+        "tokens": [
+          7,
+          7
+        ],
+        "bytes": 205
+      },
+      {
+        "id": "GPU-B/8",
+        "references": 2,
+        "device": "GPU-B",
+        "model": "gqa",
+        "slot": 8,
+        "generation": 1,
+        "epoch": 1,
+        "tokens": [
+          7,
+          7
+        ],
+        "bytes": 205
+      }
+    ],
+    "cache": {
+      "prefix-a": {
+        "device": "GPU-A",
+        "pages": [
+          "GPU-A/0"
+        ],
+        "tokens": [
+          7,
+          7
+        ],
+        "signature": [
+          "tenant-a",
+          "gqa",
+          "base",
+          "v1",
+          "long"
+        ]
+      },
+      "prefix-b": {
+        "device": "GPU-B",
+        "pages": [
+          "GPU-B/8"
+        ],
+        "tokens": [
+          7,
+          7
+        ],
+        "signature": [
+          "tenant-a",
+          "gqa",
+          "base",
+          "v1",
+          "long"
+        ]
+      }
+    },
+    "transfers": {},
+    "sequences": {
+      "q": {
+        "tenant": "tenant-a",
+        "model": "gqa",
+        "adapter": "base",
+        "tokenizer": "v1",
+        "rope": "long",
+        "run": "canary",
+        "request_id": "q",
+        "attempt": 0,
+        "device": "GPU-A",
+        "pages": [
+          "GPU-A/0"
+        ],
+        "committed": 2,
+        "prompt": 2,
+        "tokens": [
+          7,
+          7
+        ],
+        "draft": null
+      },
+      "r": {
+        "tenant": "tenant-a",
+        "model": "gqa",
+        "adapter": "base",
+        "tokenizer": "v1",
+        "rope": "long",
+        "run": "canary",
+        "request_id": "r",
+        "attempt": 0,
+        "device": "GPU-B",
+        "pages": [
+          "GPU-B/8"
+        ],
+        "committed": 2,
+        "prompt": 2,
+        "tokens": [
+          7,
+          7
+        ],
+        "draft": null
+      }
+    },
+    "completed": {},
+    "decisions": [
+      {
+        "event": "event-000",
+        "accepted": true,
+        "reason": "applied"
+      },
+      {
+        "event": "event-001",
+        "accepted": true,
+        "reason": "applied"
+      },
+      {
+        "event": "event-002",
+        "accepted": true,
+        "reason": "applied"
+      },
+      {
+        "event": "event-003",
+        "accepted": true,
+        "reason": "applied"
+      },
+      {
+        "event": "event-004",
+        "accepted": true,
+        "reason": "applied"
+      },
+      {
+        "event": "event-005",
+        "accepted": true,
+        "reason": "applied"
+      }
+    ]
+  }
+}

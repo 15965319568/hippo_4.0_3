@@ -1,0 +1,441 @@
+{
+  "models": {
+    "gqa": {
+      "layers": 3,
+      "kv_heads": 3,
+      "head_dim": 7,
+      "kv_bits": 4,
+      "page_tokens": 4,
+      "page_metadata_bytes": 13
+    }
+  },
+  "devices": {
+    "GPU-A": {
+      "tensor_parallel": 2,
+      "alignment_bytes": 16,
+      "capacity_bytes": 12000,
+      "reserved_bytes": 0,
+      "epoch": 1,
+      "slot_bytes": 3950
+    },
+    "GPU-B": {
+      "tensor_parallel": 4,
+      "alignment_bytes": 32,
+      "capacity_bytes": 9000,
+      "reserved_bytes": 0,
+      "epoch": 1,
+      "slot_bytes": 8900
+    }
+  },
+  "sources": {
+    "allocator": {
+      "format": "csv",
+      "time_unit": "us",
+      "rank": 3,
+      "allow_ops": [
+        "open",
+        "prefill",
+        "append",
+        "draft",
+        "verify",
+        "seal",
+        "evict",
+        "transfer",
+        "ack",
+        "close",
+        "reset"
+      ],
+      "devices": [
+        "GPU-A",
+        "GPU-B"
+      ],
+      "files": [
+        "allocator-0.csv",
+        "allocator-1.csv",
+        "allocator-2.csv"
+      ]
+    },
+    "scheduler": {
+      "format": "sqlite",
+      "time_unit": "ns",
+      "rank": 2,
+      "allow_ops": [
+        "open",
+        "prefill",
+        "append",
+        "draft",
+        "verify",
+        "seal",
+        "evict",
+        "transfer",
+        "ack",
+        "close",
+        "reset"
+      ],
+      "devices": [
+        "GPU-A",
+        "GPU-B"
+      ],
+      "files": [
+        "scheduler-0.sqlite",
+        "scheduler-1.sqlite",
+        "scheduler-2.sqlite"
+      ]
+    },
+    "migration": {
+      "format": "jsonl",
+      "time_unit": "ms",
+      "rank": 3,
+      "allow_ops": [
+        "open",
+        "prefill",
+        "append",
+        "draft",
+        "verify",
+        "seal",
+        "evict",
+        "transfer",
+        "ack",
+        "close",
+        "reset"
+      ],
+      "devices": [
+        "GPU-A",
+        "GPU-B"
+      ],
+      "files": [
+        "migration-0.jsonl.gz",
+        "migration-1.jsonl.gz",
+        "migration-2.jsonl.gz"
+      ]
+    },
+    "dashboard": {
+      "format": "jsonl",
+      "time_unit": "ns",
+      "rank": 1,
+      "allow_ops": [
+        "open",
+        "prefill",
+        "append",
+        "draft",
+        "verify",
+        "seal",
+        "evict",
+        "transfer",
+        "ack",
+        "close",
+        "reset"
+      ],
+      "devices": [
+        "GPU-A",
+        "GPU-B"
+      ],
+      "files": [
+        "dashboard-0.jsonl",
+        "dashboard-1.jsonl",
+        "dashboard-2.jsonl"
+      ]
+    }
+  },
+  "query": {
+    "observed_ns": 2000000000,
+    "valid_ns": 150
+  },
+  "require_receipts": [
+    [
+      "canary",
+      "s403-00-0"
+    ],
+    [
+      "canary",
+      "s403-00-1"
+    ],
+    [
+      "canary",
+      "s403-01-0"
+    ],
+    [
+      "canary",
+      "s403-02-0"
+    ],
+    [
+      "canary",
+      "s403-03-0"
+    ],
+    [
+      "canary",
+      "s403-04-0"
+    ],
+    [
+      "canary",
+      "s403-05-0"
+    ],
+    [
+      "canary",
+      "s403-05-1"
+    ]
+  ],
+  "recovery": {
+    "targets": {
+      "short": 3,
+      "long": 3
+    },
+    "jobs": [
+      {
+        "id": "job-0",
+        "cohort": "short",
+        "utility": 3,
+        "tenant": "tenant-a",
+        "model": "gqa",
+        "adapter": "base",
+        "tokenizer": "v1",
+        "rope": "long",
+        "prompt_tokens": [
+          7,
+          7
+        ],
+        "max_new_tokens": 3,
+        "exclusive_group": "mode",
+        "choices": [
+          {
+            "id": "a",
+            "device": "GPU-A",
+            "cache": "prefix-a",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "id": "b",
+            "device": "GPU-B",
+            "cache": null,
+            "start": 1,
+            "end": 3
+          }
+        ]
+      },
+      {
+        "id": "job-1",
+        "cohort": "long",
+        "utility": 2,
+        "tenant": "tenant-a",
+        "model": "gqa",
+        "adapter": "base",
+        "tokenizer": "v1",
+        "rope": "long",
+        "prompt_tokens": [
+          7,
+          7,
+          0
+        ],
+        "max_new_tokens": 4,
+        "exclusive_group": null,
+        "choices": [
+          {
+            "id": "a",
+            "device": "GPU-A",
+            "cache": null,
+            "start": 1,
+            "end": 3
+          },
+          {
+            "id": "b",
+            "device": "GPU-B",
+            "cache": null,
+            "start": 2,
+            "end": 4
+          }
+        ]
+      },
+      {
+        "id": "job-2",
+        "cohort": "short",
+        "utility": 5,
+        "tenant": "tenant-a",
+        "model": "gqa",
+        "adapter": "base",
+        "tokenizer": "v1",
+        "rope": "long",
+        "prompt_tokens": [
+          7,
+          7,
+          0,
+          1
+        ],
+        "max_new_tokens": 5,
+        "exclusive_group": null,
+        "choices": [
+          {
+            "id": "a",
+            "device": "GPU-A",
+            "cache": null,
+            "start": 2,
+            "end": 4
+          },
+          {
+            "id": "b",
+            "device": "GPU-B",
+            "cache": null,
+            "start": 1,
+            "end": 3
+          }
+        ]
+      },
+      {
+        "id": "job-3",
+        "cohort": "long",
+        "utility": 2,
+        "tenant": "tenant-a",
+        "model": "gqa",
+        "adapter": "base",
+        "tokenizer": "v1",
+        "rope": "long",
+        "prompt_tokens": [
+          7,
+          7,
+          0,
+          1,
+          2
+        ],
+        "max_new_tokens": 3,
+        "exclusive_group": "mode",
+        "choices": [
+          {
+            "id": "a",
+            "device": "GPU-A",
+            "cache": "prefix-a",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "id": "b",
+            "device": "GPU-B",
+            "cache": null,
+            "start": 2,
+            "end": 4
+          }
+        ]
+      },
+      {
+        "id": "job-4",
+        "cohort": "short",
+        "utility": 8,
+        "tenant": "tenant-a",
+        "model": "gqa",
+        "adapter": "base",
+        "tokenizer": "v1",
+        "rope": "long",
+        "prompt_tokens": [
+          7,
+          7
+        ],
+        "max_new_tokens": 4,
+        "exclusive_group": null,
+        "choices": [
+          {
+            "id": "a",
+            "device": "GPU-A",
+            "cache": null,
+            "start": 1,
+            "end": 3
+          },
+          {
+            "id": "b",
+            "device": "GPU-B",
+            "cache": null,
+            "start": 1,
+            "end": 3
+          }
+        ]
+      },
+      {
+        "id": "job-5",
+        "cohort": "long",
+        "utility": 8,
+        "tenant": "tenant-a",
+        "model": "gqa",
+        "adapter": "base",
+        "tokenizer": "v1",
+        "rope": "long",
+        "prompt_tokens": [
+          7,
+          7,
+          0
+        ],
+        "max_new_tokens": 5,
+        "exclusive_group": null,
+        "choices": [
+          {
+            "id": "a",
+            "device": "GPU-A",
+            "cache": null,
+            "start": 2,
+            "end": 4
+          },
+          {
+            "id": "b",
+            "device": "GPU-B",
+            "cache": null,
+            "start": 2,
+            "end": 4
+          }
+        ]
+      },
+      {
+        "id": "job-6",
+        "cohort": "short",
+        "utility": 8,
+        "tenant": "tenant-a",
+        "model": "gqa",
+        "adapter": "base",
+        "tokenizer": "v1",
+        "rope": "long",
+        "prompt_tokens": [
+          7,
+          7,
+          0,
+          1
+        ],
+        "max_new_tokens": 3,
+        "exclusive_group": null,
+        "choices": [
+          {
+            "id": "a",
+            "device": "GPU-A",
+            "cache": "prefix-a",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "id": "b",
+            "device": "GPU-B",
+            "cache": null,
+            "start": 1,
+            "end": 3
+          }
+        ]
+      }
+    ],
+    "worlds": [
+      {
+        "memory_reserve": {
+          "GPU-A": 8000,
+          "GPU-B": 6000
+        },
+        "token_budget": {
+          "GPU-A": 13,
+          "GPU-B": 11
+        }
+      },
+      {
+        "memory_reserve": {
+          "GPU-A": 8500,
+          "GPU-B": 5000
+        },
+        "token_budget": {
+          "GPU-A": 11,
+          "GPU-B": 14
+        }
+      }
+    ]
+  }
+}

@@ -211,4 +211,9 @@ def reconstruct(root, cutoff_ns=None):
                 name: None if result[name] is None else [result[name] - width / 1e6, result[name]]
                 for name in ['ttft_ms', 'latency_ms']}
         audit['clock_bounds'] = bounds
+    from .serving import apply_receipts
+    rows, serving = apply_receipts(root, rows, cutoff_ns)
+    if serving is not None:
+        audit['serving'] = serving
+        policy = dict(policy, _evidence_cutoff_ns=cutoff_ns)
     return rows, dict(sorted(audit.items())), policy

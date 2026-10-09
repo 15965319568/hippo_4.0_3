@@ -58,6 +58,12 @@ class ReplaySession:
                 raise ValueError('monitor singleton')
             (root/'monitor.json').write_text(json.dumps(tables['monitor'][0]), encoding='utf8')
             (root/'assignments.json').write_text(json.dumps(tables.get('assignments', [])), encoding='utf8')
+        if 'serving' in tables:
+            if len(tables['serving']) != 1:
+                raise ValueError('serving singleton')
+            bundle = copy.deepcopy(tables['serving'][0])
+            bundle['manifest']['query']['valid_ns'] = valid_ns
+            (root/'serving.json').write_text(json.dumps(bundle), encoding='utf8')
         return view, tables['adaptive'][0]
 
     def profile(self, frontier, valid_ns, cutoff_ns=None):
@@ -78,6 +84,9 @@ class ReplaySession:
             from .monitor import apply_monitor
             monitoring, planned_rows = apply_monitor(rows, gate, root)
             telemetry = TelemetryStatsAggregator.measurement_capacity(root, policy)
+            from .kv_reconcile import constrain_gate
+            if 'serving' in audit:
+                constrain_gate(gate, audit['serving'])
             profile = export_profile(rows, policy)
             (root / 'profile.json').write_text(json.dumps(profile), encoding='utf8')
             parser = LLMProfileDataParser(root / 'profile.json', None, policy['profile_slos'])
@@ -86,7 +95,9 @@ class ReplaySession:
                 item = parser.get_statistics(mode, run)
                 item.scale_data()
                 stats[run] = item.stats_dict
-            return {**({'monitor.json': monitoring} if monitoring is not None else {}), 'requests.json': rows, 'capture-audit.json': audit, 'cohorts.json': cohorts,
+            from .serving import plan_recovery
+            extra = {'serving-ledger.json': audit['serving'], 'recovery-plan.json': plan_recovery(root, planned_rows, telemetry, policy.get('_evidence_cutoff_ns'))} if 'serving' in audit else {}
+            return {**extra, **({'monitor.json': monitoring} if monitoring is not None else {}), 'requests.json': rows, 'capture-audit.json': audit, 'cohorts.json': cohorts,
                     'gate.json': gate, 'profile.json': profile, 'genai-statistics.json': stats,
                     'telemetry.json': telemetry, 'measurement-plan.json': plan(planned_rows, policy, telemetry, root),
                     'adaptive-plan.json': adaptive_plan(planned_rows, telemetry, catalog),

@@ -1,0 +1,115 @@
+{
+  "partitions": [
+    0,
+    1,
+    2
+  ],
+  "deliveries": [
+    "partition-export-0.jsonl.gz",
+    "partition-export-1.jsonl.gz",
+    "partition-export-2.jsonl.gz",
+    "partition-export-3.jsonl.gz"
+  ],
+  "queries": [
+    {
+      "id": "view-0",
+      "frontier": {
+        "0": 209,
+        "1": 209,
+        "2": 208
+      },
+      "valid_ns": 150
+    },
+    {
+      "id": "view-1",
+      "frontier": {
+        "0": 209,
+        "1": 209,
+        "2": 208
+      },
+      "valid_ns": 180
+    },
+    {
+      "id": "view-2",
+      "frontier": {
+        "0": 209,
+        "1": 209,
+        "2": 208
+      },
+      "valid_ns": 199
+    },
+    {
+      "id": "view-3",
+      "frontier": {
+        "0": 209,
+        "1": 209,
+        "2": 208
+      },
+      "valid_ns": 200
+    },
+    {
+      "id": "view-4",
+      "frontier": {
+        "0": 209,
+        "1": 209,
+        "2": 208
+      },
+      "valid_ns": 219
+    },
+    {
+      "id": "view-5",
+      "frontier": {
+        "0": 209,
+        "1": 209,
+        "2": 208
+      },
+      "valid_ns": 220
+    },
+    {
+      "id": "view-6",
+      "frontier": {
+        "0": 209,
+        "1": 209,
+        "2": 208
+      },
+      "valid_ns": 300
+    },
+    {
+      "id": "view-7",
+      "frontier": {
+        "0": 209,
+        "1": 209,
+        "2": 208
+      },
+      "valid_ns": 150,
+      "cutoff_ns": 600000000
+    },
+    {
+      "id": "view-8",
+      "frontier": {
+        "0": 209,
+        "1": 209,
+        "2": 208
+      },
+      "valid_ns": 99
+    },
+    {
+      "id": "view-9",
+      "frontier": {
+        "0": 209,
+        "1": 209,
+        "2": 208
+      },
+      "valid_ns": 200
+    },
+    {
+      "id": "view-10",
+      "frontier": {
+        "0": 209,
+        "1": 209,
+        "2": 208
+      },
+      "valid_ns": 150
+    }
+  ]
+}
