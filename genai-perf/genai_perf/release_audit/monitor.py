@@ -1,4 +1,5 @@
 """Legacy dashboard: pooled request means, last observation wins."""
+import json
 from collections import defaultdict
 def production_monitor(rows,assignments,config):
     tickets={(a['run'],a['request_id']):a for a in assignments}; groups=[]; eligible=[]
