@@ -62,6 +62,9 @@ def reconstruct(root, cutoff_ns=None):
     root = Path(root)
     policy = json.loads((root / "policy.json").read_text(encoding="utf-8"))
     cutoff_ns = policy["cutoff_ns"] if cutoff_ns is None else cutoff_ns
+    graph_path = root / 'clock-graph.json'
+    from .calibration import clock_bounds
+    bounds = clock_bounds(json.loads(graph_path.read_text(encoding='utf8'))) if graph_path.exists() else None
     arrivals, attempts, clocks, records = read_capture(root)
     logical_key = lambda r: (r["run"], r["request_id"])
     attempt_key = lambda r: (*logical_key(r), int(r["attempt"]))
@@ -79,7 +82,7 @@ def reconstruct(root, cutoff_ns=None):
                     conflicting_arrivals=len(bad_plans), conflicting_frames=len(bad_frames),
                     orphan_attempts=0, orphan_frames=0)
 
-    def clock(row, tick):
+    def clock(row, tick, edge='upper_ns'):
         k = row["worker"], row["boot"]
         if k in bad_beacons or k not in beacons:
             raise ValueError("clock")
@@ -88,7 +91,13 @@ def reconstruct(root, cutoff_ns=None):
                                  ("tick0", "tick1", "ns0", "ns1", "valid_lo", "valid_hi"))
         if x1 <= x0 or y1 <= y0 or not lo <= int(tick) <= hi:
             raise ValueError("clock")
-        return round(Fraction(y0) + Fraction((int(tick) - x0) * 1000))
+        offset = 0
+        if bounds is not None:
+            bound = bounds.get('/'.join(k))
+            if not bound or not bound['eligible']:
+                raise ValueError('unusable clock graph')
+            offset = (bound['lower_ns'] + bound['upper_ns']) // 2
+        return offset + round(Fraction(y0) + Fraction((int(tick) - x0) * (y1 - y0), x1 - x0))
 
     for key in sorted(set(sends) | bad_sends):
         if key[:2] not in plans and key[:2] not in bad_plans:
@@ -96,11 +105,12 @@ def reconstruct(root, cutoff_ns=None):
             continue
         meter = StreamMeter()
         row = sends.get(key)
-        status, dispatch, end = "censored", None, cutoff_ns
+        status, dispatch, dispatch_lo, end = "censored", None, None, cutoff_ns
         try:
             if key in bad_attempts:
                 raise ValueError("capture_conflict")
             dispatch = clock(row, row["dispatch_tick"])
+            dispatch_lo = clock(row, row["dispatch_tick"], "lower_ns")
             data = sorted(wire[key], key=lambda r: int(r["seq"]))
             if [int(r["seq"]) for r in data] != list(range(len(data))):
                 raise ValueError("sequence_gap")
@@ -132,6 +142,7 @@ def reconstruct(root, cutoff_ns=None):
             status = "quarantined"
         snap = meter.snapshot()
         physical[key[:2]].append({"attempt": key[2], "dispatch_ns": dispatch,
+                                  "dispatch_lo": dispatch_lo, "clock_node": "/".join((row["worker"],row["boot"])) if row else None,
                                   "end_ns": end, "status": status, **snap})
     audit["orphan_frames"] = sum(1 for key in frames if key[:3] not in sends and key[:3] not in bad_sends)
     rows = []
@@ -156,10 +167,10 @@ def reconstruct(root, cutoff_ns=None):
             if attempt["status"] == "quarantined":
                 status = "quarantined"
                 break
-            if attempt["attempt"] != i or attempt["dispatch_ns"] < at:
+            if attempt["attempt"] != i or attempt["dispatch_lo"] < at:
                 status = "quarantined"
                 break
-            if i and (chain[i-1]["end_ns"] > attempt["dispatch_ns"] or
+            if i and (chain[i-1]["end_ns"] > attempt["dispatch_lo"] or
                       chain[i-1]["status"] != "failed"):
                 status = "quarantined"
                 break
@@ -184,4 +195,13 @@ def reconstruct(root, cutoff_ns=None):
                      "latency_ms": latency, "tpot_ms": tpot,
                      "output_tokens": len(winner["tokens"]) if winner else 0,
                      "text": winner["text"] if winner else "", "attempts": len(chain)})
+    if bounds is not None:
+        for result in rows:
+            attempts_for_row = physical[result['run'], result['request_id']]
+            winner = next((a for a in attempts_for_row if a['status'] == 'success'), None) if result['status'] == 'success' else None
+            width = 0 if winner is None else bounds[winner['clock_node']]['upper_ns'] - bounds[winner['clock_node']]['lower_ns']
+            result['timing_bounds'] = {
+                name: None if result[name] is None else [result[name] - width / 1e6, result[name]]
+                for name in ['ttft_ms', 'latency_ms']}
+        audit['clock_bounds'] = bounds
     return rows, dict(sorted(audit.items())), policy

@@ -92,6 +92,11 @@ class LLMProfileDataParser(ProfileDataParser):
 
     def _parse_profile_data(self, data: dict) -> None:
         """Parse through the entire profile data to collect statistics."""
+        if 'capture_journal_v2' in data:
+            from genai_perf.release_audit.live import ReplaySession
+            view = data['capture_journal_v2']
+            session = ReplaySession.from_checkpoint(view['checkpoint'])
+            data = session.profile(view['frontier'], 0, None)
         self._profile_results = {}
         for experiment in data["experiments"]:
             infer_mode = experiment["experiment"]["mode"]

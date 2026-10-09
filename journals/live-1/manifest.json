@@ -1,0 +1,115 @@
+{
+  "partitions": [
+    0,
+    1,
+    2
+  ],
+  "deliveries": [
+    "collector-0.jsonl",
+    "collector-1.jsonl.gz",
+    "collector-2.jsonl",
+    "collector-3.jsonl.gz"
+  ],
+  "queries": [
+    {
+      "id": "original",
+      "frontier": {
+        "0": 784,
+        "1": 784,
+        "2": 783
+      },
+      "valid_ns": 150
+    },
+    {
+      "id": "commit-before-row",
+      "frontier": {
+        "0": 784,
+        "1": 785,
+        "2": 784
+      },
+      "valid_ns": 150
+    },
+    {
+      "id": "corrected",
+      "frontier": {
+        "0": 785,
+        "1": 785,
+        "2": 784
+      },
+      "valid_ns": 150
+    },
+    {
+      "id": "before-effective",
+      "frontier": {
+        "0": 785,
+        "1": 785,
+        "2": 784
+      },
+      "valid_ns": 99
+    },
+    {
+      "id": "conflicting-head",
+      "frontier": {
+        "0": 786,
+        "1": 785,
+        "2": 785
+      },
+      "valid_ns": 150
+    },
+    {
+      "id": "reconciled",
+      "frontier": {
+        "0": 791,
+        "1": 790,
+        "2": 790
+      },
+      "valid_ns": 150
+    },
+    {
+      "id": "withdrawn",
+      "frontier": {
+        "0": 791,
+        "1": 790,
+        "2": 790
+      },
+      "valid_ns": 190
+    },
+    {
+      "id": "half-open-end",
+      "frontier": {
+        "0": 791,
+        "1": 790,
+        "2": 790
+      },
+      "valid_ns": 200
+    },
+    {
+      "id": "expired",
+      "frontier": {
+        "0": 791,
+        "1": 790,
+        "2": 790
+      },
+      "valid_ns": 300
+    },
+    {
+      "id": "historical-after-corrections",
+      "frontier": {
+        "0": 787,
+        "1": 787,
+        "2": 786
+      },
+      "valid_ns": 190
+    },
+    {
+      "id": "early-observation-cutoff",
+      "frontier": {
+        "0": 791,
+        "1": 790,
+        "2": 790
+      },
+      "valid_ns": 150,
+      "cutoff_ns": 2000000000
+    }
+  ]
+}
