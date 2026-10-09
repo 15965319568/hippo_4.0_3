@@ -26,3 +26,9 @@ capture-v1 关于已输出 token 的尝试不可重试、逻辑分母或抽样�
 
 capture-audit.json 额外带 clock_bounds。所有正式指标、发布决定和补测人口都应来自
 这同一份保守请求明细。缺省 clock_graph 的既有静态 profile 保持原行为。
+
+V4 明确覆盖 capture-v1 最后一段的首次版本输入限制：启用 clock_graph 的持续导出可
+含发送时间上界晚于 cutoff 的尝试头。头记录本身不是已观测的输出事件，这个上界
+不能单独作为 quarantined 理由。仍检查完整导出的身份、序号、校时和重试关系，
+仅把可证明不晚于 cutoff 的 frame 送入测量；没有可见合法终态时保持 censored。
+这一规则也适用于 V4 内保留的 live-0/live-1 数据，新的输入不要求猜测未来真实时刻。
