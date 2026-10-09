@@ -46,4 +46,4 @@ release_estimated_requests、release_estimated_goodput、release_physical_attemp
 物理尝试数。只用 version/cohort 两个标签，不把 request_id 作为标签。
 
 私有验收独立构造期望值，检查有意义的公开行为。它不会要求报告固定措辞、特定文件
-修改数量或作者算法。报告和自建回归辅助审阅，不替代上述行为结果。
+修改数量或作者算法。可选报告和自建回归辅助审阅，不替代上述行为结果。

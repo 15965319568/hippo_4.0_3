@@ -1,0 +1,221 @@
+[
+  {
+    "at": 10,
+    "obj": {
+      "choices": [
+        {
+          "index": 0,
+          "delta": {
+            "speculation": {
+              "id": "left",
+              "op": "propose",
+              "parent": "root",
+              "tokens": [
+                20,
+                21
+              ],
+              "pieces": [
+                "文",
+                "文"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "at": 20,
+    "obj": {
+      "choices": [
+        {
+          "index": 0,
+          "delta": {
+            "speculation": {
+              "id": "p1",
+              "op": "publish",
+              "receipt": "v1",
+              "previous": "p0",
+              "upto": 4
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "at": 30,
+    "obj": {
+      "choices": [
+        {
+          "index": 0,
+          "delta": {
+            "speculation": {
+              "id": "right",
+              "op": "propose",
+              "parent": "root",
+              "tokens": [
+                20,
+                21,
+                22,
+                23
+              ],
+              "pieces": [
+                "弃",
+                "弃",
+                "弃",
+                "弃"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "at": 40,
+    "obj": {
+      "choices": [
+        {
+          "index": 0,
+          "delta": {
+            "speculation": {
+              "id": "root",
+              "op": "propose",
+              "parent": null,
+              "tokens": [
+                7,
+                7
+              ],
+              "pieces": [
+                "中",
+                "中"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "at": 50,
+    "obj": {
+      "choices": [
+        {
+          "index": 0,
+          "delta": {
+            "speculation": {
+              "id": "p0",
+              "op": "publish",
+              "receipt": "v0",
+              "previous": null,
+              "upto": 2
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "at": 60,
+    "obj": {
+      "choices": [
+        {
+          "index": 0,
+          "delta": {
+            "speculation": {
+              "id": "v0",
+              "op": "verify",
+              "proposal": "root",
+              "previous": null,
+              "accepted": 2
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "at": 70,
+    "obj": {
+      "choices": [
+        {
+          "index": 0,
+          "delta": {
+            "speculation": {
+              "id": "v1",
+              "op": "verify",
+              "proposal": "left",
+              "previous": "v0",
+              "accepted": 4
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "at": 80,
+    "obj": {
+      "choices": [
+        {
+          "index": 0,
+          "delta": {
+            "speculation": {
+              "id": "p0",
+              "op": "publish",
+              "receipt": "v0",
+              "previous": null,
+              "upto": 2
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "at": 90,
+    "obj": {
+      "choices": [
+        {
+          "index": 0,
+          "delta": {
+            "speculation": {
+              "id": "vx",
+              "op": "verify",
+              "proposal": "right",
+              "previous": "v0",
+              "accepted": 3
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "at": 110,
+    "obj": {
+      "choices": [
+        {
+          "index": 0,
+          "delta": {},
+          "finish_reason": "stop"
+        }
+      ]
+    }
+  },
+  {
+    "at": 120,
+    "obj": {
+      "usage": {
+        "choice_tokens": {
+          "0": 4
+        }
+      }
+    }
+  },
+  {
+    "at": 130,
+    "obj": "[DONE]"
+  }
+]

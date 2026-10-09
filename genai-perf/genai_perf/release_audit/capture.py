@@ -195,6 +195,13 @@ def reconstruct(root, cutoff_ns=None):
                      "latency_ms": latency, "tpot_ms": tpot,
                      "output_tokens": len(winner["tokens"]) if winner else 0,
                      "text": winner["text"] if winner else "", "attempts": len(chain)})
+    for result in rows:
+        accounts = [a['decode_accounting'] for a in physical[result['run'], result['request_id']] if 'decode_accounting' in a]
+        if accounts:
+            result['decode_accounting'] = {k: sum(a[k] for a in accounts) for k in accounts[0]}
+    if any('decode_accounting' in r for r in rows):
+        audit['speculative_totals'] = {k: sum(r.get('decode_accounting', {}).get(k, 0) for r in rows)
+                                       for k in ['draft_tokens', 'verified_tokens', 'committed_tokens', 'wasted_draft_tokens']}
     if bounds is not None:
         for result in rows:
             attempts_for_row = physical[result['run'], result['request_id']]

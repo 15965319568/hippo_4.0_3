@@ -53,6 +53,11 @@ class ReplaySession:
             (root / file).write_text(json.dumps(tables[table][0], ensure_ascii=False), encoding='utf8')
         if tables.get('clock_graph'):
             (root / 'clock-graph.json').write_text(json.dumps(tables['clock_graph'][0]), encoding='utf8')
+        if 'monitor' in tables:
+            if len(tables['monitor']) != 1:
+                raise ValueError('monitor singleton')
+            (root/'monitor.json').write_text(json.dumps(tables['monitor'][0]), encoding='utf8')
+            (root/'assignments.json').write_text(json.dumps(tables.get('assignments', [])), encoding='utf8')
         return view, tables['adaptive'][0]
 
     def profile(self, frontier, valid_ns, cutoff_ns=None):
@@ -70,6 +75,8 @@ class ReplaySession:
             view, catalog = self._export(root, frontier, valid_ns)
             rows, audit, policy = reconstruct(root, cutoff_ns)
             cohorts, gate = summarize(rows, policy)
+            from .monitor import apply_monitor
+            monitoring, planned_rows = apply_monitor(rows, gate, root)
             telemetry = TelemetryStatsAggregator.measurement_capacity(root, policy)
             profile = export_profile(rows, policy)
             (root / 'profile.json').write_text(json.dumps(profile), encoding='utf8')
@@ -79,10 +86,10 @@ class ReplaySession:
                 item = parser.get_statistics(mode, run)
                 item.scale_data()
                 stats[run] = item.stats_dict
-            return {'requests.json': rows, 'capture-audit.json': audit, 'cohorts.json': cohorts,
+            return {**({'monitor.json': monitoring} if monitoring is not None else {}), 'requests.json': rows, 'capture-audit.json': audit, 'cohorts.json': cohorts,
                     'gate.json': gate, 'profile.json': profile, 'genai-statistics.json': stats,
-                    'telemetry.json': telemetry, 'measurement-plan.json': plan(rows, policy, telemetry, root),
-                    'adaptive-plan.json': adaptive_plan(rows, telemetry, catalog),
+                    'telemetry.json': telemetry, 'measurement-plan.json': plan(planned_rows, policy, telemetry, root),
+                    'adaptive-plan.json': adaptive_plan(planned_rows, telemetry, catalog),
                     'metrics.prom': prometheus(rows, policy, gate), 'journal-audit.json': {
                         'frontier': copy.deepcopy(frontier), 'valid_ns': valid_ns,
                         'transactions': view['transactions'], 'conflicts': view['conflicts']}}

@@ -16,6 +16,7 @@ class StreamMeter:
         self.done_ns = None
         self.usage = None
         self.error = None
+        self.speculation = None
 
     def feed(self, data, timestamp_ns):
         if self.done_ns is not None or self.error:
@@ -79,6 +80,19 @@ class StreamMeter:
                 if choice.get("index") != self.choice:
                     continue
                 delta = choice.get("delta", {})
+                if 'speculation' in delta:
+                    if self.finish_ns is not None or delta.get('token_ids') or delta.get('content'):
+                        raise ValueError('mixed or late speculation')
+                    if self.speculation is None:
+                        if self.tokens or self.text:
+                            raise ValueError('mixed stream modes')
+                        from .speculation import Speculation
+                        self.speculation = Speculation()
+                    self.speculation.ingest(delta['speculation'], timestamp_ns)
+                    state = self.speculation.snapshot()
+                    self.tokens, self.token_times, self.text = state['tokens'], state['times'], state['text']
+                elif self.speculation is not None and (delta.get('token_ids') or delta.get('content')):
+                    raise ValueError('mixed stream modes')
                 ids = delta.get("token_ids", [])
                 content = delta.get("content") or ""
                 if not isinstance(ids, list) or any(type(x) is not int or x < 0 for x in ids):
@@ -91,8 +105,10 @@ class StreamMeter:
                 self.token_times.extend([timestamp_ns] * len(ids))
                 self.text += content
                 if choice.get("finish_reason") is not None:
+                    if self.speculation is not None:
+                        self.speculation.finish()
                     self.finish_ns = timestamp_ns
-        except (ValueError, TypeError, AttributeError, UnicodeError):
+        except (ValueError, TypeError, AttributeError, UnicodeError, KeyError, RecursionError):
             self.error = "invalid_event"
 
     def snapshot(self):
@@ -104,4 +120,7 @@ class StreamMeter:
             "finish_ns": self.finish_ns, "done_ns": self.done_ns,
             "tpot_ns": (last - first) / (len(self.tokens) - 1) if len(self.tokens) > 1 else None,
             "error": self.error,
+            **({'decode_accounting': {k: self.speculation.snapshot()[k] for k in
+                ['draft_tokens', 'verified_tokens', 'committed_tokens', 'wasted_draft_tokens']}}
+               if self.speculation is not None else {}),
         }

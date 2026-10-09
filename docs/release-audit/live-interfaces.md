@@ -30,6 +30,6 @@ python -m genai_perf.release_audit.replay --input journals/live-1 --output out/l
 会改变文件分组、输入顺序、重复投递和保存时机，并在新进程恢复；也会直接调用
 journal、calibration、adaptive、ReplaySession 及正式解析器的公开接口。
 
-报告 MEASUREMENT_REPAIR.md 应解释公开两组连续导出为何在不同视图下得出不同结果，
-给出重放与恢复命令、一个会误导采购的非因果方案，以及最终选择的可执行策略。
-报告用事实支持判断；自动评分检查可重算行为，不以文字关键词或操作次数评分。
+S3/M3 生效时的额外工作量、monitor.json、gate 和补测样本边界，遵循
+speculative-decoding.md 与 production-monitor.md。可选审阅材料与自动评分边界见
+acceptance.md。snapshot 和 profile 都接受同一公开 query；不规定内部调用路径。

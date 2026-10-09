@@ -1,0 +1,981 @@
+{
+  "id": "monitor-0",
+  "rows": [
+    {
+      "run": "canary",
+      "request_id": "q6-1",
+      "version": "green",
+      "cohort": "short",
+      "scheduled_ns": 106,
+      "weight": 1,
+      "status": "success",
+      "good": false,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 5,
+        "wasted_draft_tokens": 5
+      }
+    },
+    {
+      "run": "baseline",
+      "request_id": "q18-0",
+      "version": "blue",
+      "cohort": "short",
+      "scheduled_ns": 118,
+      "weight": 1,
+      "status": "success",
+      "good": true,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 6,
+        "wasted_draft_tokens": 4
+      }
+    },
+    {
+      "run": "baseline",
+      "request_id": "q12-1",
+      "version": "blue",
+      "cohort": "short",
+      "scheduled_ns": 112,
+      "weight": 8,
+      "status": "success",
+      "good": false,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 6,
+        "wasted_draft_tokens": 4
+      }
+    },
+    {
+      "run": "baseline",
+      "request_id": "q18-1",
+      "version": "blue",
+      "cohort": "short",
+      "scheduled_ns": 118,
+      "weight": 8,
+      "status": "success",
+      "good": false,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 3,
+        "wasted_draft_tokens": 7
+      }
+    },
+    {
+      "run": "baseline",
+      "request_id": "q17-0",
+      "version": "blue",
+      "cohort": "short",
+      "scheduled_ns": 117,
+      "weight": 8,
+      "status": "success",
+      "good": false,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 3,
+        "wasted_draft_tokens": 7
+      }
+    },
+    {
+      "run": "canary",
+      "request_id": "q5-0",
+      "version": "green",
+      "cohort": "short",
+      "scheduled_ns": 105,
+      "weight": 2,
+      "status": "success",
+      "good": true,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 3,
+        "wasted_draft_tokens": 7
+      }
+    },
+    {
+      "run": "baseline",
+      "request_id": "q22-0",
+      "version": "blue",
+      "cohort": "short",
+      "scheduled_ns": 122,
+      "weight": 2,
+      "status": "success",
+      "good": true,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 6,
+        "wasted_draft_tokens": 4
+      }
+    },
+    {
+      "run": "canary",
+      "request_id": "q3-0",
+      "version": "green",
+      "cohort": "short",
+      "scheduled_ns": 103,
+      "weight": 8,
+      "status": "success",
+      "good": false,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 5,
+        "wasted_draft_tokens": 5
+      }
+    },
+    {
+      "run": "baseline",
+      "request_id": "q20-0",
+      "version": "blue",
+      "cohort": "short",
+      "scheduled_ns": 120,
+      "weight": 8,
+      "status": "success",
+      "good": false,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 3,
+        "wasted_draft_tokens": 7
+      }
+    },
+    {
+      "run": "baseline",
+      "request_id": "q13-0",
+      "version": "blue",
+      "cohort": "short",
+      "scheduled_ns": 113,
+      "weight": 1,
+      "status": "success",
+      "good": false,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 3,
+        "wasted_draft_tokens": 7
+      }
+    },
+    {
+      "run": "canary",
+      "request_id": "q1-0",
+      "version": "green",
+      "cohort": "short",
+      "scheduled_ns": 101,
+      "weight": 8,
+      "status": "success",
+      "good": false,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 5,
+        "wasted_draft_tokens": 5
+      }
+    },
+    {
+      "run": "canary",
+      "request_id": "q7-0",
+      "version": "green",
+      "cohort": "short",
+      "scheduled_ns": 107,
+      "weight": 8,
+      "status": "success",
+      "good": false,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 10,
+        "wasted_draft_tokens": 0
+      }
+    },
+    {
+      "run": "baseline",
+      "request_id": "q19-0",
+      "version": "blue",
+      "cohort": "short",
+      "scheduled_ns": 119,
+      "weight": 1,
+      "status": "success",
+      "good": false,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 5,
+        "wasted_draft_tokens": 5
+      }
+    },
+    {
+      "run": "canary",
+      "request_id": "q0-0",
+      "version": "green",
+      "cohort": "short",
+      "scheduled_ns": 100,
+      "weight": 1,
+      "status": "success",
+      "good": false,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 3,
+        "wasted_draft_tokens": 7
+      }
+    },
+    {
+      "run": "baseline",
+      "request_id": "q15-1",
+      "version": "blue",
+      "cohort": "short",
+      "scheduled_ns": 115,
+      "weight": 2,
+      "status": "success",
+      "good": false,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 5,
+        "wasted_draft_tokens": 5
+      }
+    },
+    {
+      "run": "baseline",
+      "request_id": "q15-0",
+      "version": "blue",
+      "cohort": "short",
+      "scheduled_ns": 115,
+      "weight": 1,
+      "status": "success",
+      "good": true,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 6,
+        "wasted_draft_tokens": 4
+      }
+    },
+    {
+      "run": "baseline",
+      "request_id": "q21-1",
+      "version": "blue",
+      "cohort": "short",
+      "scheduled_ns": 121,
+      "weight": 8,
+      "status": "success",
+      "good": false,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 10,
+        "wasted_draft_tokens": 0
+      }
+    },
+    {
+      "run": "baseline",
+      "request_id": "q11-0",
+      "version": "blue",
+      "cohort": "short",
+      "scheduled_ns": 111,
+      "weight": 8,
+      "status": "success",
+      "good": true,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 5,
+        "wasted_draft_tokens": 5
+      }
+    },
+    {
+      "run": "canary",
+      "request_id": "q8-0",
+      "version": "green",
+      "cohort": "short",
+      "scheduled_ns": 108,
+      "weight": 8,
+      "status": "success",
+      "good": false,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 10,
+        "wasted_draft_tokens": 0
+      }
+    },
+    {
+      "run": "canary",
+      "request_id": "q6-0",
+      "version": "green",
+      "cohort": "short",
+      "scheduled_ns": 106,
+      "weight": 8,
+      "status": "success",
+      "good": false,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 6,
+        "wasted_draft_tokens": 4
+      }
+    },
+    {
+      "run": "canary",
+      "request_id": "q4-0",
+      "version": "green",
+      "cohort": "short",
+      "scheduled_ns": 104,
+      "weight": 2,
+      "status": "success",
+      "good": false,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 5,
+        "wasted_draft_tokens": 5
+      }
+    },
+    {
+      "run": "canary",
+      "request_id": "q9-0",
+      "version": "green",
+      "cohort": "short",
+      "scheduled_ns": 109,
+      "weight": 1,
+      "status": "success",
+      "good": false,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 5,
+        "wasted_draft_tokens": 5
+      }
+    },
+    {
+      "run": "baseline",
+      "request_id": "q23-0",
+      "version": "blue",
+      "cohort": "short",
+      "scheduled_ns": 123,
+      "weight": 1,
+      "status": "success",
+      "good": false,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 10,
+        "wasted_draft_tokens": 0
+      }
+    },
+    {
+      "run": "canary",
+      "request_id": "q2-0",
+      "version": "green",
+      "cohort": "short",
+      "scheduled_ns": 102,
+      "weight": 1,
+      "status": "success",
+      "good": false,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 5,
+        "wasted_draft_tokens": 5
+      }
+    },
+    {
+      "run": "baseline",
+      "request_id": "q14-0",
+      "version": "blue",
+      "cohort": "short",
+      "scheduled_ns": 114,
+      "weight": 8,
+      "status": "success",
+      "good": false,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 5,
+        "wasted_draft_tokens": 5
+      }
+    },
+    {
+      "run": "baseline",
+      "request_id": "q21-0",
+      "version": "blue",
+      "cohort": "short",
+      "scheduled_ns": 121,
+      "weight": 1,
+      "status": "success",
+      "good": true,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 6,
+        "wasted_draft_tokens": 4
+      }
+    },
+    {
+      "run": "baseline",
+      "request_id": "q10-0",
+      "version": "blue",
+      "cohort": "short",
+      "scheduled_ns": 110,
+      "weight": 8,
+      "status": "success",
+      "good": true,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 6,
+        "wasted_draft_tokens": 4
+      }
+    },
+    {
+      "run": "baseline",
+      "request_id": "q12-0",
+      "version": "blue",
+      "cohort": "short",
+      "scheduled_ns": 112,
+      "weight": 8,
+      "status": "success",
+      "good": true,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 5,
+        "wasted_draft_tokens": 5
+      }
+    },
+    {
+      "run": "canary",
+      "request_id": "q0-1",
+      "version": "green",
+      "cohort": "short",
+      "scheduled_ns": 100,
+      "weight": 2,
+      "status": "success",
+      "good": false,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 3,
+        "wasted_draft_tokens": 7
+      }
+    },
+    {
+      "run": "canary",
+      "request_id": "q3-1",
+      "version": "green",
+      "cohort": "short",
+      "scheduled_ns": 103,
+      "weight": 2,
+      "status": "success",
+      "good": false,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 6,
+        "wasted_draft_tokens": 4
+      }
+    },
+    {
+      "run": "canary",
+      "request_id": "q9-1",
+      "version": "green",
+      "cohort": "short",
+      "scheduled_ns": 109,
+      "weight": 1,
+      "status": "success",
+      "good": true,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 10,
+        "wasted_draft_tokens": 0
+      }
+    },
+    {
+      "run": "baseline",
+      "request_id": "q16-0",
+      "version": "blue",
+      "cohort": "short",
+      "scheduled_ns": 116,
+      "weight": 1,
+      "status": "success",
+      "good": true,
+      "decode_accounting": {
+        "draft_tokens": 10,
+        "verified_tokens": 6,
+        "committed_tokens": 6,
+        "wasted_draft_tokens": 4
+      }
+    }
+  ],
+  "assignments": [
+    {
+      "run": "baseline",
+      "request_id": "q21-0",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u021",
+      "ordinal": 63,
+      "arm": "blue",
+      "propensity": ".75",
+      "recipe": "m0/t0/c0/s0"
+    },
+    {
+      "run": "baseline",
+      "request_id": "q12-1",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u012",
+      "ordinal": 36,
+      "arm": "blue",
+      "propensity": ".5",
+      "recipe": "m0/t0/c0/s0"
+    },
+    {
+      "run": "baseline",
+      "request_id": "q11-0",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u011",
+      "ordinal": 33,
+      "arm": "blue",
+      "propensity": ".5",
+      "recipe": "m0/t0/c0/s0"
+    },
+    {
+      "run": "canary",
+      "request_id": "q0-0",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u000",
+      "ordinal": 0,
+      "arm": "green",
+      "propensity": ".5",
+      "recipe": "m1/t0/c0/s0"
+    },
+    {
+      "run": "baseline",
+      "request_id": "q22-0",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u022",
+      "ordinal": 66,
+      "arm": "blue",
+      "propensity": ".25",
+      "recipe": "m0/t0/c0/s0"
+    },
+    {
+      "run": "baseline",
+      "request_id": "q18-1",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u018",
+      "ordinal": 54,
+      "arm": "blue",
+      "propensity": ".75",
+      "recipe": "m0/t0/c0/s0"
+    },
+    {
+      "run": "canary",
+      "request_id": "q6-1",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u006",
+      "ordinal": 18,
+      "arm": "green",
+      "propensity": ".75",
+      "recipe": "m1/t0/c0/s0"
+    },
+    {
+      "run": "baseline",
+      "request_id": "q16-0",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u016",
+      "ordinal": 48,
+      "arm": "blue",
+      "propensity": ".25",
+      "recipe": "m0/t0/c0/s0"
+    },
+    {
+      "run": "baseline",
+      "request_id": "q12-0",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u012",
+      "ordinal": 36,
+      "arm": "blue",
+      "propensity": ".5",
+      "recipe": "m0/t0/c0/s0"
+    },
+    {
+      "run": "canary",
+      "request_id": "q6-0",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u006",
+      "ordinal": 18,
+      "arm": "green",
+      "propensity": ".75",
+      "recipe": "m1/t0/c0/s0"
+    },
+    {
+      "run": "canary",
+      "request_id": "q9-1",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u009",
+      "ordinal": 27,
+      "arm": "green",
+      "propensity": ".5",
+      "recipe": "m1/t0/c0/s0"
+    },
+    {
+      "run": "canary",
+      "request_id": "q7-0",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u007",
+      "ordinal": 21,
+      "arm": "green",
+      "propensity": ".75",
+      "recipe": "m1/t0/c0/s0"
+    },
+    {
+      "run": "baseline",
+      "request_id": "q15-0",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u015",
+      "ordinal": 45,
+      "arm": "blue",
+      "propensity": ".25",
+      "recipe": "m0/t0/c0/s0"
+    },
+    {
+      "run": "baseline",
+      "request_id": "q21-1",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u021",
+      "ordinal": 63,
+      "arm": "blue",
+      "propensity": ".75",
+      "recipe": "m0/t0/c0/s0"
+    },
+    {
+      "run": "baseline",
+      "request_id": "q18-0",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u018",
+      "ordinal": 54,
+      "arm": "blue",
+      "propensity": ".75",
+      "recipe": "m0/t0/c0/s0"
+    },
+    {
+      "run": "baseline",
+      "request_id": "q15-1",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u015",
+      "ordinal": 45,
+      "arm": "blue",
+      "propensity": ".25",
+      "recipe": "m0/t0/c0/s0"
+    },
+    {
+      "run": "baseline",
+      "request_id": "q11-0",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u011",
+      "ordinal": 33,
+      "arm": "blue",
+      "propensity": ".5",
+      "recipe": "m0/t0/c0/s0"
+    },
+    {
+      "run": "baseline",
+      "request_id": "q17-0",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u017",
+      "ordinal": 51,
+      "arm": "blue",
+      "propensity": ".25",
+      "recipe": "m0/t0/c0/s0"
+    },
+    {
+      "run": "canary",
+      "request_id": "q3-1",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u003",
+      "ordinal": 9,
+      "arm": "green",
+      "propensity": ".25",
+      "recipe": "m1/t0/c0/s0"
+    },
+    {
+      "run": "canary",
+      "request_id": "q4-0",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u004",
+      "ordinal": 12,
+      "arm": "green",
+      "propensity": ".25",
+      "recipe": "m1/t0/c0/s0"
+    },
+    {
+      "run": "canary",
+      "request_id": "q0-0",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u000",
+      "ordinal": 0,
+      "arm": "green",
+      "propensity": ".5",
+      "recipe": "m1/t0/c0/s0"
+    },
+    {
+      "run": "baseline",
+      "request_id": "q22-0",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u022",
+      "ordinal": 66,
+      "arm": "blue",
+      "propensity": ".25",
+      "recipe": "m0/t0/c0/s0"
+    },
+    {
+      "run": "canary",
+      "request_id": "q3-1",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u003",
+      "ordinal": 9,
+      "arm": "green",
+      "propensity": ".25",
+      "recipe": "m1/t0/c0/s0"
+    },
+    {
+      "run": "baseline",
+      "request_id": "q20-0",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u020",
+      "ordinal": 60,
+      "arm": "blue",
+      "propensity": ".5",
+      "recipe": "m0/t0/c0/s0"
+    },
+    {
+      "run": "canary",
+      "request_id": "q8-0",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u008",
+      "ordinal": 24,
+      "arm": "green",
+      "propensity": ".5",
+      "recipe": "m1/t0/c0/s0"
+    },
+    {
+      "run": "baseline",
+      "request_id": "q18-1",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u018",
+      "ordinal": 54,
+      "arm": "blue",
+      "propensity": ".75",
+      "recipe": "m0/t0/c0/s0"
+    },
+    {
+      "run": "baseline",
+      "request_id": "q23-0",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u023",
+      "ordinal": 69,
+      "arm": "blue",
+      "propensity": ".5",
+      "recipe": "m0/t0/c0/s0"
+    },
+    {
+      "run": "canary",
+      "request_id": "q2-0",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u002",
+      "ordinal": 6,
+      "arm": "green",
+      "propensity": ".25",
+      "recipe": "m1/t0/c0/s0"
+    },
+    {
+      "run": "baseline",
+      "request_id": "q13-0",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u013",
+      "ordinal": 39,
+      "arm": "blue",
+      "propensity": ".75",
+      "recipe": "m0/t0/c0/s0"
+    },
+    {
+      "run": "baseline",
+      "request_id": "q19-0",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u019",
+      "ordinal": 57,
+      "arm": "blue",
+      "propensity": ".5",
+      "recipe": "m0/t0/c0/s0"
+    },
+    {
+      "run": "baseline",
+      "request_id": "q14-0",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u014",
+      "ordinal": 42,
+      "arm": "blue",
+      "propensity": ".75",
+      "recipe": "m0/t0/c0/s0"
+    },
+    {
+      "run": "canary",
+      "request_id": "q9-0",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u009",
+      "ordinal": 27,
+      "arm": "green",
+      "propensity": ".5",
+      "recipe": "m1/t0/c0/s0"
+    },
+    {
+      "run": "canary",
+      "request_id": "q5-0",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u005",
+      "ordinal": 15,
+      "arm": "green",
+      "propensity": ".75",
+      "recipe": "m1/t0/c0/s0"
+    },
+    {
+      "run": "canary",
+      "request_id": "q0-1",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u000",
+      "ordinal": 0,
+      "arm": "green",
+      "propensity": ".5",
+      "recipe": "m1/t0/c0/s0"
+    },
+    {
+      "run": "canary",
+      "request_id": "q3-0",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u003",
+      "ordinal": 9,
+      "arm": "green",
+      "propensity": ".25",
+      "recipe": "m1/t0/c0/s0"
+    },
+    {
+      "run": "canary",
+      "request_id": "q7-0",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u007",
+      "ordinal": 21,
+      "arm": "green",
+      "propensity": ".75",
+      "recipe": "m1/t0/c0/s0"
+    },
+    {
+      "run": "baseline",
+      "request_id": "q15-0",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u015",
+      "ordinal": 45,
+      "arm": "blue",
+      "propensity": ".25",
+      "recipe": "m0/t0/c0/s0"
+    },
+    {
+      "run": "canary",
+      "request_id": "q1-0",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u001",
+      "ordinal": 3,
+      "arm": "green",
+      "propensity": ".5",
+      "recipe": "m1/t0/c0/s0"
+    },
+    {
+      "run": "baseline",
+      "request_id": "q10-0",
+      "epoch": "e0",
+      "cohort": "short",
+      "unit": "u010",
+      "ordinal": 30,
+      "arm": "blue",
+      "propensity": ".75",
+      "recipe": "m0/t0/c0/s0"
+    }
+  ],
+  "config": {
+    "baseline": "blue",
+    "candidate": "green",
+    "epochs": [
+      {
+        "id": "e0",
+        "start_ns": 0,
+        "end_ns": 10000,
+        "cohorts": [
+          "short"
+        ],
+        "recipes": {
+          "blue": "m0/t0/c0/s0",
+          "green": "m1/t0/c0/s0"
+        },
+        "waste_limit": ".4",
+        "margin": ".05",
+        "alpha": ".125",
+        "bets": [
+          {
+            "lambda": ".25",
+            "mass": 1
+          },
+          {
+            "lambda": ".75",
+            "mass": 3
+          }
+        ],
+        "min_units": 3,
+        "max_contamination": ".2"
+      }
+    ]
+  }
+}
