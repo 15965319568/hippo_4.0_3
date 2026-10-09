@@ -11,7 +11,7 @@ from pathlib import Path
 
 
 def load_evidence(root):
-    root = Path(root)
+    root = Path(root).resolve()
     bundled = root / 'serving.json'
     if bundled.exists():
         data = json.loads(bundled.read_text(encoding='utf8'))
