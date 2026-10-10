@@ -1,2 +1,2 @@
 ﻿
-{"record_id": "unapproved-attractive-536616229", "event": "event-52-536616229", "revision": "99e0", "observed_ns": "36028797103489357", "valid_from_ns": "36028797083384105", "valid_until_ns": "", "approved": "0", "parents_json": "[]", "payload_json": "{\"step\": 52, \"operations\": [{\"op\": \"copy\", \"device\": \"decode-536616229\", \"epoch\": 4, \"transfer\": \"to-b-536616229\", \"ticket\": \"ticket-b-536616229\", \"page_index\": 0, \"offset\": 0, \"tokens\": [6742145], \"source_epoch\": 2, \"source_generation\": 1}, {\"op\": \"ack\", \"device\": \"decode-536616229\", \"epoch\": 4, \"transfer\": \"to-b-536616229\", \"ticket\": \"ticket-b-536616229\"}]}"}
+

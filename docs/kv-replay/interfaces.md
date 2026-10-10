@@ -1,11 +1,11 @@
-# 迁移放量闭环的公开边界 I7（生效）
+# 迁移放量闭环的公开边界 I8（生效）
 
-入口位于 genai_perf.kv_replay。E7、K7、S7、C7 与本页共同构成全部生效契约。
+入口位于 genai_perf.kv_replay。E8、K8、S8、C8、F8 与本页共同构成全部生效契约。
 
-1. sources.load_evidence(root:Path) -> (manifest,records)，按 E7 读取原始导出。
+1. sources.load_evidence(root:Path) -> (manifest,records)，按 E8 读取原始导出。
 2. session.ReplaySession(manifest)，ingest(records) 增量接收规范化行，允许乱序重复。
-3. snapshot(observed_ns,valid_ns) 返回 evidence,ledger,queue,leases,plans,signals,gates,
-   assessments,routing,versions,checkpoints，具体内容分别由 E7/K7/S7/C7 定义。
+3. snapshot(observed_ns,valid_ns) 返回 fabric,evidence,ledger,queue,leases,plans,signals,gates,
+   assessments,routing,versions,checkpoints，具体内容分别由 E8/K8/S8/C8/F8 定义。
 4. 同一个会话可以交错查询过去/现在；查询不改变随后结果。每次快照都相当于从该查询
    可见且生效的证据重建整条执行，包含控制决策反馈，不能独立拼接各阶段缓存结果。
 5. checkpoint() 返回任意可 JSON 往返的值；ReplaySession.from_checkpoint(value)
@@ -31,3 +31,6 @@ leases.cached/result、发布 fence 等都是已声明的交换数据，不是�
 验收只调用本页的公共 API 和 CLI，实际执行从脏导出到发布/回滚与历史恢复的同一
 控制链。不调用 engine、scheduler、wire、control 或 runtime 的私有函数。可以重构
 甚至替换内部模块，自动评分不要求指定源码文件数、某种算法或某个 checkpoint 表示。
+
+
+F8（fabric.md）为同级生效契约，扩展同一 allocator、请求、计量、历史恢复与发布生命周期。所有 reason 字段只要求非空诊断字符串，拒绝条件同时成立时不规定错误优先级；以 accepted 和完整业务状态判定。

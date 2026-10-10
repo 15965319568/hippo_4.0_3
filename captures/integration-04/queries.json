@@ -1,192 +1,57 @@
 [
   {
-    "id": "warm-324000548",
-    "observed_ns": 36028797103814307,
-    "valid_ns": 36028797083714205
+    "id": "view-0",
+    "observed_ns": 36028797105810872,
+    "valid_ns": 36028797085704205
   },
   {
-    "id": "base-0-0-write-324000548",
-    "observed_ns": 36028797103815519,
-    "valid_ns": 36028797083714205
+    "id": "view-1",
+    "observed_ns": 36028797105812185,
+    "valid_ns": 36028797085704205
   },
   {
-    "id": "base-0-1-write-324000548",
-    "observed_ns": 36028797103816327,
-    "valid_ns": 36028797083714205
+    "id": "view-2",
+    "observed_ns": 36028797105813801,
+    "valid_ns": 36028797085704205
   },
   {
-    "id": "base-1-0-activate-324000548",
-    "observed_ns": 36028797103816630,
-    "valid_ns": 36028797083714205
+    "id": "view-3",
+    "observed_ns": 36028797105815114,
+    "valid_ns": 36028797085704205
   },
   {
-    "id": "base-1-1-activate-324000548",
-    "observed_ns": 36028797103817438,
-    "valid_ns": 36028797083714205
+    "id": "view-4",
+    "observed_ns": 36028797105816225,
+    "valid_ns": 36028797085704205
   },
   {
-    "id": "stage-324000548",
-    "observed_ns": 36028797103818246,
-    "valid_ns": 36028797083714205
+    "id": "view-5",
+    "observed_ns": 36028797105817134,
+    "valid_ns": 36028797085704205
   },
   {
-    "id": "before-copy-324000548",
-    "observed_ns": 36028797103819256,
-    "valid_ns": 36028797083714205
+    "id": "view-6",
+    "observed_ns": 36028797105822386,
+    "valid_ns": 36028797085704205
   },
   {
-    "id": "probe-batch0-324000548",
-    "observed_ns": 36028797103819660,
-    "valid_ns": 36028797083714205
-  },
-  {
-    "id": "resume-prefix-324000548",
-    "observed_ns": 36028797103819963,
-    "valid_ns": 36028797083714205
-  },
-  {
-    "id": "resume-suspend0-324000548",
-    "observed_ns": 36028797103820569,
-    "valid_ns": 36028797083714205
-  },
-  {
-    "id": "resume-transfer0-324000548",
-    "observed_ns": 36028797103820670,
-    "valid_ns": 36028797083714205
-  },
-  {
-    "id": "resume-ack0-324000548",
-    "observed_ns": 36028797103820973,
-    "valid_ns": 36028797083714205
-  },
-  {
-    "id": "000-resume0-324000548",
-    "observed_ns": 36028797103821074,
-    "valid_ns": 36028797083714205
-  },
-  {
-    "id": "resume-evict0-324000548",
-    "observed_ns": 36028797103821175,
-    "valid_ns": 36028797083714205
-  },
-  {
-    "id": "resume-activate0-324000548",
-    "observed_ns": 36028797103821276,
-    "valid_ns": 36028797083714205
-  },
-  {
-    "id": "resume-suspend1-324000548",
-    "observed_ns": 36028797103821882,
-    "valid_ns": 36028797083714205
-  },
-  {
-    "id": "resume-transfer1-324000548",
-    "observed_ns": 36028797103821983,
-    "valid_ns": 36028797083714205
-  },
-  {
-    "id": "resume-ack1-324000548",
-    "observed_ns": 36028797103822286,
-    "valid_ns": 36028797083714205
-  },
-  {
-    "id": "000-resume1-324000548",
-    "observed_ns": 36028797103822387,
-    "valid_ns": 36028797083714205
-  },
-  {
-    "id": "resume-evict1-324000548",
-    "observed_ns": 36028797103822488,
-    "valid_ns": 36028797083714205
-  },
-  {
-    "id": "resume-activate1-324000548",
-    "observed_ns": 36028797103822589,
-    "valid_ns": 36028797083714205
-  },
-  {
-    "id": "resume-final-draft-324000548",
-    "observed_ns": 36028797103822690,
-    "valid_ns": 36028797083714205
-  },
-  {
-    "id": "resume-final-verify-324000548",
-    "observed_ns": 36028797103822791,
-    "valid_ns": 36028797083714205
-  },
-  {
-    "id": "resume-final-close-324000548",
-    "observed_ns": 36028797103823397,
-    "valid_ns": 36028797083714205
-  },
-  {
-    "id": "probe-first-1-write-324000548",
-    "observed_ns": 36028797103824104,
-    "valid_ns": 36028797083714205
-  },
-  {
-    "id": "probe-first-1-close-324000548",
-    "observed_ns": 36028797103824205,
-    "valid_ns": 36028797083714205
-  },
-  {
-    "id": "ack-c-324000548",
-    "observed_ns": 36028797103824710,
-    "valid_ns": 36028797083714205
-  },
-  {
-    "id": "probe-second-0-write-324000548",
-    "observed_ns": 36028797103825518,
-    "valid_ns": 36028797083714205
-  },
-  {
-    "id": "probe-second-1-write-324000548",
-    "observed_ns": 36028797103826427,
-    "valid_ns": 36028797083714205
-  },
-  {
-    "id": "atomic-abort-324000548",
-    "observed_ns": 36028797103826831,
-    "valid_ns": 36028797083714205
-  },
-  {
-    "id": "fresh-324000548",
-    "observed_ns": 36028797103827336,
-    "valid_ns": 36028797083714205
-  },
-  {
-    "id": "target-reset-324000548",
-    "observed_ns": 36028797103828346,
-    "valid_ns": 36028797083714205
-  },
-  {
-    "id": "rollback-324000548",
-    "observed_ns": 36028797103828750,
-    "valid_ns": 36028797083714205
-  },
-  {
-    "id": "old-completes-0-close-324000548",
-    "observed_ns": 36028797103829558,
-    "valid_ns": 36028797083714205
+    "id": "view-7",
+    "observed_ns": 36028797105823699,
+    "valid_ns": 36028797085704205
   },
   {
     "id": "before-late",
-    "observed_ns": 36028797103829659,
-    "valid_ns": 36028797083714205
+    "observed_ns": 36028797105824608,
+    "valid_ns": 36028797085704205
   },
   {
     "id": "after-late",
-    "observed_ns": 36028797103833598,
-    "valid_ns": 36028797083714205
+    "observed_ns": 36028797105829557,
+    "valid_ns": 36028797085704205
   },
   {
-    "id": "after-expiry",
-    "observed_ns": 36028797103833598,
-    "valid_ns": 36028797083715105
-  },
-  {
-    "id": "visible-correction-0-324000548",
-    "observed_ns": 36028797103830568,
-    "valid_ns": 36028797083714205
+    "id": "expired",
+    "observed_ns": 36028797105829557,
+    "valid_ns": 36028797085705105
   }
 ]

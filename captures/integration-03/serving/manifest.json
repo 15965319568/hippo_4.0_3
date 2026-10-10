@@ -1,58 +1,58 @@
 {
   "models": {
-    "gqa-594959587": {
-      "layers": 5,
+    "gqa-382894714": {
+      "layers": 3,
       "kv_heads": 9,
-      "head_dim": 18,
-      "kv_bits": 4,
+      "head_dim": 20,
+      "kv_bits": 8,
       "page_tokens": 8,
-      "page_metadata_bytes": 17,
+      "page_metadata_bytes": 8,
       "layer_groups": [
         {
-          "layers": 2,
-          "kv_heads": 5,
-          "head_dim": 17,
+          "layers": 1,
+          "kv_heads": 3,
+          "head_dim": 3,
           "k_bits": 4,
           "v_bits": 8,
-          "group_size": 23,
+          "group_size": 7,
           "scale_bytes": 2,
           "zero_bytes": 1
         },
         {
-          "layers": 3,
-          "kv_heads": 7,
-          "head_dim": 11,
+          "layers": 2,
+          "kv_heads": 5,
+          "head_dim": 5,
           "k_bits": 2,
           "v_bits": 4,
-          "group_size": 31,
-          "scale_bytes": 4,
-          "zero_bytes": 0
+          "group_size": 11,
+          "scale_bytes": 1,
+          "zero_bytes": 1
         }
       ]
     }
   },
   "devices": {
-    "prefill-594959587": {
+    "prefill-382894714": {
       "tensor_parallel": 2,
       "alignment_bytes": 16,
-      "capacity_bytes": 77807,
-      "reserved_bytes": 17,
+      "capacity_bytes": 17351,
+      "reserved_bytes": 23,
       "epoch": 2,
       "slots": 40
     },
-    "decode-594959587": {
+    "decode-382894714": {
       "tensor_parallel": 4,
       "alignment_bytes": 64,
-      "capacity_bytes": 18093,
+      "capacity_bytes": 8627,
       "reserved_bytes": 3,
       "epoch": 4,
       "slots": 40
     },
-    "recovery-594959587": {
+    "recovery-382894714": {
       "tensor_parallel": 8,
       "alignment_bytes": 128,
-      "capacity_bytes": 15551,
-      "reserved_bytes": 21,
+      "capacity_bytes": 17101,
+      "reserved_bytes": 29,
       "epoch": 6,
       "slots": 40
     }
@@ -86,12 +86,22 @@
         "stage",
         "promote",
         "rollback",
-        "withdraw"
+        "withdraw",
+        "kv_offer",
+        "kv_source",
+        "kv_drop",
+        "kv_request",
+        "kv_plan",
+        "kv_dma",
+        "kv_seal",
+        "kv_publish",
+        "kv_abort",
+        "kv_link"
       ],
       "devices": [
-        "prefill-594959587",
-        "decode-594959587",
-        "recovery-594959587"
+        "prefill-382894714",
+        "decode-382894714",
+        "recovery-382894714"
       ],
       "files": [
         "allocator0.csv",
@@ -127,12 +137,22 @@
         "stage",
         "promote",
         "rollback",
-        "withdraw"
+        "withdraw",
+        "kv_offer",
+        "kv_source",
+        "kv_drop",
+        "kv_request",
+        "kv_plan",
+        "kv_dma",
+        "kv_seal",
+        "kv_publish",
+        "kv_abort",
+        "kv_link"
       ],
       "devices": [
-        "prefill-594959587",
-        "decode-594959587",
-        "recovery-594959587"
+        "prefill-382894714",
+        "decode-382894714",
+        "recovery-382894714"
       ],
       "files": [
         "scheduler0.sqlite",
@@ -168,12 +188,22 @@
         "stage",
         "promote",
         "rollback",
-        "withdraw"
+        "withdraw",
+        "kv_offer",
+        "kv_source",
+        "kv_drop",
+        "kv_request",
+        "kv_plan",
+        "kv_dma",
+        "kv_seal",
+        "kv_publish",
+        "kv_abort",
+        "kv_link"
       ],
       "devices": [
-        "prefill-594959587",
-        "decode-594959587",
-        "recovery-594959587"
+        "prefill-382894714",
+        "decode-382894714",
+        "recovery-382894714"
       ],
       "files": [
         "client0.jsonl.gz",
@@ -209,12 +239,22 @@
         "stage",
         "promote",
         "rollback",
-        "withdraw"
+        "withdraw",
+        "kv_offer",
+        "kv_source",
+        "kv_drop",
+        "kv_request",
+        "kv_plan",
+        "kv_dma",
+        "kv_seal",
+        "kv_publish",
+        "kv_abort",
+        "kv_link"
       ],
       "devices": [
-        "prefill-594959587",
-        "decode-594959587",
-        "recovery-594959587"
+        "prefill-382894714",
+        "decode-382894714",
+        "recovery-382894714"
       ],
       "files": [
         "dashboard0.jsonl",
@@ -224,31 +264,31 @@
     }
   },
   "deployments": {
-    "stable-594959587": {
-      "model": "gqa-594959587",
-      "adapter": "adapter-594959587",
-      "tokenizer": "tokenizer-594959587",
-      "rope": "rope-594959587",
+    "stable-382894714": {
+      "model": "gqa-382894714",
+      "adapter": "adapter-382894714",
+      "tokenizer": "tokenizer-382894714",
+      "rope": "rope-382894714",
       "devices": [
-        "prefill-594959587"
+        "prefill-382894714"
       ]
     },
-    "candidate-594959587": {
-      "model": "gqa-594959587",
-      "adapter": "adapter-594959587",
-      "tokenizer": "tokenizer-594959587",
-      "rope": "rope-594959587",
+    "candidate-382894714": {
+      "model": "gqa-382894714",
+      "adapter": "adapter-382894714",
+      "tokenizer": "tokenizer-382894714",
+      "rope": "rope-382894714",
       "devices": [
-        "decode-594959587",
-        "recovery-594959587"
+        "decode-382894714",
+        "recovery-382894714"
       ]
     }
   },
   "tenant_limits": {
-    "tenant-594959587": 6
+    "tenant-382894714": 6
   },
   "policy": {
-    "baseline": "stable-594959587",
+    "baseline": "stable-382894714",
     "min_pairs": {
       "short": 2,
       "long": 2
@@ -271,7 +311,95 @@
     "max_inflight": 2
   },
   "query": {
-    "observed_ns": 36028797115923598,
-    "valid_ns": 36028797095804205
+    "observed_ns": 36028797087159557,
+    "valid_ns": 36028797067034205
+  },
+  "fabric": {
+    "links": {
+      "out-0": {
+        "source": "prefill-382894714",
+        "target": "switch-x",
+        "generation": 3,
+        "capacity_bytes": 100000000,
+        "enabled": true
+      },
+      "in-0": {
+        "source": "switch-x",
+        "target": "prefill-382894714",
+        "generation": 5,
+        "capacity_bytes": 100000000,
+        "enabled": true
+      },
+      "alternate-out-0": {
+        "source": "prefill-382894714",
+        "target": "switch-y",
+        "generation": 7,
+        "capacity_bytes": 100000000,
+        "enabled": true
+      },
+      "alternate-in-0": {
+        "source": "switch-y",
+        "target": "prefill-382894714",
+        "generation": 9,
+        "capacity_bytes": 100000000,
+        "enabled": true
+      },
+      "out-1": {
+        "source": "decode-382894714",
+        "target": "switch-x",
+        "generation": 3,
+        "capacity_bytes": 100000000,
+        "enabled": true
+      },
+      "in-1": {
+        "source": "switch-x",
+        "target": "decode-382894714",
+        "generation": 5,
+        "capacity_bytes": 100000000,
+        "enabled": true
+      },
+      "alternate-out-1": {
+        "source": "decode-382894714",
+        "target": "switch-y",
+        "generation": 7,
+        "capacity_bytes": 100000000,
+        "enabled": true
+      },
+      "alternate-in-1": {
+        "source": "switch-y",
+        "target": "decode-382894714",
+        "generation": 9,
+        "capacity_bytes": 100000000,
+        "enabled": true
+      },
+      "out-2": {
+        "source": "recovery-382894714",
+        "target": "switch-x",
+        "generation": 3,
+        "capacity_bytes": 100000000,
+        "enabled": true
+      },
+      "in-2": {
+        "source": "switch-x",
+        "target": "recovery-382894714",
+        "generation": 5,
+        "capacity_bytes": 100000000,
+        "enabled": true
+      },
+      "alternate-out-2": {
+        "source": "recovery-382894714",
+        "target": "switch-y",
+        "generation": 7,
+        "capacity_bytes": 100000000,
+        "enabled": true
+      },
+      "alternate-in-2": {
+        "source": "switch-y",
+        "target": "recovery-382894714",
+        "generation": 9,
+        "capacity_bytes": 100000000,
+        "enabled": true
+      }
+    }
   }
 }

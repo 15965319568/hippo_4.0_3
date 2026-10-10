@@ -1,4 +1,4 @@
-# KV 迁移证据 E7（生效）
+# KV 迁移证据 E8（生效）
 
 本契约决定重放器收到的哪些事务在一次历史查询中存在。来源选错会改变后面的页
 世代、DMA 持有和完成凭据，因此不能把证据裁决与 调度、测量和发布分别拼出结果。
@@ -48,3 +48,6 @@ revision 大小和最近收到时间都不能替代旁支的继承关系。临�
 输出 evidence={conflicting_records,rejected_records,unresolved_events,provenance}。
 前三项是排序字符串数组；provenance 按 event 排序，每项 {event,records}，records
 列出同义 tips 的 ID 并排序。允许额外诊断，不规定图算法。
+
+
+F8（fabric.md）为同级生效契约，扩展同一 allocator、请求、计量、历史恢复与发布生命周期。所有 reason 字段只要求非空诊断字符串，拒绝条件同时成立时不规定错误优先级；以 accepted 和完整业务状态判定。

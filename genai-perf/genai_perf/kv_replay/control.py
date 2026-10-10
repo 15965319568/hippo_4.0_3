@@ -48,6 +48,8 @@ def assess(state, manifest, operation):
     devices=manifest['deployments'][generation]['devices']
     headroom={d:manifest['devices'][d]['capacity_bytes']-manifest['devices'][d]['reserved_bytes']-charged(state,d) for d in devices}
     inflight=sorted(k for k,v in state['transfers'].items() if v['kind']=='copy' and v['target'] in devices)
+    inflight+=sorted(k for k,j in state['fabric']['jobs'].items() if j['status']=='copying' and j['target'] in devices)
+    inflight.sort()
     approved=not any(needs.values()) and not any(g['pending'] for g in groups.values()) and bad_rate<=Fraction(*policy['max_bad_rate']) and not inflight and all(v>=policy['min_headroom_bytes'] for v in headroom.values())
     report=dict(generation=generation,groups=groups,needs=needs,bad_rate=[bad_rate.numerator,bad_rate.denominator],
         approved=approved,blocked=not approved,headroom=headroom,inflight=inflight,fence=copy.deepcopy(state['versions']))

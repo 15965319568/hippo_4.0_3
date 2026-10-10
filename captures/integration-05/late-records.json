@@ -1,0 +1,479 @@
+[
+  {
+    "record_id": "repair-20320706-0",
+    "event": "event-20320706-119",
+    "source": "allocator",
+    "revision": 2,
+    "observed_ns": 36028797116416527,
+    "valid_from_ns": 36028797096294105,
+    "valid_until_ns": null,
+    "approved": true,
+    "parents": [
+      "row-20320706-119"
+    ],
+    "payload": {
+      "step": 119,
+      "operations": [
+        {
+          "op": "kv_dma",
+          "device": "decode-327251026",
+          "epoch": 4,
+          "job": "handoff-1-20320706",
+          "ticket": "hop-ticket1-327251026",
+          "source_epoch": 6,
+          "coord": [
+            3,
+            1,
+            0,
+            "K",
+            3
+          ],
+          "offset": 20,
+          "values": [
+            -38067,
+            26974,
+            -11108,
+            -81734,
+            89142,
+            84833,
+            13158,
+            -24501,
+            -56170,
+            42992,
+            -18114,
+            -14925,
+            -98452,
+            36780,
+            14879,
+            94440,
+            49943,
+            71850,
+            -86716,
+            20862
+          ]
+        },
+        {
+          "op": "kv_dma",
+          "device": "decode-327251026",
+          "epoch": 4,
+          "job": "handoff-1-20320706",
+          "ticket": "hop-ticket1-327251026",
+          "source_epoch": 6,
+          "coord": [
+            0,
+            1,
+            1,
+            "V",
+            4
+          ],
+          "offset": 20,
+          "values": [
+            98236,
+            61190,
+            42857,
+            -17736,
+            -71491,
+            34651,
+            4415,
+            32922,
+            34178,
+            21852,
+            -72521,
+            -84380,
+            -37837,
+            57568,
+            89082,
+            -6684,
+            -79072,
+            1224,
+            51086,
+            2771
+          ]
+        },
+        {
+          "op": "kv_dma",
+          "device": "decode-327251026",
+          "epoch": 4,
+          "job": "handoff-1-20320706",
+          "ticket": "hop-ticket1-327251026",
+          "source_epoch": 6,
+          "coord": [
+            2,
+            0,
+            0,
+            "V",
+            2
+          ],
+          "offset": 12,
+          "values": [
+            -79741,
+            79508,
+            14216,
+            38647,
+            3634,
+            62896,
+            -9810,
+            86361,
+            54797,
+            -28031,
+            95189,
+            12328
+          ]
+        },
+        {
+          "op": "kv_dma",
+          "device": "decode-327251026",
+          "epoch": 4,
+          "job": "handoff-1-20320706",
+          "ticket": "hop-ticket1-327251026",
+          "source_epoch": 6,
+          "coord": [
+            3,
+            1,
+            0,
+            "K",
+            3
+          ],
+          "offset": 0,
+          "values": [
+            93461
+          ]
+        },
+        {
+          "op": "kv_dma",
+          "device": "decode-327251026",
+          "epoch": 4,
+          "job": "handoff-1-20320706",
+          "ticket": "hop-ticket1-327251026",
+          "source_epoch": 6,
+          "coord": [
+            3,
+            0,
+            0,
+            "V",
+            0
+          ],
+          "offset": 0,
+          "values": [
+            8937
+          ]
+        },
+        {
+          "op": "kv_dma",
+          "device": "decode-327251026",
+          "epoch": 4,
+          "job": "handoff-1-20320706",
+          "ticket": "hop-ticket1-327251026",
+          "source_epoch": 6,
+          "coord": [
+            3,
+            1,
+            0,
+            "V",
+            3
+          ],
+          "offset": 0,
+          "values": [
+            15899
+          ]
+        },
+        {
+          "op": "kv_dma",
+          "device": "decode-327251026",
+          "epoch": 4,
+          "job": "handoff-1-20320706",
+          "ticket": "hop-ticket1-327251026",
+          "source_epoch": 6,
+          "coord": [
+            2,
+            1,
+            0,
+            "V",
+            2
+          ],
+          "offset": 20,
+          "values": [
+            13269,
+            -33898,
+            -63621,
+            23845,
+            49106,
+            -35168,
+            -71218,
+            8656,
+            36187,
+            -75237,
+            -32150,
+            25700,
+            35458,
+            -68287,
+            -43509,
+            -13211,
+            86819,
+            -90567,
+            -53610,
+            47301
+          ]
+        },
+        {
+          "op": "kv_dma",
+          "device": "decode-327251026",
+          "epoch": 4,
+          "job": "handoff-1-20320706",
+          "ticket": "hop-ticket1-327251026",
+          "source_epoch": 6,
+          "coord": [
+            3,
+            0,
+            0,
+            "V",
+            0
+          ],
+          "offset": 0,
+          "values": [
+            8937,
+            40264,
+            -37953,
+            -92733,
+            -66043,
+            89293,
+            45614,
+            16411,
+            -42069,
+            78150,
+            -91920,
+            22393
+          ]
+        },
+        {
+          "op": "kv_dma",
+          "device": "decode-327251026",
+          "epoch": 4,
+          "job": "handoff-1-20320706",
+          "ticket": "hop-ticket1-327251026",
+          "source_epoch": 6,
+          "coord": [
+            0,
+            1,
+            1,
+            "K",
+            4
+          ],
+          "offset": 0,
+          "values": [
+            63723
+          ]
+        },
+        {
+          "op": "kv_dma",
+          "device": "decode-327251026",
+          "epoch": 4,
+          "job": "handoff-1-20320706",
+          "ticket": "hop-ticket1-327251026",
+          "source_epoch": 6,
+          "coord": [
+            2,
+            1,
+            1,
+            "K",
+            2
+          ],
+          "offset": 0,
+          "values": [
+            76662
+          ]
+        },
+        {
+          "op": "kv_dma",
+          "device": "decode-327251026",
+          "epoch": 4,
+          "job": "handoff-1-20320706",
+          "ticket": "hop-ticket1-327251026",
+          "source_epoch": 6,
+          "coord": [
+            0,
+            1,
+            1,
+            "V",
+            4
+          ],
+          "offset": 0,
+          "values": [
+            -87417
+          ]
+        },
+        {
+          "op": "kv_dma",
+          "device": "decode-327251026",
+          "epoch": 4,
+          "job": "handoff-1-20320706",
+          "ticket": "hop-ticket1-327251026",
+          "source_epoch": 6,
+          "coord": [
+            0,
+            1,
+            1,
+            "K",
+            0
+          ],
+          "offset": 0,
+          "values": [
+            48780
+          ]
+        },
+        {
+          "op": "kv_dma",
+          "device": "decode-327251026",
+          "epoch": 4,
+          "job": "handoff-1-20320706",
+          "ticket": "hop-ticket1-327251026",
+          "source_epoch": 6,
+          "coord": [
+            3,
+            1,
+            0,
+            "V",
+            3
+          ],
+          "offset": 20,
+          "values": [
+            50220,
+            -290,
+            -35936,
+            72171,
+            35454,
+            -52475,
+            73063,
+            -84048,
+            20150,
+            -19005,
+            -90180,
+            -77325,
+            49785,
+            -14024,
+            90120,
+            -8910,
+            87594,
+            -41309,
+            -70126,
+            -68112
+          ]
+        },
+        {
+          "op": "kv_dma",
+          "device": "decode-327251026",
+          "epoch": 4,
+          "job": "handoff-1-20320706",
+          "ticket": "hop-ticket1-327251026",
+          "source_epoch": 6,
+          "coord": [
+            0,
+            1,
+            0,
+            "V",
+            4
+          ],
+          "offset": 0,
+          "values": [
+            -68894
+          ]
+        },
+        {
+          "op": "kv_dma",
+          "device": "decode-327251026",
+          "epoch": 4,
+          "job": "handoff-1-20320706",
+          "ticket": "hop-ticket1-327251026",
+          "source_epoch": 6,
+          "coord": [
+            0,
+            1,
+            0,
+            "K",
+            4
+          ],
+          "offset": 0,
+          "values": [
+            57699
+          ]
+        },
+        {
+          "op": "kv_dma",
+          "device": "decode-327251026",
+          "epoch": 4,
+          "job": "handoff-1-20320706",
+          "ticket": "hop-ticket1-327251026",
+          "source_epoch": 6,
+          "coord": [
+            3,
+            1,
+            1,
+            "V",
+            3
+          ],
+          "offset": 0,
+          "values": [
+            -85482,
+            23639,
+            99528,
+            96811,
+            -55742,
+            18809,
+            -88594,
+            39817,
+            79109,
+            -56563,
+            -26209,
+            58783,
+            -96421,
+            -47107,
+            50429,
+            86024,
+            -86337,
+            10085,
+            8818,
+            60647
+          ]
+        },
+        {
+          "op": "kv_dma",
+          "device": "decode-327251026",
+          "epoch": 4,
+          "job": "handoff-1-20320706",
+          "ticket": "hop-ticket1-327251026",
+          "source_epoch": 6,
+          "coord": [
+            2,
+            1,
+            0,
+            "K",
+            2
+          ],
+          "offset": 0,
+          "values": [
+            -5879
+          ]
+        },
+        {
+          "op": "kv_dma",
+          "device": "decode-327251026",
+          "epoch": 4,
+          "job": "handoff-1-20320706",
+          "ticket": "hop-ticket1-327251026",
+          "source_epoch": 6,
+          "coord": [
+            1,
+            0,
+            0,
+            "V",
+            1
+          ],
+          "offset": 0,
+          "values": [
+            1059
+          ]
+        }
+      ]
+    }
+  }
+]

@@ -1,6 +1,6 @@
-# 客户端字节、时钟与物理尝试 S7（生效）
+# 客户端字节、时钟与物理尝试 S8（生效）
 
-这些字节决定 C7 的补测与放量。它们必须与同一租约的物理完成记录结合，不能单独
+这些字节决定 C8 的补测与放量。它们必须与同一租约的物理完成记录结合，不能单独
 以“出现 finish”或“看见 token”作为成功样本。
 
 ## 字节范围与 SSE
@@ -34,7 +34,7 @@ calibrate={calibration,clock,lo,hi,local,utc,numerator,denominator}，分母为�
 lo<=tick<hi 的段给出 utc+(tick-local)×numerator/denominator。
 没有段为 clock_missing；多个段映射不一致为 clock_ambiguous；唯一值不是整数纳秒
 为 clock_fraction。不能使用浮点近似、最近校准或最后一段优先覆盖有争议的映射。
-多个一致映射可以合并。tick/utc 可大于 2^53。校准本身来自 E7，可被授权更正或撤回。
+多个一致映射可以合并。tick/utc 可大于 2^53。校准本身来自 E8，可被授权更正或撤回。
 
 ## signals 的可观察结果
 
@@ -58,7 +58,7 @@ latency_ns=finish-arrival、finish_ns，以及 tpot=[分子,分母]：有两个�
 (末token-首token)/(数量-1)，否则 0/1。分数约分、整数精确，没有浮点容差。
 
 请求入队时间与该物理 attempt、帧的部署世代不能由当前 active 部署或重启后的设备
-epoch 替换。缺口、冲突、物理失败、迟到更正都会经 C7 的配对样本、needs、资源预约
+epoch 替换。缺口、冲突、物理失败、迟到更正都会经 C8 的配对样本、needs、资源预约
 与发布栅栏传播到后续实际控制行为。
 
 
@@ -69,7 +69,7 @@ generation 必须一致，segment 连续；每段 base_tokens 等于此前段累
 父段状态必须 suspended，最后一段必须 done。缺引用/环/身份或前缀不符，signal 为
 invalid。一个物理段的帧 token.index 重新从0开始，只包含该段新产生的稳定输出。
 父段 terminal.status=paused，末段=success；各段局部 token 追加到此前累计后，
-必须等于该段物理 result.tokens。父段也适用全部 S7 字节、身份与校准规则。
+必须等于该段物理 result.tokens。父段也适用全部 S8 字节、身份与校准规则。
 
 空的中间段合法，表示续跑后再次抢占而尚未生成新 token；它仍需完整 paused 终态。
 各段内部时刻非降序，段终态不早于本段末 token；后段的首 token（如有）和终态
@@ -78,8 +78,11 @@ arrival_ns，TPOT 使用全链首末 token 与总 token 个数，latency/finish 
 迁移等待时间属于逻辑时延。没有完整前段字节时，末段的 success 也不能补足缺口。
 
 旧 suspended 租约自身仍为 pending/physical_pending。末段 cancelled/lost 或物理
-failed 优先得到 failed，迟到流不能复活它。最新段的 signal 进入 C7 同一配对评估。
+failed 优先得到 failed，迟到流不能复活它。最新段的 signal 进入 C8 同一配对评估。
 
 signals.reason 是非空诊断字符串。在同时存在多个错误时，不限定唯一报告顺序；
 验收严格检查 state、有效样本数值和后续业务行为，不比较诊断字符串的具体措辞。
 本条同样适用于前述非续跑 signal，消除多重错误条件下的诊断顺序歧义。
+
+
+F8（fabric.md）为同级生效契约，扩展同一 allocator、请求、计量、历史恢复与发布生命周期。所有 reason 字段只要求非空诊断字符串，拒绝条件同时成立时不规定错误优先级；以 accepted 和完整业务状态判定。

@@ -1,0 +1,405 @@
+{
+  "models": {
+    "gqa-468615629": {
+      "layers": 5,
+      "kv_heads": 9,
+      "head_dim": 37,
+      "kv_bits": 8,
+      "page_tokens": 7,
+      "page_metadata_bytes": 5,
+      "layer_groups": [
+        {
+          "layers": 1,
+          "kv_heads": 3,
+          "head_dim": 3,
+          "k_bits": 4,
+          "v_bits": 8,
+          "group_size": 7,
+          "scale_bytes": 2,
+          "zero_bytes": 1
+        },
+        {
+          "layers": 2,
+          "kv_heads": 5,
+          "head_dim": 5,
+          "k_bits": 2,
+          "v_bits": 4,
+          "group_size": 11,
+          "scale_bytes": 1,
+          "zero_bytes": 1
+        }
+      ]
+    }
+  },
+  "devices": {
+    "prefill-468615629": {
+      "tensor_parallel": 2,
+      "alignment_bytes": 16,
+      "capacity_bytes": 14183,
+      "reserved_bytes": 9,
+      "epoch": 2,
+      "slots": 40
+    },
+    "decode-468615629": {
+      "tensor_parallel": 4,
+      "alignment_bytes": 64,
+      "capacity_bytes": 8588,
+      "reserved_bytes": 30,
+      "epoch": 4,
+      "slots": 40
+    },
+    "recovery-468615629": {
+      "tensor_parallel": 8,
+      "alignment_bytes": 128,
+      "capacity_bytes": 17027,
+      "reserved_bytes": 21,
+      "epoch": 6,
+      "slots": 40
+    }
+  },
+  "sources": {
+    "allocator": {
+      "format": "csv",
+      "time_unit": "us",
+      "rank": 3,
+      "allow_ops": [
+        "open",
+        "prefill",
+        "append",
+        "draft",
+        "verify",
+        "seal",
+        "evict",
+        "transfer",
+        "copy",
+        "ack",
+        "close",
+        "reset",
+        "suspend",
+        "enqueue",
+        "schedule",
+        "activate",
+        "cancel",
+        "wire",
+        "calibrate",
+        "assess",
+        "stage",
+        "promote",
+        "rollback",
+        "withdraw",
+        "kv_offer",
+        "kv_source",
+        "kv_drop",
+        "kv_request",
+        "kv_plan",
+        "kv_dma",
+        "kv_seal",
+        "kv_publish",
+        "kv_abort",
+        "kv_link"
+      ],
+      "devices": [
+        "prefill-468615629",
+        "decode-468615629",
+        "recovery-468615629"
+      ],
+      "files": [
+        "allocator0.csv",
+        "allocator1.csv",
+        "allocator2.csv"
+      ]
+    },
+    "scheduler": {
+      "format": "sqlite",
+      "time_unit": "ns",
+      "rank": 3,
+      "allow_ops": [
+        "open",
+        "prefill",
+        "append",
+        "draft",
+        "verify",
+        "seal",
+        "evict",
+        "transfer",
+        "copy",
+        "ack",
+        "close",
+        "reset",
+        "suspend",
+        "enqueue",
+        "schedule",
+        "activate",
+        "cancel",
+        "wire",
+        "calibrate",
+        "assess",
+        "stage",
+        "promote",
+        "rollback",
+        "withdraw",
+        "kv_offer",
+        "kv_source",
+        "kv_drop",
+        "kv_request",
+        "kv_plan",
+        "kv_dma",
+        "kv_seal",
+        "kv_publish",
+        "kv_abort",
+        "kv_link"
+      ],
+      "devices": [
+        "prefill-468615629",
+        "decode-468615629",
+        "recovery-468615629"
+      ],
+      "files": [
+        "scheduler0.sqlite",
+        "scheduler1.sqlite",
+        "scheduler2.sqlite"
+      ]
+    },
+    "client": {
+      "format": "jsonl",
+      "time_unit": "ms",
+      "rank": 3,
+      "allow_ops": [
+        "open",
+        "prefill",
+        "append",
+        "draft",
+        "verify",
+        "seal",
+        "evict",
+        "transfer",
+        "copy",
+        "ack",
+        "close",
+        "reset",
+        "suspend",
+        "enqueue",
+        "schedule",
+        "activate",
+        "cancel",
+        "wire",
+        "calibrate",
+        "assess",
+        "stage",
+        "promote",
+        "rollback",
+        "withdraw",
+        "kv_offer",
+        "kv_source",
+        "kv_drop",
+        "kv_request",
+        "kv_plan",
+        "kv_dma",
+        "kv_seal",
+        "kv_publish",
+        "kv_abort",
+        "kv_link"
+      ],
+      "devices": [
+        "prefill-468615629",
+        "decode-468615629",
+        "recovery-468615629"
+      ],
+      "files": [
+        "client0.jsonl.gz",
+        "client1.jsonl.gz",
+        "client2.jsonl.gz"
+      ]
+    },
+    "dashboard": {
+      "format": "jsonl",
+      "time_unit": "ns",
+      "rank": 1,
+      "allow_ops": [
+        "open",
+        "prefill",
+        "append",
+        "draft",
+        "verify",
+        "seal",
+        "evict",
+        "transfer",
+        "copy",
+        "ack",
+        "close",
+        "reset",
+        "suspend",
+        "enqueue",
+        "schedule",
+        "activate",
+        "cancel",
+        "wire",
+        "calibrate",
+        "assess",
+        "stage",
+        "promote",
+        "rollback",
+        "withdraw",
+        "kv_offer",
+        "kv_source",
+        "kv_drop",
+        "kv_request",
+        "kv_plan",
+        "kv_dma",
+        "kv_seal",
+        "kv_publish",
+        "kv_abort",
+        "kv_link"
+      ],
+      "devices": [
+        "prefill-468615629",
+        "decode-468615629",
+        "recovery-468615629"
+      ],
+      "files": [
+        "dashboard0.jsonl",
+        "dashboard1.jsonl",
+        "dashboard2.jsonl"
+      ]
+    }
+  },
+  "deployments": {
+    "stable-468615629": {
+      "model": "gqa-468615629",
+      "adapter": "adapter-468615629",
+      "tokenizer": "tokenizer-468615629",
+      "rope": "rope-468615629",
+      "devices": [
+        "prefill-468615629"
+      ]
+    },
+    "candidate-468615629": {
+      "model": "gqa-468615629",
+      "adapter": "adapter-468615629",
+      "tokenizer": "tokenizer-468615629",
+      "rope": "rope-468615629",
+      "devices": [
+        "decode-468615629",
+        "recovery-468615629"
+      ]
+    }
+  },
+  "tenant_limits": {
+    "tenant-468615629": 6
+  },
+  "policy": {
+    "baseline": "stable-468615629",
+    "min_pairs": {
+      "short": 2,
+      "long": 2
+    },
+    "weights": {
+      "short": 1,
+      "long": 4
+    },
+    "max_bad_rate": [
+      1,
+      3
+    ],
+    "ttft_regression_ns": 25,
+    "tpot_ratio": [
+      3,
+      2
+    ],
+    "deadline_ns": 2000,
+    "min_headroom_bytes": 1,
+    "max_inflight": 2
+  },
+  "query": {
+    "observed_ns": 36028797056129557,
+    "valid_ns": 36028797036004205
+  },
+  "fabric": {
+    "links": {
+      "out-0": {
+        "source": "prefill-468615629",
+        "target": "switch-x",
+        "generation": 3,
+        "capacity_bytes": 100000000,
+        "enabled": true
+      },
+      "in-0": {
+        "source": "switch-x",
+        "target": "prefill-468615629",
+        "generation": 5,
+        "capacity_bytes": 100000000,
+        "enabled": true
+      },
+      "alternate-out-0": {
+        "source": "prefill-468615629",
+        "target": "switch-y",
+        "generation": 7,
+        "capacity_bytes": 100000000,
+        "enabled": true
+      },
+      "alternate-in-0": {
+        "source": "switch-y",
+        "target": "prefill-468615629",
+        "generation": 9,
+        "capacity_bytes": 100000000,
+        "enabled": true
+      },
+      "out-1": {
+        "source": "decode-468615629",
+        "target": "switch-x",
+        "generation": 3,
+        "capacity_bytes": 100000000,
+        "enabled": true
+      },
+      "in-1": {
+        "source": "switch-x",
+        "target": "decode-468615629",
+        "generation": 5,
+        "capacity_bytes": 100000000,
+        "enabled": true
+      },
+      "alternate-out-1": {
+        "source": "decode-468615629",
+        "target": "switch-y",
+        "generation": 7,
+        "capacity_bytes": 100000000,
+        "enabled": true
+      },
+      "alternate-in-1": {
+        "source": "switch-y",
+        "target": "decode-468615629",
+        "generation": 9,
+        "capacity_bytes": 100000000,
+        "enabled": true
+      },
+      "out-2": {
+        "source": "recovery-468615629",
+        "target": "switch-x",
+        "generation": 3,
+        "capacity_bytes": 100000000,
+        "enabled": true
+      },
+      "in-2": {
+        "source": "switch-x",
+        "target": "recovery-468615629",
+        "generation": 5,
+        "capacity_bytes": 100000000,
+        "enabled": true
+      },
+      "alternate-out-2": {
+        "source": "recovery-468615629",
+        "target": "switch-y",
+        "generation": 7,
+        "capacity_bytes": 100000000,
+        "enabled": true
+      },
+      "alternate-in-2": {
+        "source": "switch-y",
+        "target": "recovery-468615629",
+        "generation": 9,
+        "capacity_bytes": 100000000,
+        "enabled": true
+      }
+    }
+  }
+}

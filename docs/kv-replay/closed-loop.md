@@ -1,11 +1,11 @@
-# 测量驱动的迁移与放量闭环 C7（生效）
+# 测量驱动的迁移与放量闭环 C8（生效）
 
 本契约不是一组独立报表要求。它定义同一个重放状态如何接收请求、消耗真实 KV
 预算、获得客户端测量、决定下一轮补测，最后发布或回滚同一个部署。
 
 ## 输入与共同边界
 
-manifest 在 E7/K7 基础上增加：
+manifest 在 E8/K8 基础上增加：
 
 - deployments[generation]={devices,model,adapter,tokenizer,rope}，devices 是可调度设备列表。
 - tenant_limits[tenant]：该租户所有 reserved/running 租约的 max_output 之和上限。
@@ -16,7 +16,7 @@ manifest 在 E7/K7 基础上增加：
 
 控制操作也带 op/device/epoch。device 表示执行控制事件的设备，和租约目标设备可以
 不同；先检查这个 device 的当前 epoch，再检查可选 guards，然后执行操作。
-E7 的 source.allow_ops/source.devices 同样约束这些控制事件。必要字段、标量类型、
+E8 的 source.allow_ops/source.devices 同样约束这些控制事件。必要字段、标量类型、
 正分母、非负预算、非空设备池由输入保证；未知引用是 missing_dependency。
 
 初始 queue、leases、plans、gates、assessments、wire、clocks 为空。
@@ -70,7 +70,7 @@ plans[schedule]={generation,mode,admitted,deferred}，admitted 按 request ID �
 
 leases[ID] 必须可交换观察以下字段：request,generation,sequence,tenant,stratum,pair,
 attempt,max_output,max_draft,status,device,epoch,cache,cached,warm_tokens,reserve_bytes。
-cache 为预约时名字或 null；cached 为冻结的 K7 cache 对象或 null。结束后可有 result。
+cache 为预约时名字或 null；cached 为冻结的 K8 cache 对象或 null。结束后可有 result。
 这些是外部诊断字段，不是要求调用的内部 helper。
 
 ## 激活、完成与失败
@@ -81,13 +81,13 @@ activate={lease}：租约必须 reserved 且目标设备 epoch 仍匹配，否�
 从目标设备范围内按编号选最小空槽，槽不足 missing_dependency。完成后 status=running。
 创建序列与 prefill 属于同一原子 event；失败不能留下半个序列、消耗的世代或预约转换。
 
-其后使用 K7 的 append/draft/verify/close 操作驱动真实物理状态。close 将租约变为 done，
+其后使用 K8 的 append/draft/verify/close 操作驱动真实物理状态。close 将租约变为 done，
 result={status,tokens}，tokens 是整个逻辑尝试到此为止的累计稳定输出，不含 prompt 或未接受的草稿。
 测量必须绑定这个结果；见 stream-evidence.md。部署发布不会重写已有租约的 generation。
 
 cancel={lease} 只允许 reserved/running，否则 lease_state。活动 sequence、draft 持有
-被清除；若已有 sequence，写入 K7 completed，status=failed、output_tokens=0。
-租约 status=cancelled。reset 按 K7 清理，并令本设备活跃租约 lost、
+被清除；若已有 sequence，写入 K8 completed，status=failed、output_tokens=0。
+租约 status=cancelled。reset 按 K8 清理，并令本设备活跃租约 lost、
 result={status:failed,tokens:[]}。done/cancelled/lost 不再占预约或额外持有 cache。
 其他对象仍持有的物理页继续存在。
 
@@ -132,7 +132,7 @@ promote={assessment}：先要求评估 fence 等于当前三项 versions，否�
 rollback={assessment}：同样先检查三项 fence。然后要求报告针对 active、approved=false、
 previous 非空，否则 rollback_gate。成功时 active=previous、previous=null。
 
-allocator 版本在每个成功的 K7 物理操作、schedule（包括空方案）、activate、cancel 后
+allocator 版本在每个成功的 K8 物理操作、schedule（包括空方案）、activate、cancel 后
 各加 1。activate 内部 open/prefill 合计只作为一个控制操作计数。
 measurement 在每个成功 wire/calibrate 后加 1，包括重复导出；routing 在每个成功
 stage/promote/rollback 后加 1。enqueue 和 assess 不推进版本。
@@ -140,7 +140,7 @@ stage/promote/rollback 后加 1。enqueue 和 assess 不推进版本。
 同一批次先 assess 后 promote 可以成功；先 assess 后修改测量/资源再 promote 必须失败
 并撤销整个批次。这里没有要求任何私有 hash-chain 表示。
 
-后来可见的 E7 更正/撤回会重建这整条历史，而不只是修改一个报告字段。因此过去的
+后来可见的 E8 更正/撤回会重建这整条历史，而不只是修改一个报告字段。因此过去的
 预约、补测对象、稳定 token、评估资格及发布结果都可能改变。不得将上一查询的决策
 或聚合指标当作不可撤销的既成事实。
 
@@ -155,7 +155,7 @@ stage/promote/rollback 后加 1。enqueue 和 assess 不推进版本。
 suspend={lease,checkpoint,cache} 与其他控制操作一样含 device/epoch，可处于复合
 event 中。lease 必须 running，否则 lease_state；活动 sequence 不能有未验证 draft，
 否则 suspend_draft；checkpoint ID 全历史不可重用，否则 checkpoint_reuse。
-把稳定 sequence 按 K7 seal 为给定 cache，并关闭物理 sequence，completed 按 K7
+把稳定 sequence 按 K8 seal 为给定 cache，并关闭物理 sequence，completed 按 K8
 success 保留实际输出个数；租约变为 suspended，result={status:suspended,tokens}，
 tokens 是到此为止该逻辑尝试的所有稳定输出。该租约不再占预约或额外 pin。
 checkpoint={lease,request,generation,segment,tokens,output,signature}，tokens 是完整
@@ -174,7 +174,7 @@ max_inflight、tenant_limits 仍作用于当前活跃物理租约；tenant 计�
 activate 在冻结前缀上创建新 sequence 并完成剩余 prefill。该 sequence.prompt 必须
 保持原请求 prompt 长度，committed 包含之前已经提交的输出。后续 decode_budget
 按整个逻辑尝试累计，不能在迁移时重新获得一整份输出预算。队列可多次挂起和续跑。
-物理 cache 的持有由 K7 决定，checkpoint 元数据自身不额外 pin 物理页。
+物理 cache 的持有由 K8 决定，checkpoint 元数据自身不额外 pin 物理页。
 
 schedule.mode=drain 允许 generation 已出现在 routing.used，且只选有 continuation
 的 queued 请求；其目标的第一项与 serve 一样为0。它用于完成切换前已开始的逻辑
@@ -183,4 +183,7 @@ schedule.mode=drain 允许 generation 已出现在 routing.used，且只选有 c
 
 assess 选择最新已接纳尝试时，排序为 (attempt,segment,lease ID)。其余配对、
 分层权重、时间窗口、资源、版本栅栏与发布规则不变。末段尚未完成或失败时，前段
-已有输出不构成一个成功的逻辑样本。测量见 S7。
+已有输出不构成一个成功的逻辑样本。测量见 S8。
+
+
+F8（fabric.md）为同级生效契约，扩展同一 allocator、请求、计量、历史恢复与发布生命周期。所有 reason 字段只要求非空诊断字符串，拒绝条件同时成立时不规定错误优先级；以 accepted 和完整业务状态判定。

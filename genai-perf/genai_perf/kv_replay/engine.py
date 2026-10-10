@@ -2,6 +2,7 @@
 import copy
 from . import runtime, scheduler, measure, wire, control, continuations
 from .holders import collect, references
+from . import fabric, fabric_view, fabric_lifecycle
 
 
 def initial(manifest):
@@ -9,6 +10,7 @@ def initial(manifest):
     state.update(queue={},checkpoints={},leases={},sequence_leases={},wire={},clocks={},plans={},gates={},assessments={},
         routing=dict(active=manifest['policy']['baseline'],staged=None,previous=None,used=[manifest['policy']['baseline']]),
         versions=dict(allocator=0,measurement=0,routing=0))
+    state['fabric']=fabric.initial(manifest)
     return state
 
 
@@ -20,7 +22,10 @@ def operate(state, manifest, op):
         if page.get('epoch')!=guard['epoch'] or page.get('generation')!=guard['generation']:
             raise ValueError('stale_page')
     kind=op['op']
-    if kind=='enqueue':
+    if kind.startswith('kv_'):
+        fabric.apply(state,manifest,op)
+        state['versions']['allocator']+=1
+    elif kind=='enqueue':
         key=op['request']
         if key in state['queue']:
             raise ValueError('request_reuse')
@@ -69,6 +74,7 @@ def operate(state, manifest, op):
         if lease and kind=='close':
             lease.update(status='done',result=dict(status=op['status'],tokens=before['tokens'][before['prompt']:]))
         if kind=='reset':
+            fabric_lifecycle.invalidate(state,op['device'])
             for item in state['leases'].values():
                 if item['device']==op['device'] and item['status'] in scheduler.LIVE:
                     item.update(status='lost',result=dict(status='failed',tokens=[]))
@@ -84,7 +90,7 @@ def snapshot(state,manifest,decisions):
         reserved_bytes=scheduler.credits(state,d),free_bytes=v['capacity_bytes']-v['reserved_bytes']-scheduler.charged(state,d)) for d,v in sorted(manifest['devices'].items())},
         pages=[dict(id=k,references=refs[k],**v) for k,v in sorted(state['pages'].items())],
         sequences=state['sequences'],cache=state['cache'],transfers=state['transfers'],completed=state['completed'],decisions=decisions)
-    return dict(checkpoints=state['checkpoints'],ledger=ledger,queue=state['queue'],leases=state['leases'],plans=state['plans'],
+    return dict(fabric=fabric_view.view(state,manifest),checkpoints=state['checkpoints'],ledger=ledger,queue=state['queue'],leases=state['leases'],plans=state['plans'],
         signals=measure.observations(state),gates=state['gates'],assessments=state['assessments'],routing=state['routing'],versions=state['versions'])
 
 
