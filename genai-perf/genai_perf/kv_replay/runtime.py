@@ -17,6 +17,9 @@ def allocate(state, manifest, device, model, slot, tokens):
     state['generations'][key] = generation
     state['pages'][key] = dict(device=device, model=model, slot=slot, generation=generation,
                                epoch=state['epochs'][device], tokens=list(tokens), bytes=page_bytes(manifest['models'][model], manifest['devices'][device]))
+    owner = state.get('_owner')
+    if owner is not None:
+        state['pages'][key]['owner_lease'] = owner
     return key
 
 
@@ -32,13 +35,14 @@ def apply(state, manifest, op):
         page = state['pages'].get(guard['page'])
         if page is None or page['epoch'] != guard['epoch'] or page['generation'] != guard['generation']:
             raise ValueError('stale_page')
+    state['_owner'] = state.get('sequence_leases', {}).get(op.get('sequence'))
     kind = op['op']
     if kind == 'open':
         key = op['sequence']
         if key in state['sequences'] or key in state['completed']:
             raise ValueError('sequence_reuse')
         request = {k: op[k] for k in ['tenant', 'model', 'adapter', 'tokenizer', 'rope', 'run', 'request_id', 'attempt']}
-        pages, tokens = prefix(state, op['cache'], request, device) if op.get('cache') else ([], [])
+        pages, tokens = prefix(state, op['cache'], request, device, op.get('lease')) if op.get('cache') else ([], [])
         state['sequences'][key] = dict(**request, device=device, pages=pages, committed=len(tokens), prompt=len(tokens), tokens=tokens, draft=None)
     elif kind in ['prefill', 'draft', 'append']:
         seq = state['sequences'][op['sequence']]
@@ -125,6 +129,8 @@ def apply(state, manifest, op):
         transfer = state['transfers'][op['transfer']]
         if transfer['kind'] != 'copy' or transfer['target'] != device or transfer['target_epoch'] != op['epoch'] or False or transfer['target_cache'] in state['cache']:
             raise ValueError('transfer_ack')
+        if any(token is None for page in transfer['target_pages'] for token in state['pages'][page]['tokens']):
+            raise ValueError('incomplete_transfer')
         state['cache'][transfer['target_cache']] = dict(transfer['cache'], device=device, pages=transfer['target_pages'])
         del state['transfers'][op['transfer']]
     elif kind == 'close':
@@ -136,7 +142,7 @@ def apply(state, manifest, op):
     elif kind == 'reset':
         if op['next_epoch'] <= op['epoch']:
             raise ValueError('epoch_order')
-        affected = [k for k, v in state['transfers'].items() if v['device'] == device]
+        affected = [k for k, v in state['transfers'].items() if v['device'] == device or v.get('target') == device]
         for key in affected:
             del state['transfers'][key]
         for key, seq in list(state['sequences'].items()):
@@ -148,7 +154,8 @@ def apply(state, manifest, op):
     else:
         raise ValueError('operation')
     collect(state)
-    if any(value > manifest['devices'][d]['capacity_bytes'] - manifest['devices'][d]['reserved_bytes'] for d, value in usage(state, manifest).items()):
+    from .scheduler import charged
+    if any(charged(state,d) > info['capacity_bytes'] - info['reserved_bytes'] for d, info in manifest['devices'].items()):
         raise ValueError('out_of_memory')
 
 
@@ -156,7 +163,7 @@ def replay(manifest, events):
     state = empty(manifest)
     decisions = []
     for event in events:
-        candidate = dict(state)
+        candidate = copy.deepcopy(state)
         try:
             for op in event['operations']:
                 apply(candidate, manifest, op)

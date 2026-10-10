@@ -1,0 +1,112 @@
+[
+  {
+    "id": "warm-476015215",
+    "observed_ns": 36028797067404307,
+    "valid_ns": 36028797047304205
+  },
+  {
+    "id": "base-0-0-write-476015215",
+    "observed_ns": 36028797067405519,
+    "valid_ns": 36028797047304205
+  },
+  {
+    "id": "base-0-1-write-476015215",
+    "observed_ns": 36028797067406327,
+    "valid_ns": 36028797047304205
+  },
+  {
+    "id": "base-1-0-activate-476015215",
+    "observed_ns": 36028797067406630,
+    "valid_ns": 36028797047304205
+  },
+  {
+    "id": "base-1-1-activate-476015215",
+    "observed_ns": 36028797067407438,
+    "valid_ns": 36028797047304205
+  },
+  {
+    "id": "stage-476015215",
+    "observed_ns": 36028797067408246,
+    "valid_ns": 36028797047304205
+  },
+  {
+    "id": "before-copy-476015215",
+    "observed_ns": 36028797067409256,
+    "valid_ns": 36028797047304205
+  },
+  {
+    "id": "probe-batch0-476015215",
+    "observed_ns": 36028797067409660,
+    "valid_ns": 36028797047304205
+  },
+  {
+    "id": "probe-first-0-write-476015215",
+    "observed_ns": 36028797067410468,
+    "valid_ns": 36028797047304205
+  },
+  {
+    "id": "probe-first-1-write-476015215",
+    "observed_ns": 36028797067411377,
+    "valid_ns": 36028797047304205
+  },
+  {
+    "id": "waiting-second-copy-476015215",
+    "observed_ns": 36028797067411680,
+    "valid_ns": 36028797047304205
+  },
+  {
+    "id": "probe-second-0-activate-476015215",
+    "observed_ns": 36028797067412185,
+    "valid_ns": 36028797047304205
+  },
+  {
+    "id": "probe-second-1-activate-476015215",
+    "observed_ns": 36028797067413094,
+    "valid_ns": 36028797047304205
+  },
+  {
+    "id": "ready-476015215",
+    "observed_ns": 36028797067414003,
+    "valid_ns": 36028797047304205
+  },
+  {
+    "id": "old-draining-plan-476015215",
+    "observed_ns": 36028797067414508,
+    "valid_ns": 36028797047304205
+  },
+  {
+    "id": "production-plan-476015215",
+    "observed_ns": 36028797067414912,
+    "valid_ns": 36028797047304205
+  },
+  {
+    "id": "blocked-plan-476015215",
+    "observed_ns": 36028797067415922,
+    "valid_ns": 36028797047304205
+  },
+  {
+    "id": "old-completes-0-write-476015215",
+    "observed_ns": 36028797067416730,
+    "valid_ns": 36028797047304205
+  },
+  {
+    "id": "before-late",
+    "observed_ns": 36028797067416932,
+    "valid_ns": 36028797047304205
+  },
+  {
+    "id": "after-late",
+    "observed_ns": 36028797067420871,
+    "valid_ns": 36028797047304205
+  },
+  {
+    "id": "after-expiry",
+    "observed_ns": 36028797067420871,
+    "valid_ns": 36028797047305105
+  },
+  {
+    "id": "visible-correction-0-476015215",
+    "observed_ns": 36028797067417841,
+    "valid_ns": 36028797047304205
+  }
+]

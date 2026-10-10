@@ -56,7 +56,7 @@ def resolve(manifest, records, observed_ns, valid_ns):
         if len(variants) == 1:
             unique[key] = copies[0]
         else:
-            unique[key] = copies[-1]
+            conflicts.append(key)
     memo = {}
 
     def authorized(key, visiting):
@@ -97,8 +97,7 @@ def resolve(manifest, records, observed_ns, valid_ns):
         rank = max(manifest['sources'][row['source']]['rank'] for row in choices)
         peers = [row for row in choices if manifest['sources'][row['source']]['rank'] == rank]
         # Rank selects an authority; explicit ancestry, not revision magnitude, selects a correction.
-        newest = max(row['revision'] for row in peers)
-        peers = [row for row in peers if row['revision'] == newest]
+        peers = [r for r in peers if r['revision'] == max(p['revision'] for p in peers)]
         shadowed = set().union(*(ancestors(row) for row in peers))
         tips = [row for row in peers if row['record_id'] not in shadowed]
         meanings = {json.dumps(row['payload'], sort_keys=True) for row in tips}

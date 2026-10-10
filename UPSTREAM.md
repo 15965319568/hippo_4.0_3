@@ -1,11 +1,14 @@
-# Source and task provenance
+# Provenance
 
-Full upstream source and history: https://github.com/triton-inference-server/perf_analyzer
-Base commit: 93ba37f63faaeda863fb973ed15f1e5be01b949d.
-Upstream code and licenses are unchanged. The kv_replay package, TASK.md,
-docs/kv-replay, captures/kv-incident and regression_tests are task-author additions.
-The task reproduces a paged-KV migration/replay incident with synthetic exports.
-It is not an upstream NVIDIA incident, issue or production performance claim.
-This branch contains only the unsolved starter, public contracts and public smoke
-tests. It does not include private grading code, expected answers or solutions.
-Earlier author release-audit tasks are outside this branch's work scope.
+Upstream: https://github.com/triton-inference-server/perf_analyzer
+Pinned upstream commit: 93ba37f63faaeda863fb973ed15f1e5be01b949d
+Public task repository: https://github.com/15965319568/hippo_4.0_3.git
+Branch: benchmark-v6-closed-loop
+
+The upstream repository and license are retained. The author-added
+genai_perf.kv_replay package is a CPU reproduction harness for a constructed LLM
+serving incident. It is not a claim of an upstream or NVIDIA production defect.
+V6 restores client measurement, constrained probe scheduling and rollout control
+as consumers and producers of one transactional KV recovery state. Public
+contracts are the five docs/kv-replay documents.
+The private reference solution and grader are not included in this branch.

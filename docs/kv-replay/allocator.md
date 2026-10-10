@@ -1,4 +1,4 @@
-# 分页 KV 迁移重放 K5（生效）
+# 分页 KV 迁移重放 K6（生效）
 
 本协议描述 CPU 上的推理内存重放，不需要 GPU/权重。它重建同一迁移期间的物理页归属及稳定输出凭据。操作中 device、epoch 必填；epoch 必须等于
 该设备当前世代。未知引用、非法状态、空间不足使整个 event 回滚，包括页世代计数。
@@ -86,3 +86,17 @@ source/target 布局可以不同，kv_heads 不整除 tensor_parallel 的情况�
 完整重放从 manifest 初始状态重新定义每次历史查询；在一个查询中被拒绝的事务，
 可能因后来可见的更正而在另一个查询中生效，反之亦然。不能把上次查询的 accepted
 缓存为永久事实。withdrawn 空事务同样在 decisions 中保留，但不分配或释放任何页。
+
+## 与租约和发布闭环共用物理状态
+
+本版控制操作见 closed-loop.md。模型布局及上面的物理操作规则继续生效。所有物理操作和控制操作可混合在同一 event 的 operations 中，整个批次原子提交；任一操作失败，证据结果之外的所有候选状态、计数和版本同时回滚。
+
+reserved/running 租约各额外持有 cached.pages 的每一页，直到租约结束。evict 只取消 cache 自己的持有，不能释放租约还在使用的物理页。activate 允许 cache 名字已被 evict，使用租约预约时冻结并持续持有的完整缓存。该缓存仍必须与租约设备和五项隔离域匹配。
+
+租约 sequence 新分配的物理页携带 owner_lease，即租约 ID；未归属租约的页可以不带此字段。它用于把该租约的预约转为物理占用，不代表独占持有者。页可被 cache/draft 等继续持有；租约结束也不能错误释放这些页。
+
+每个活跃租约的剩余预约 = max(0, reserve_bytes - 当前仍存在且 owner_lease 等于该租约的物理页字节数)。设备 charged = 所有物理页字节 + 所有活跃租约剩余预约。每个物理或控制操作结束后都用 charged 检查 capacity-reserved 的瞬时上限。不得只在整个批次结束时检查，也不能把物理占用和未消费的整份预约重复相加。
+
+有租约的 append/draft 必须满足 committed-prompt+本次 tokens 数 <= max_output；draft 还需 tokens 数 <= max_draft，否则 decode_budget。close 保留该物理尝试已稳定提交的输出 token 序列，与客户端字节流配对。reset 使本设备所有 reserved/running 租约变为 lost；即使当时尚未 activate，也需释放预约和缓存持有。其后迟到的流不能把物理失败改为成功。
+
+ledger.devices 输出 used_bytes（物理页）、reserved_bytes（租约剩余预约）、free_bytes（扣除两者之后）和 epoch。这里的 reserved_bytes 是观察输出，区别于 manifest.devices 中固定的系统预留。失败批次不能推进 allocator/measurement/routing 版本，规则见 closed-loop.md。

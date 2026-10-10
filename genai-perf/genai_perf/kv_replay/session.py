@@ -1,7 +1,7 @@
 """Historical allocator views from the same recoverable evidence log."""
 import copy
 from .sources import resolve
-from .runtime import replay
+from .engine import replay
 
 
 class ReplaySession:
@@ -10,13 +10,13 @@ class ReplaySession:
         self.records = []
 
     def ingest(self, records):
-        rows = {r['record_id']: r for r in self.records}
-        rows.update({r['record_id']: copy.deepcopy(r) for r in records})
-        self.records = list(rows.values())
+        by_id={r['record_id']:r for r in self.records}
+        by_id.update({r['record_id']:copy.deepcopy(r) for r in records})
+        self.records=list(by_id.values())
 
     def snapshot(self, observed_ns, valid_ns):
         events, evidence = resolve(self.manifest, self.records, observed_ns, valid_ns)
-        return dict(evidence=evidence, ledger=replay(self.manifest, events))
+        return dict(evidence=evidence, **replay(self.manifest, events))
 
     def checkpoint(self):
         return copy.deepcopy(dict(manifest=self.manifest, records=self.records))
