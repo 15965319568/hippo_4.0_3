@@ -4990,6 +4990,2818 @@
           "recovery-266596527": 0
         }
       }
+    },
+    "correction-0": {
+      "routing": {
+        "active": "stable-266596527",
+        "staged": null,
+        "previous": null,
+        "used": [
+          "stable-266596527",
+          "candidate-266596527"
+        ]
+      },
+      "plans": {
+        "baseline-batch0-266596527": {
+          "generation": "stable-266596527",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch0-266596527/baseline-0-266596527",
+              "request": "baseline-0-266596527",
+              "device": "prefill-266596527",
+              "cache": "cache-a-266596527",
+              "reserve_bytes": 924
+            },
+            {
+              "lease": "baseline-batch0-266596527/baseline-1-266596527",
+              "request": "baseline-1-266596527",
+              "device": "prefill-266596527",
+              "cache": "cache-a-266596527",
+              "reserve_bytes": 924
+            }
+          ],
+          "deferred": [
+            "baseline-2-266596527",
+            "baseline-3-266596527"
+          ]
+        },
+        "baseline-batch1-266596527": {
+          "generation": "stable-266596527",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch1-266596527/baseline-2-266596527",
+              "request": "baseline-2-266596527",
+              "device": "prefill-266596527",
+              "cache": "cache-a-266596527",
+              "reserve_bytes": 924
+            },
+            {
+              "lease": "baseline-batch1-266596527/baseline-3-266596527",
+              "request": "baseline-3-266596527",
+              "device": "prefill-266596527",
+              "cache": "cache-a-266596527",
+              "reserve_bytes": 924
+            }
+          ],
+          "deferred": []
+        },
+        "before-copy-266596527": {
+          "generation": "candidate-266596527",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-0-266596527",
+            "probe-1-266596527",
+            "probe-2-266596527",
+            "probe-3-266596527"
+          ]
+        },
+        "probe-batch0-266596527": {
+          "generation": "candidate-266596527",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch0-266596527/probe-0-266596527",
+              "request": "probe-0-266596527",
+              "device": "decode-266596527",
+              "cache": "cache-b-266596527",
+              "reserve_bytes": 796
+            },
+            {
+              "lease": "probe-batch0-266596527/probe-2-266596527",
+              "request": "probe-2-266596527",
+              "device": "decode-266596527",
+              "cache": "cache-b-266596527",
+              "reserve_bytes": 796
+            }
+          ],
+          "deferred": [
+            "probe-1-266596527",
+            "probe-3-266596527"
+          ]
+        },
+        "000-resume0-266596527": {
+          "generation": "candidate-266596527",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "000-resume0-266596527/probe-0-266596527",
+              "request": "probe-0-266596527",
+              "device": "recovery-266596527",
+              "cache": "received-prefix0-266596527",
+              "reserve_bytes": 1564
+            }
+          ],
+          "deferred": [
+            "probe-1-266596527",
+            "probe-3-266596527"
+          ]
+        },
+        "000-resume1-266596527": {
+          "generation": "candidate-266596527",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "000-resume1-266596527/probe-0-266596527",
+              "request": "probe-0-266596527",
+              "device": "decode-266596527",
+              "cache": "received-prefix1-266596527",
+              "reserve_bytes": 796
+            }
+          ],
+          "deferred": [
+            "probe-1-266596527",
+            "probe-3-266596527"
+          ]
+        },
+        "waiting-second-copy-266596527": {
+          "generation": "candidate-266596527",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-1-266596527",
+            "probe-3-266596527"
+          ]
+        },
+        "probe-batch1-266596527": {
+          "generation": "candidate-266596527",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch1-266596527/probe-1-266596527",
+              "request": "probe-1-266596527",
+              "device": "recovery-266596527",
+              "cache": "cache-c-266596527",
+              "reserve_bytes": 1564
+            },
+            {
+              "lease": "probe-batch1-266596527/probe-3-266596527",
+              "request": "probe-3-266596527",
+              "device": "recovery-266596527",
+              "cache": "cache-c-266596527",
+              "reserve_bytes": 1564
+            }
+          ],
+          "deferred": []
+        },
+        "old-draining-plan-266596527": {
+          "generation": "stable-266596527",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "old-draining-plan-266596527/old-draining-266596527",
+              "request": "old-draining-266596527",
+              "device": "prefill-266596527",
+              "cache": null,
+              "reserve_bytes": 1386
+            }
+          ],
+          "deferred": []
+        },
+        "production-plan-266596527": {
+          "generation": "candidate-266596527",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "production-plan-266596527/production-retry-266596527",
+              "request": "production-retry-266596527",
+              "device": "recovery-266596527",
+              "cache": "cache-c-266596527",
+              "reserve_bytes": 1564
+            }
+          ],
+          "deferred": []
+        }
+      },
+      "devices": {
+        "decode-266596527": {
+          "epoch": 4,
+          "used_bytes": 0,
+          "reserved_bytes": 0,
+          "free_bytes": 8756
+        },
+        "prefill-266596527": {
+          "epoch": 2,
+          "used_bytes": 0,
+          "reserved_bytes": 0,
+          "free_bytes": 17556
+        },
+        "recovery-266596527": {
+          "epoch": 7,
+          "used_bytes": 0,
+          "reserved_bytes": 0,
+          "free_bytes": 17204
+        }
+      },
+      "decisions": [
+        {
+          "event": "event-20380401-1",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-2",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-3",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-4",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-5",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-6",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-7",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-8",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-9",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-10",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-11",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-12",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-13",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-14",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-15",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-16",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-17",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-18",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-19",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-20",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-21",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-22",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-23",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-24",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-25",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-26",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-27",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-28",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-29",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-30",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-31",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-32",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-33",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-34",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-35",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-36",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-37",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-38",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-39",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-40",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-41",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-42",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-43",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-44",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-45",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-46",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-47",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-48",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-49",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-50",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-51",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-52",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-53",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-54",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-55",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-56",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-57",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-58",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-59",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-60",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-61",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-62",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-63",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-64",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-65",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-66",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-67",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-68",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-69",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-70",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-71",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-72",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-73",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-74",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-75",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-76",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-77",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-78",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-79",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-80",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-81",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-82",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-83",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-84",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-85",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-86",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-87",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-88",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-89",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-90",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-91",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-92",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-93",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-94",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-95",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-96",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-97",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-98",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-99",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-100",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-101",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-102",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-103",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-104",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-105",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-106",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-107",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-108",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-109",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-110",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-111",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-112",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-113",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-114",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-115",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-116",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-117",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-118",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-119",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-120",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-121",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-122",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-123",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-124",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-125",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-126",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-127",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-128",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-129",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-130",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-131",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-132",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-133",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-134",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-135",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-136",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-137",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-138",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-139",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-140",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-141",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-142",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-143",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-144",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-145",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-146",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-147",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-148",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-149",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-150",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-151",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-152",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-153",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-154",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-155",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-156",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-157",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-158",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-159",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-160",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-161",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-162",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-163",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-164",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-165",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-166",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-167",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-168",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-169",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-170",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-171",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-172",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-173",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-174",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-175",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-176",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-177",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-178",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-179",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-180",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-181",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-182",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-183",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-184",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-185",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-186",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-187",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-188",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-189",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-190",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-191",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-192",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-193",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-194",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-195",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-196",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-197",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-198",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-199",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-200",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-201",
+          "accepted": true
+        }
+      ],
+      "signals": {
+        "000-resume0-266596527/probe-0-266596527": {
+          "state": "pending"
+        },
+        "000-resume1-266596527/probe-0-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "baseline-batch0-266596527/baseline-0-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "baseline-batch0-266596527/baseline-1-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "baseline-batch1-266596527/baseline-2-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "baseline-batch1-266596527/baseline-3-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "old-draining-plan-266596527/old-draining-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "probe-batch0-266596527/probe-0-266596527": {
+          "state": "pending"
+        },
+        "probe-batch0-266596527/probe-2-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "probe-batch1-266596527/probe-1-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "probe-batch1-266596527/probe-3-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "production-plan-266596527/production-retry-266596527": {
+          "state": "failed"
+        }
+      },
+      "fabric": {
+        "offers": {
+          "export-0-20380401": {
+            "status": "dropped",
+            "device": "decode-266596527",
+            "epoch": 4,
+            "tokens": 10
+          },
+          "probe-export-20380401": {
+            "status": "dropped",
+            "device": "prefill-266596527",
+            "epoch": 2,
+            "tokens": 9
+          },
+          "export-1-20380401": {
+            "status": "lost",
+            "device": "recovery-266596527",
+            "epoch": 6,
+            "tokens": 10
+          }
+        },
+        "jobs": {
+          "handoff-0-20380401": {
+            "offer": "export-0-20380401",
+            "request": "probe-0-266596527",
+            "target": "recovery-266596527",
+            "target_cache": "received-prefix0-266596527",
+            "max_hops": 3,
+            "ticket": "hop-ticket0-266596527",
+            "status": "committed",
+            "rank_bytes": [
+              768,
+              768,
+              768,
+              768,
+              768,
+              768,
+              768,
+              768
+            ],
+            "output_bytes": 1564,
+            "reserve_bytes": 2332,
+            "wire_bytes": 8320,
+            "path": [
+              "alternate-out-1",
+              "alternate-in-2"
+            ],
+            "link_epochs": {
+              "alternate-out-1": 7,
+              "alternate-in-2": 9
+            },
+            "source": "decode-266596527",
+            "source_epoch": 4,
+            "target_epoch": 6,
+            "parent": "probe-batch0-266596527/probe-0-266596527",
+            "segment": 1,
+            "plan": "plan-handoff-0-20380401",
+            "sealed": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "published_pages": [
+              "recovery-266596527/2",
+              "recovery-266596527/3"
+            ],
+            "received_values": 0
+          },
+          "zz-handoff-0-20380401": {
+            "offer": "export-0-20380401",
+            "request": "probe-0-266596527",
+            "target": "recovery-266596527",
+            "target_cache": "alternate-received-prefix0-266596527",
+            "max_hops": 3,
+            "ticket": "alt-hop-ticket0-266596527",
+            "status": "queued",
+            "received_values": 0
+          },
+          "probe-copy-20380401": {
+            "offer": "probe-export-20380401",
+            "request": "probe-1-266596527",
+            "target": "recovery-266596527",
+            "target_cache": "probe-cache-20380401",
+            "max_hops": 3,
+            "ticket": "probe-ticket-20380401",
+            "status": "aborted",
+            "rank_bytes": [
+              768,
+              768,
+              768,
+              768,
+              768,
+              768,
+              768,
+              768
+            ],
+            "output_bytes": 1564,
+            "reserve_bytes": 2332,
+            "wire_bytes": 7488,
+            "path": [
+              "alternate-out-0",
+              "alternate-in-2"
+            ],
+            "link_epochs": {
+              "alternate-out-0": 7,
+              "alternate-in-2": 9
+            },
+            "source": "prefill-266596527",
+            "source_epoch": 2,
+            "target_epoch": 6,
+            "parent": null,
+            "segment": 0,
+            "plan": "plan-handoff-0-20380401",
+            "sealed": [],
+            "received_values": 0
+          },
+          "handoff-1-20380401": {
+            "offer": "export-1-20380401",
+            "request": "probe-0-266596527",
+            "target": "decode-266596527",
+            "target_cache": "received-prefix1-266596527",
+            "max_hops": 3,
+            "ticket": "hop-ticket1-266596527",
+            "status": "committed",
+            "rank_bytes": [
+              512,
+              384,
+              384,
+              384
+            ],
+            "output_bytes": 796,
+            "reserve_bytes": 1308,
+            "wire_bytes": 4960,
+            "path": [
+              "alternate-out-2",
+              "alternate-in-1"
+            ],
+            "link_epochs": {
+              "alternate-out-2": 7,
+              "alternate-in-1": 9
+            },
+            "source": "recovery-266596527",
+            "source_epoch": 6,
+            "target_epoch": 4,
+            "parent": "000-resume0-266596527/probe-0-266596527",
+            "segment": 2,
+            "plan": "plan-handoff-1-20380401",
+            "sealed": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "published_pages": [
+              "decode-266596527/2",
+              "decode-266596527/3"
+            ],
+            "received_values": 0
+          },
+          "zz-handoff-1-20380401": {
+            "offer": "export-1-20380401",
+            "request": "probe-0-266596527",
+            "target": "decode-266596527",
+            "target_cache": "alternate-received-prefix1-266596527",
+            "max_hops": 3,
+            "ticket": "alt-hop-ticket1-266596527",
+            "status": "queued",
+            "received_values": 0
+          }
+        },
+        "plans": {
+          "plan-handoff-0-20380401": {
+            "generation": "candidate-266596527",
+            "admitted": [
+              "handoff-0-20380401",
+              "probe-copy-20380401"
+            ],
+            "deferred": [
+              "zz-handoff-0-20380401"
+            ]
+          },
+          "plan-handoff-1-20380401": {
+            "generation": "candidate-266596527",
+            "admitted": [
+              "handoff-1-20380401"
+            ],
+            "deferred": [
+              "zz-handoff-0-20380401",
+              "zz-handoff-1-20380401"
+            ]
+          }
+        },
+        "links": {
+          "out-0": {
+            "source": "prefill-266596527",
+            "target": "switch-x",
+            "generation": 3,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "in-0": {
+            "source": "switch-x",
+            "target": "prefill-266596527",
+            "generation": 5,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-out-0": {
+            "source": "prefill-266596527",
+            "target": "switch-y",
+            "generation": 7,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-in-0": {
+            "source": "switch-y",
+            "target": "prefill-266596527",
+            "generation": 9,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "out-1": {
+            "source": "decode-266596527",
+            "target": "switch-x",
+            "generation": 3,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "in-1": {
+            "source": "switch-x",
+            "target": "decode-266596527",
+            "generation": 5,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-out-1": {
+            "source": "decode-266596527",
+            "target": "switch-y",
+            "generation": 7,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-in-1": {
+            "source": "switch-y",
+            "target": "decode-266596527",
+            "generation": 9,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "out-2": {
+            "source": "recovery-266596527",
+            "target": "switch-x",
+            "generation": 3,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "in-2": {
+            "source": "switch-x",
+            "target": "recovery-266596527",
+            "generation": 5,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-out-2": {
+            "source": "recovery-266596527",
+            "target": "switch-y",
+            "generation": 7,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-in-2": {
+            "source": "switch-y",
+            "target": "recovery-266596527",
+            "generation": 9,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          }
+        },
+        "link_usage": {
+          "out-0": 0,
+          "in-0": 0,
+          "alternate-out-0": 0,
+          "alternate-in-0": 0,
+          "out-1": 0,
+          "in-1": 0,
+          "alternate-out-1": 0,
+          "alternate-in-1": 0,
+          "out-2": 0,
+          "in-2": 0,
+          "alternate-out-2": 0,
+          "alternate-in-2": 0
+        },
+        "reservations": {
+          "prefill-266596527": 0,
+          "decode-266596527": 0,
+          "recovery-266596527": 0
+        }
+      }
+    },
+    "correction-1": {
+      "routing": {
+        "active": "stable-266596527",
+        "staged": null,
+        "previous": null,
+        "used": [
+          "stable-266596527",
+          "candidate-266596527"
+        ]
+      },
+      "plans": {
+        "baseline-batch0-266596527": {
+          "generation": "stable-266596527",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch0-266596527/baseline-0-266596527",
+              "request": "baseline-0-266596527",
+              "device": "prefill-266596527",
+              "cache": "cache-a-266596527",
+              "reserve_bytes": 924
+            },
+            {
+              "lease": "baseline-batch0-266596527/baseline-1-266596527",
+              "request": "baseline-1-266596527",
+              "device": "prefill-266596527",
+              "cache": "cache-a-266596527",
+              "reserve_bytes": 924
+            }
+          ],
+          "deferred": [
+            "baseline-2-266596527",
+            "baseline-3-266596527"
+          ]
+        },
+        "baseline-batch1-266596527": {
+          "generation": "stable-266596527",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch1-266596527/baseline-2-266596527",
+              "request": "baseline-2-266596527",
+              "device": "prefill-266596527",
+              "cache": "cache-a-266596527",
+              "reserve_bytes": 924
+            },
+            {
+              "lease": "baseline-batch1-266596527/baseline-3-266596527",
+              "request": "baseline-3-266596527",
+              "device": "prefill-266596527",
+              "cache": "cache-a-266596527",
+              "reserve_bytes": 924
+            }
+          ],
+          "deferred": []
+        },
+        "before-copy-266596527": {
+          "generation": "candidate-266596527",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-0-266596527",
+            "probe-1-266596527",
+            "probe-2-266596527",
+            "probe-3-266596527"
+          ]
+        },
+        "probe-batch0-266596527": {
+          "generation": "candidate-266596527",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch0-266596527/probe-0-266596527",
+              "request": "probe-0-266596527",
+              "device": "decode-266596527",
+              "cache": "cache-b-266596527",
+              "reserve_bytes": 796
+            },
+            {
+              "lease": "probe-batch0-266596527/probe-2-266596527",
+              "request": "probe-2-266596527",
+              "device": "decode-266596527",
+              "cache": "cache-b-266596527",
+              "reserve_bytes": 796
+            }
+          ],
+          "deferred": [
+            "probe-1-266596527",
+            "probe-3-266596527"
+          ]
+        },
+        "000-resume0-266596527": {
+          "generation": "candidate-266596527",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "000-resume0-266596527/probe-0-266596527",
+              "request": "probe-0-266596527",
+              "device": "recovery-266596527",
+              "cache": "received-prefix0-266596527",
+              "reserve_bytes": 1564
+            }
+          ],
+          "deferred": [
+            "probe-1-266596527",
+            "probe-3-266596527"
+          ]
+        },
+        "000-resume1-266596527": {
+          "generation": "candidate-266596527",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "000-resume1-266596527/probe-0-266596527",
+              "request": "probe-0-266596527",
+              "device": "decode-266596527",
+              "cache": "received-prefix1-266596527",
+              "reserve_bytes": 796
+            }
+          ],
+          "deferred": [
+            "probe-1-266596527",
+            "probe-3-266596527"
+          ]
+        },
+        "waiting-second-copy-266596527": {
+          "generation": "candidate-266596527",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-1-266596527",
+            "probe-3-266596527"
+          ]
+        },
+        "probe-batch1-266596527": {
+          "generation": "candidate-266596527",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch1-266596527/probe-1-266596527",
+              "request": "probe-1-266596527",
+              "device": "recovery-266596527",
+              "cache": "cache-c-266596527",
+              "reserve_bytes": 1564
+            },
+            {
+              "lease": "probe-batch1-266596527/probe-3-266596527",
+              "request": "probe-3-266596527",
+              "device": "recovery-266596527",
+              "cache": "cache-c-266596527",
+              "reserve_bytes": 1564
+            }
+          ],
+          "deferred": []
+        },
+        "old-draining-plan-266596527": {
+          "generation": "stable-266596527",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "old-draining-plan-266596527/old-draining-266596527",
+              "request": "old-draining-266596527",
+              "device": "prefill-266596527",
+              "cache": null,
+              "reserve_bytes": 1386
+            }
+          ],
+          "deferred": []
+        },
+        "production-plan-266596527": {
+          "generation": "candidate-266596527",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "production-plan-266596527/production-retry-266596527",
+              "request": "production-retry-266596527",
+              "device": "recovery-266596527",
+              "cache": "cache-c-266596527",
+              "reserve_bytes": 1564
+            }
+          ],
+          "deferred": []
+        }
+      },
+      "devices": {
+        "decode-266596527": {
+          "epoch": 4,
+          "used_bytes": 0,
+          "reserved_bytes": 0,
+          "free_bytes": 8756
+        },
+        "prefill-266596527": {
+          "epoch": 2,
+          "used_bytes": 0,
+          "reserved_bytes": 0,
+          "free_bytes": 17556
+        },
+        "recovery-266596527": {
+          "epoch": 7,
+          "used_bytes": 0,
+          "reserved_bytes": 0,
+          "free_bytes": 17204
+        }
+      },
+      "decisions": [
+        {
+          "event": "event-20380401-1",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-2",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-3",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-4",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-5",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-6",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-7",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-8",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-9",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-10",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-11",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-12",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-13",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-14",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-15",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-16",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-17",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-18",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-19",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-20",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-21",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-22",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-23",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-24",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-25",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-26",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-27",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-28",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-29",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-30",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-31",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-32",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-33",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-34",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-35",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-36",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-37",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-38",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-39",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-40",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-41",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-42",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-43",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-44",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-45",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-46",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-47",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-48",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-49",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-50",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-51",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-52",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-53",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-54",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-55",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-56",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-57",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-58",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-59",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-60",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-61",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-62",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-63",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-64",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-65",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-66",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-67",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-68",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-69",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-70",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-71",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-72",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-73",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-74",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-75",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-76",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-77",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-78",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-79",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-80",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-81",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-82",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-83",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-84",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-85",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-86",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-87",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-88",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-89",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-90",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-91",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-92",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-93",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-94",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-95",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-96",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-97",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-98",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-99",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-100",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-101",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-102",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-103",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-104",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-105",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-106",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-107",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-108",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-109",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-110",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-111",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-112",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-113",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-114",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-115",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-116",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-117",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-118",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-119",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-120",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-121",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-122",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-123",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-124",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-125",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-126",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-127",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-128",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-129",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-130",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-131",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-132",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-133",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-134",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-135",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-136",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-137",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-138",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-139",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-140",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-141",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-142",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-143",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-144",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-145",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-146",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-147",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-148",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-149",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-150",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-151",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-152",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-153",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-154",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-155",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-156",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-157",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-158",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-159",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-160",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-161",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-162",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-163",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-164",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-165",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-166",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-167",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-168",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-169",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-170",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-171",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-172",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-173",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-174",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-175",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-176",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-177",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-178",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-179",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-180",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-181",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-182",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-183",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-184",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-185",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-186",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-187",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-188",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-189",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-190",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-191",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-192",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-193",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-194",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-195",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-196",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-197",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-198",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-199",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-200",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-201",
+          "accepted": true
+        }
+      ],
+      "signals": {
+        "000-resume0-266596527/probe-0-266596527": {
+          "state": "pending"
+        },
+        "000-resume1-266596527/probe-0-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "baseline-batch0-266596527/baseline-0-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "baseline-batch0-266596527/baseline-1-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "baseline-batch1-266596527/baseline-2-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "baseline-batch1-266596527/baseline-3-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "old-draining-plan-266596527/old-draining-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "probe-batch0-266596527/probe-0-266596527": {
+          "state": "pending"
+        },
+        "probe-batch0-266596527/probe-2-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "probe-batch1-266596527/probe-1-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "probe-batch1-266596527/probe-3-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "production-plan-266596527/production-retry-266596527": {
+          "state": "failed"
+        }
+      },
+      "fabric": {
+        "offers": {
+          "export-0-20380401": {
+            "status": "dropped",
+            "device": "decode-266596527",
+            "epoch": 4,
+            "tokens": 10
+          },
+          "probe-export-20380401": {
+            "status": "dropped",
+            "device": "prefill-266596527",
+            "epoch": 2,
+            "tokens": 9
+          },
+          "export-1-20380401": {
+            "status": "lost",
+            "device": "recovery-266596527",
+            "epoch": 6,
+            "tokens": 10
+          }
+        },
+        "jobs": {
+          "handoff-0-20380401": {
+            "offer": "export-0-20380401",
+            "request": "probe-0-266596527",
+            "target": "recovery-266596527",
+            "target_cache": "received-prefix0-266596527",
+            "max_hops": 3,
+            "ticket": "hop-ticket0-266596527",
+            "status": "committed",
+            "rank_bytes": [
+              768,
+              768,
+              768,
+              768,
+              768,
+              768,
+              768,
+              768
+            ],
+            "output_bytes": 1564,
+            "reserve_bytes": 2332,
+            "wire_bytes": 8320,
+            "path": [
+              "alternate-out-1",
+              "alternate-in-2"
+            ],
+            "link_epochs": {
+              "alternate-out-1": 7,
+              "alternate-in-2": 9
+            },
+            "source": "decode-266596527",
+            "source_epoch": 4,
+            "target_epoch": 6,
+            "parent": "probe-batch0-266596527/probe-0-266596527",
+            "segment": 1,
+            "plan": "plan-handoff-0-20380401",
+            "sealed": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "published_pages": [
+              "recovery-266596527/2",
+              "recovery-266596527/3"
+            ],
+            "received_values": 0
+          },
+          "zz-handoff-0-20380401": {
+            "offer": "export-0-20380401",
+            "request": "probe-0-266596527",
+            "target": "recovery-266596527",
+            "target_cache": "alternate-received-prefix0-266596527",
+            "max_hops": 3,
+            "ticket": "alt-hop-ticket0-266596527",
+            "status": "queued",
+            "received_values": 0
+          },
+          "probe-copy-20380401": {
+            "offer": "probe-export-20380401",
+            "request": "probe-1-266596527",
+            "target": "recovery-266596527",
+            "target_cache": "probe-cache-20380401",
+            "max_hops": 3,
+            "ticket": "probe-ticket-20380401",
+            "status": "aborted",
+            "rank_bytes": [
+              768,
+              768,
+              768,
+              768,
+              768,
+              768,
+              768,
+              768
+            ],
+            "output_bytes": 1564,
+            "reserve_bytes": 2332,
+            "wire_bytes": 7488,
+            "path": [
+              "alternate-out-0",
+              "alternate-in-2"
+            ],
+            "link_epochs": {
+              "alternate-out-0": 7,
+              "alternate-in-2": 9
+            },
+            "source": "prefill-266596527",
+            "source_epoch": 2,
+            "target_epoch": 6,
+            "parent": null,
+            "segment": 0,
+            "plan": "plan-handoff-0-20380401",
+            "sealed": [],
+            "received_values": 0
+          },
+          "handoff-1-20380401": {
+            "offer": "export-1-20380401",
+            "request": "probe-0-266596527",
+            "target": "decode-266596527",
+            "target_cache": "received-prefix1-266596527",
+            "max_hops": 3,
+            "ticket": "hop-ticket1-266596527",
+            "status": "committed",
+            "rank_bytes": [
+              512,
+              384,
+              384,
+              384
+            ],
+            "output_bytes": 796,
+            "reserve_bytes": 1308,
+            "wire_bytes": 4960,
+            "path": [
+              "alternate-out-2",
+              "alternate-in-1"
+            ],
+            "link_epochs": {
+              "alternate-out-2": 7,
+              "alternate-in-1": 9
+            },
+            "source": "recovery-266596527",
+            "source_epoch": 6,
+            "target_epoch": 4,
+            "parent": "000-resume0-266596527/probe-0-266596527",
+            "segment": 2,
+            "plan": "plan-handoff-1-20380401",
+            "sealed": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "published_pages": [
+              "decode-266596527/2",
+              "decode-266596527/3"
+            ],
+            "received_values": 0
+          },
+          "zz-handoff-1-20380401": {
+            "offer": "export-1-20380401",
+            "request": "probe-0-266596527",
+            "target": "decode-266596527",
+            "target_cache": "alternate-received-prefix1-266596527",
+            "max_hops": 3,
+            "ticket": "alt-hop-ticket1-266596527",
+            "status": "queued",
+            "received_values": 0
+          }
+        },
+        "plans": {
+          "plan-handoff-0-20380401": {
+            "generation": "candidate-266596527",
+            "admitted": [
+              "handoff-0-20380401",
+              "probe-copy-20380401"
+            ],
+            "deferred": [
+              "zz-handoff-0-20380401"
+            ]
+          },
+          "plan-handoff-1-20380401": {
+            "generation": "candidate-266596527",
+            "admitted": [
+              "handoff-1-20380401"
+            ],
+            "deferred": [
+              "zz-handoff-0-20380401",
+              "zz-handoff-1-20380401"
+            ]
+          }
+        },
+        "links": {
+          "out-0": {
+            "source": "prefill-266596527",
+            "target": "switch-x",
+            "generation": 3,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "in-0": {
+            "source": "switch-x",
+            "target": "prefill-266596527",
+            "generation": 5,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-out-0": {
+            "source": "prefill-266596527",
+            "target": "switch-y",
+            "generation": 7,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-in-0": {
+            "source": "switch-y",
+            "target": "prefill-266596527",
+            "generation": 9,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "out-1": {
+            "source": "decode-266596527",
+            "target": "switch-x",
+            "generation": 3,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "in-1": {
+            "source": "switch-x",
+            "target": "decode-266596527",
+            "generation": 5,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-out-1": {
+            "source": "decode-266596527",
+            "target": "switch-y",
+            "generation": 7,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-in-1": {
+            "source": "switch-y",
+            "target": "decode-266596527",
+            "generation": 9,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "out-2": {
+            "source": "recovery-266596527",
+            "target": "switch-x",
+            "generation": 3,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "in-2": {
+            "source": "switch-x",
+            "target": "recovery-266596527",
+            "generation": 5,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-out-2": {
+            "source": "recovery-266596527",
+            "target": "switch-y",
+            "generation": 7,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-in-2": {
+            "source": "switch-y",
+            "target": "recovery-266596527",
+            "generation": 9,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          }
+        },
+        "link_usage": {
+          "out-0": 0,
+          "in-0": 0,
+          "alternate-out-0": 0,
+          "alternate-in-0": 0,
+          "out-1": 0,
+          "in-1": 0,
+          "alternate-out-1": 0,
+          "alternate-in-1": 0,
+          "out-2": 0,
+          "in-2": 0,
+          "alternate-out-2": 0,
+          "alternate-in-2": 0
+        },
+        "reservations": {
+          "prefill-266596527": 0,
+          "decode-266596527": 0,
+          "recovery-266596527": 0
+        }
+      }
     }
   },
   "restored": {
@@ -8579,6 +11391,2705 @@
       }
     },
     "expired": {
+      "routing": {
+        "active": "stable-266596527",
+        "staged": null,
+        "previous": null,
+        "used": [
+          "stable-266596527",
+          "candidate-266596527"
+        ]
+      },
+      "plans": {
+        "baseline-batch0-266596527": {
+          "generation": "stable-266596527",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch0-266596527/baseline-0-266596527",
+              "request": "baseline-0-266596527",
+              "device": "prefill-266596527",
+              "cache": "cache-a-266596527",
+              "reserve_bytes": 924
+            },
+            {
+              "lease": "baseline-batch0-266596527/baseline-1-266596527",
+              "request": "baseline-1-266596527",
+              "device": "prefill-266596527",
+              "cache": "cache-a-266596527",
+              "reserve_bytes": 924
+            }
+          ],
+          "deferred": [
+            "baseline-2-266596527",
+            "baseline-3-266596527"
+          ]
+        },
+        "baseline-batch1-266596527": {
+          "generation": "stable-266596527",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch1-266596527/baseline-2-266596527",
+              "request": "baseline-2-266596527",
+              "device": "prefill-266596527",
+              "cache": "cache-a-266596527",
+              "reserve_bytes": 924
+            },
+            {
+              "lease": "baseline-batch1-266596527/baseline-3-266596527",
+              "request": "baseline-3-266596527",
+              "device": "prefill-266596527",
+              "cache": "cache-a-266596527",
+              "reserve_bytes": 924
+            }
+          ],
+          "deferred": []
+        },
+        "before-copy-266596527": {
+          "generation": "candidate-266596527",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-0-266596527",
+            "probe-1-266596527",
+            "probe-2-266596527",
+            "probe-3-266596527"
+          ]
+        },
+        "probe-batch0-266596527": {
+          "generation": "candidate-266596527",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch0-266596527/probe-0-266596527",
+              "request": "probe-0-266596527",
+              "device": "decode-266596527",
+              "cache": "cache-b-266596527",
+              "reserve_bytes": 796
+            },
+            {
+              "lease": "probe-batch0-266596527/probe-2-266596527",
+              "request": "probe-2-266596527",
+              "device": "decode-266596527",
+              "cache": "cache-b-266596527",
+              "reserve_bytes": 796
+            }
+          ],
+          "deferred": [
+            "probe-1-266596527",
+            "probe-3-266596527"
+          ]
+        },
+        "000-resume0-266596527": {
+          "generation": "candidate-266596527",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "000-resume0-266596527/probe-0-266596527",
+              "request": "probe-0-266596527",
+              "device": "recovery-266596527",
+              "cache": "received-prefix0-266596527",
+              "reserve_bytes": 1564
+            }
+          ],
+          "deferred": [
+            "probe-1-266596527",
+            "probe-3-266596527"
+          ]
+        },
+        "000-resume1-266596527": {
+          "generation": "candidate-266596527",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "000-resume1-266596527/probe-0-266596527",
+              "request": "probe-0-266596527",
+              "device": "decode-266596527",
+              "cache": "received-prefix1-266596527",
+              "reserve_bytes": 796
+            }
+          ],
+          "deferred": [
+            "probe-1-266596527",
+            "probe-3-266596527"
+          ]
+        },
+        "waiting-second-copy-266596527": {
+          "generation": "candidate-266596527",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-1-266596527",
+            "probe-3-266596527"
+          ]
+        },
+        "probe-batch1-266596527": {
+          "generation": "candidate-266596527",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch1-266596527/probe-1-266596527",
+              "request": "probe-1-266596527",
+              "device": "recovery-266596527",
+              "cache": "cache-c-266596527",
+              "reserve_bytes": 1564
+            },
+            {
+              "lease": "probe-batch1-266596527/probe-3-266596527",
+              "request": "probe-3-266596527",
+              "device": "recovery-266596527",
+              "cache": "cache-c-266596527",
+              "reserve_bytes": 1564
+            }
+          ],
+          "deferred": []
+        },
+        "old-draining-plan-266596527": {
+          "generation": "stable-266596527",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "old-draining-plan-266596527/old-draining-266596527",
+              "request": "old-draining-266596527",
+              "device": "prefill-266596527",
+              "cache": null,
+              "reserve_bytes": 1386
+            }
+          ],
+          "deferred": []
+        },
+        "production-plan-266596527": {
+          "generation": "candidate-266596527",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "production-plan-266596527/production-retry-266596527",
+              "request": "production-retry-266596527",
+              "device": "recovery-266596527",
+              "cache": "cache-c-266596527",
+              "reserve_bytes": 1564
+            }
+          ],
+          "deferred": []
+        }
+      },
+      "devices": {
+        "decode-266596527": {
+          "epoch": 4,
+          "used_bytes": 0,
+          "reserved_bytes": 0,
+          "free_bytes": 8756
+        },
+        "prefill-266596527": {
+          "epoch": 2,
+          "used_bytes": 0,
+          "reserved_bytes": 0,
+          "free_bytes": 17556
+        },
+        "recovery-266596527": {
+          "epoch": 7,
+          "used_bytes": 0,
+          "reserved_bytes": 0,
+          "free_bytes": 17204
+        }
+      },
+      "decisions": [
+        {
+          "event": "event-20380401-1",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-2",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-3",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-4",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-5",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-6",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-7",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-8",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-9",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-10",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-11",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-12",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-13",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-14",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-15",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-16",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-17",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-18",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-19",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-20",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-21",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-22",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-23",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-24",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-25",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-26",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-27",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-28",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-29",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-30",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-31",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-32",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-33",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-34",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-35",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-36",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-37",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-38",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-39",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-40",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-41",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-42",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-43",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-44",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-45",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-46",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-47",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-48",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-49",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-50",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-51",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-52",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-53",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-54",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-55",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-56",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-57",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-58",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-59",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-60",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-61",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-62",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-63",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-64",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-65",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-66",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-67",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-68",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-69",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-70",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-71",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-72",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-73",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-74",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-75",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-76",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-77",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-78",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-79",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-80",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-81",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-82",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-83",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-84",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-85",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-86",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-87",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-88",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-89",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-90",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-91",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-92",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-93",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-94",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-95",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-96",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-97",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-98",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-99",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-100",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-101",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-102",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-103",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-104",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-105",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-106",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-107",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-108",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-109",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-110",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-111",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-112",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-113",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-114",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-115",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-116",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-117",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-118",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-119",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-120",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-121",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-122",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-123",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-124",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-125",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-126",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-127",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-128",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-129",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-130",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-131",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-132",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-133",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-134",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-135",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-136",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-137",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-138",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-139",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-140",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-141",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-142",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-143",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-144",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-145",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-146",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-147",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-148",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-149",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-150",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-151",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-152",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-153",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-154",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-155",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-156",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-157",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-158",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-159",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-160",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-161",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-162",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-163",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-164",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-165",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-166",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-167",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-168",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-169",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-170",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-171",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-172",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-173",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-174",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-175",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-176",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-177",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-178",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-179",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-180",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-181",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-182",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-183",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-184",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-185",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-186",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-187",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-188",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-189",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-190",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-191",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-192",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-193",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-194",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-195",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-196",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-197",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-198",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-199",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-200",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-201",
+          "accepted": true
+        }
+      ],
+      "signals": {
+        "000-resume0-266596527/probe-0-266596527": {
+          "state": "pending"
+        },
+        "000-resume1-266596527/probe-0-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "baseline-batch0-266596527/baseline-0-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "baseline-batch0-266596527/baseline-1-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "baseline-batch1-266596527/baseline-2-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "baseline-batch1-266596527/baseline-3-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "old-draining-plan-266596527/old-draining-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "probe-batch0-266596527/probe-0-266596527": {
+          "state": "pending"
+        },
+        "probe-batch0-266596527/probe-2-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "probe-batch1-266596527/probe-1-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "probe-batch1-266596527/probe-3-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "production-plan-266596527/production-retry-266596527": {
+          "state": "failed"
+        }
+      },
+      "fabric": {
+        "offers": {
+          "export-0-20380401": {
+            "status": "dropped",
+            "device": "decode-266596527",
+            "epoch": 4,
+            "tokens": 10
+          },
+          "probe-export-20380401": {
+            "status": "dropped",
+            "device": "prefill-266596527",
+            "epoch": 2,
+            "tokens": 9
+          },
+          "export-1-20380401": {
+            "status": "lost",
+            "device": "recovery-266596527",
+            "epoch": 6,
+            "tokens": 10
+          }
+        },
+        "jobs": {
+          "handoff-0-20380401": {
+            "offer": "export-0-20380401",
+            "request": "probe-0-266596527",
+            "target": "recovery-266596527",
+            "target_cache": "received-prefix0-266596527",
+            "max_hops": 3,
+            "ticket": "hop-ticket0-266596527",
+            "status": "committed",
+            "rank_bytes": [
+              768,
+              768,
+              768,
+              768,
+              768,
+              768,
+              768,
+              768
+            ],
+            "output_bytes": 1564,
+            "reserve_bytes": 2332,
+            "wire_bytes": 8320,
+            "path": [
+              "alternate-out-1",
+              "alternate-in-2"
+            ],
+            "link_epochs": {
+              "alternate-out-1": 7,
+              "alternate-in-2": 9
+            },
+            "source": "decode-266596527",
+            "source_epoch": 4,
+            "target_epoch": 6,
+            "parent": "probe-batch0-266596527/probe-0-266596527",
+            "segment": 1,
+            "plan": "plan-handoff-0-20380401",
+            "sealed": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "published_pages": [
+              "recovery-266596527/2",
+              "recovery-266596527/3"
+            ],
+            "received_values": 0
+          },
+          "zz-handoff-0-20380401": {
+            "offer": "export-0-20380401",
+            "request": "probe-0-266596527",
+            "target": "recovery-266596527",
+            "target_cache": "alternate-received-prefix0-266596527",
+            "max_hops": 3,
+            "ticket": "alt-hop-ticket0-266596527",
+            "status": "queued",
+            "received_values": 0
+          },
+          "probe-copy-20380401": {
+            "offer": "probe-export-20380401",
+            "request": "probe-1-266596527",
+            "target": "recovery-266596527",
+            "target_cache": "probe-cache-20380401",
+            "max_hops": 3,
+            "ticket": "probe-ticket-20380401",
+            "status": "aborted",
+            "rank_bytes": [
+              768,
+              768,
+              768,
+              768,
+              768,
+              768,
+              768,
+              768
+            ],
+            "output_bytes": 1564,
+            "reserve_bytes": 2332,
+            "wire_bytes": 7488,
+            "path": [
+              "alternate-out-0",
+              "alternate-in-2"
+            ],
+            "link_epochs": {
+              "alternate-out-0": 7,
+              "alternate-in-2": 9
+            },
+            "source": "prefill-266596527",
+            "source_epoch": 2,
+            "target_epoch": 6,
+            "parent": null,
+            "segment": 0,
+            "plan": "plan-handoff-0-20380401",
+            "sealed": [],
+            "received_values": 0
+          },
+          "handoff-1-20380401": {
+            "offer": "export-1-20380401",
+            "request": "probe-0-266596527",
+            "target": "decode-266596527",
+            "target_cache": "received-prefix1-266596527",
+            "max_hops": 3,
+            "ticket": "hop-ticket1-266596527",
+            "status": "committed",
+            "rank_bytes": [
+              512,
+              384,
+              384,
+              384
+            ],
+            "output_bytes": 796,
+            "reserve_bytes": 1308,
+            "wire_bytes": 4960,
+            "path": [
+              "alternate-out-2",
+              "alternate-in-1"
+            ],
+            "link_epochs": {
+              "alternate-out-2": 7,
+              "alternate-in-1": 9
+            },
+            "source": "recovery-266596527",
+            "source_epoch": 6,
+            "target_epoch": 4,
+            "parent": "000-resume0-266596527/probe-0-266596527",
+            "segment": 2,
+            "plan": "plan-handoff-1-20380401",
+            "sealed": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "published_pages": [
+              "decode-266596527/2",
+              "decode-266596527/3"
+            ],
+            "received_values": 0
+          },
+          "zz-handoff-1-20380401": {
+            "offer": "export-1-20380401",
+            "request": "probe-0-266596527",
+            "target": "decode-266596527",
+            "target_cache": "alternate-received-prefix1-266596527",
+            "max_hops": 3,
+            "ticket": "alt-hop-ticket1-266596527",
+            "status": "queued",
+            "received_values": 0
+          }
+        },
+        "plans": {
+          "plan-handoff-0-20380401": {
+            "generation": "candidate-266596527",
+            "admitted": [
+              "handoff-0-20380401",
+              "probe-copy-20380401"
+            ],
+            "deferred": [
+              "zz-handoff-0-20380401"
+            ]
+          },
+          "plan-handoff-1-20380401": {
+            "generation": "candidate-266596527",
+            "admitted": [
+              "handoff-1-20380401"
+            ],
+            "deferred": [
+              "zz-handoff-0-20380401",
+              "zz-handoff-1-20380401"
+            ]
+          }
+        },
+        "links": {
+          "out-0": {
+            "source": "prefill-266596527",
+            "target": "switch-x",
+            "generation": 3,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "in-0": {
+            "source": "switch-x",
+            "target": "prefill-266596527",
+            "generation": 5,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-out-0": {
+            "source": "prefill-266596527",
+            "target": "switch-y",
+            "generation": 7,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-in-0": {
+            "source": "switch-y",
+            "target": "prefill-266596527",
+            "generation": 9,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "out-1": {
+            "source": "decode-266596527",
+            "target": "switch-x",
+            "generation": 3,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "in-1": {
+            "source": "switch-x",
+            "target": "decode-266596527",
+            "generation": 5,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-out-1": {
+            "source": "decode-266596527",
+            "target": "switch-y",
+            "generation": 7,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-in-1": {
+            "source": "switch-y",
+            "target": "decode-266596527",
+            "generation": 9,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "out-2": {
+            "source": "recovery-266596527",
+            "target": "switch-x",
+            "generation": 3,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "in-2": {
+            "source": "switch-x",
+            "target": "recovery-266596527",
+            "generation": 5,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-out-2": {
+            "source": "recovery-266596527",
+            "target": "switch-y",
+            "generation": 7,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-in-2": {
+            "source": "switch-y",
+            "target": "recovery-266596527",
+            "generation": 9,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          }
+        },
+        "link_usage": {
+          "out-0": 0,
+          "in-0": 0,
+          "alternate-out-0": 0,
+          "alternate-in-0": 0,
+          "out-1": 0,
+          "in-1": 0,
+          "alternate-out-1": 0,
+          "alternate-in-1": 0,
+          "out-2": 0,
+          "in-2": 0,
+          "alternate-out-2": 0,
+          "alternate-in-2": 0
+        },
+        "reservations": {
+          "prefill-266596527": 0,
+          "decode-266596527": 0,
+          "recovery-266596527": 0
+        }
+      }
+    },
+    "correction-0": {
+      "routing": {
+        "active": "stable-266596527",
+        "staged": "candidate-266596527",
+        "previous": null,
+        "used": [
+          "stable-266596527",
+          "candidate-266596527"
+        ]
+      },
+      "plans": {
+        "baseline-batch0-266596527": {
+          "generation": "stable-266596527",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch0-266596527/baseline-0-266596527",
+              "request": "baseline-0-266596527",
+              "device": "prefill-266596527",
+              "cache": "cache-a-266596527",
+              "reserve_bytes": 924
+            },
+            {
+              "lease": "baseline-batch0-266596527/baseline-1-266596527",
+              "request": "baseline-1-266596527",
+              "device": "prefill-266596527",
+              "cache": "cache-a-266596527",
+              "reserve_bytes": 924
+            }
+          ],
+          "deferred": [
+            "baseline-2-266596527",
+            "baseline-3-266596527"
+          ]
+        },
+        "baseline-batch1-266596527": {
+          "generation": "stable-266596527",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch1-266596527/baseline-2-266596527",
+              "request": "baseline-2-266596527",
+              "device": "prefill-266596527",
+              "cache": "cache-a-266596527",
+              "reserve_bytes": 924
+            },
+            {
+              "lease": "baseline-batch1-266596527/baseline-3-266596527",
+              "request": "baseline-3-266596527",
+              "device": "prefill-266596527",
+              "cache": "cache-a-266596527",
+              "reserve_bytes": 924
+            }
+          ],
+          "deferred": []
+        },
+        "before-copy-266596527": {
+          "generation": "candidate-266596527",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-0-266596527",
+            "probe-1-266596527",
+            "probe-2-266596527",
+            "probe-3-266596527"
+          ]
+        },
+        "probe-batch0-266596527": {
+          "generation": "candidate-266596527",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch0-266596527/probe-0-266596527",
+              "request": "probe-0-266596527",
+              "device": "decode-266596527",
+              "cache": "cache-b-266596527",
+              "reserve_bytes": 796
+            },
+            {
+              "lease": "probe-batch0-266596527/probe-2-266596527",
+              "request": "probe-2-266596527",
+              "device": "decode-266596527",
+              "cache": "cache-b-266596527",
+              "reserve_bytes": 796
+            }
+          ],
+          "deferred": [
+            "probe-1-266596527",
+            "probe-3-266596527"
+          ]
+        },
+        "000-resume0-266596527": {
+          "generation": "candidate-266596527",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "000-resume0-266596527/probe-0-266596527",
+              "request": "probe-0-266596527",
+              "device": "decode-266596527",
+              "cache": "paused-cache0-266596527",
+              "reserve_bytes": 796
+            }
+          ],
+          "deferred": [
+            "probe-1-266596527",
+            "probe-3-266596527"
+          ]
+        },
+        "000-resume1-266596527": {
+          "generation": "candidate-266596527",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "000-resume1-266596527/probe-0-266596527",
+              "request": "probe-0-266596527",
+              "device": "decode-266596527",
+              "cache": "paused-cache0-266596527",
+              "reserve_bytes": 796
+            }
+          ],
+          "deferred": [
+            "probe-1-266596527",
+            "probe-3-266596527"
+          ]
+        },
+        "waiting-second-copy-266596527": {
+          "generation": "candidate-266596527",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-1-266596527",
+            "probe-3-266596527"
+          ]
+        },
+        "probe-batch1-266596527": {
+          "generation": "candidate-266596527",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch1-266596527/probe-1-266596527",
+              "request": "probe-1-266596527",
+              "device": "recovery-266596527",
+              "cache": "cache-c-266596527",
+              "reserve_bytes": 1564
+            },
+            {
+              "lease": "probe-batch1-266596527/probe-3-266596527",
+              "request": "probe-3-266596527",
+              "device": "recovery-266596527",
+              "cache": "cache-c-266596527",
+              "reserve_bytes": 1564
+            }
+          ],
+          "deferred": []
+        },
+        "old-draining-plan-266596527": {
+          "generation": "stable-266596527",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "old-draining-plan-266596527/old-draining-266596527",
+              "request": "old-draining-266596527",
+              "device": "prefill-266596527",
+              "cache": null,
+              "reserve_bytes": 1386
+            }
+          ],
+          "deferred": []
+        }
+      },
+      "devices": {
+        "decode-266596527": {
+          "epoch": 4,
+          "used_bytes": 796,
+          "reserved_bytes": 0,
+          "free_bytes": 7960
+        },
+        "prefill-266596527": {
+          "epoch": 2,
+          "used_bytes": 0,
+          "reserved_bytes": 0,
+          "free_bytes": 17556
+        },
+        "recovery-266596527": {
+          "epoch": 7,
+          "used_bytes": 0,
+          "reserved_bytes": 0,
+          "free_bytes": 17204
+        }
+      },
+      "decisions": [
+        {
+          "event": "event-20380401-1",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-2",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-3",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-4",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-5",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-6",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-7",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-8",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-9",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-10",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-11",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-12",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-13",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-14",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-15",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-16",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-17",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-18",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-19",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-20",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-21",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-22",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-23",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-24",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-25",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-26",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-27",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-28",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-29",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-30",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-31",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-32",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-33",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-34",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-35",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-36",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-37",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-38",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-39",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-40",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-41",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-42",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-43",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-44",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-45",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-46",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-47",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-48",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-49",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-50",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-51",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-52",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-53",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-54",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-55",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-56",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-57",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-58",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-59",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-60",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-61",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-62",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-63",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-64",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-65",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-67",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-68",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-69",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-70",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-71",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-72",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-73",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-74",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-75",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-76",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-77",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-78",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-79",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-80",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-81",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-82",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-83",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-84",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-85",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-86",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-87",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-88",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-89",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-90",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-91",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-92",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-93",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-94",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-95",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-96",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-97",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-98",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-99",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-100",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-101",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-102",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-103",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-104",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-105",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-106",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-107",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-108",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-109",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-110",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-111",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-112",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-113",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-114",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-115",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-116",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-117",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-118",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-119",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-120",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-121",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-122",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-123",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-124",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-125",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-126",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-127",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-128",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-129",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-130",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-131",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-132",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-133",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-134",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-135",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-136",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-137",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-138",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-139",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-140",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-141",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-142",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-143",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-144",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-145",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-146",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-147",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-148",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-149",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-150",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-151",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-152",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-153",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-154",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-155",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-156",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-157",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-158",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-159",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-160",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-161",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-162",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-163",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-164",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-165",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-166",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-167",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-168",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-169",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-170",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-171",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-172",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-173",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-174",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-175",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-176",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-177",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-178",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-179",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-180",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-181",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-182",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-183",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-184",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-185",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-186",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-187",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-188",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-189",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-190",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-191",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-192",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-193",
+          "accepted": false
+        },
+        {
+          "event": "event-20380401-194",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-195",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-196",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-197",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-198",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-199",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-200",
+          "accepted": true
+        },
+        {
+          "event": "event-20380401-201",
+          "accepted": true
+        }
+      ],
+      "signals": {
+        "000-resume0-266596527/probe-0-266596527": {
+          "state": "pending"
+        },
+        "000-resume1-266596527/probe-0-266596527": {
+          "state": "pending"
+        },
+        "baseline-batch0-266596527/baseline-0-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "baseline-batch0-266596527/baseline-1-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "baseline-batch1-266596527/baseline-2-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "baseline-batch1-266596527/baseline-3-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "old-draining-plan-266596527/old-draining-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "probe-batch0-266596527/probe-0-266596527": {
+          "state": "pending"
+        },
+        "probe-batch0-266596527/probe-2-266596527": {
+          "state": "invalid"
+        },
+        "probe-batch1-266596527/probe-1-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "probe-batch1-266596527/probe-3-266596527": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        }
+      },
+      "fabric": {
+        "offers": {
+          "export-0-20380401": {
+            "status": "dropped",
+            "device": "decode-266596527",
+            "epoch": 4,
+            "tokens": 10
+          },
+          "probe-export-20380401": {
+            "status": "dropped",
+            "device": "prefill-266596527",
+            "epoch": 2,
+            "tokens": 9
+          }
+        },
+        "jobs": {
+          "handoff-0-20380401": {
+            "offer": "export-0-20380401",
+            "request": "probe-0-266596527",
+            "target": "recovery-266596527",
+            "target_cache": "received-prefix0-266596527",
+            "max_hops": 3,
+            "ticket": "hop-ticket0-266596527",
+            "status": "queued",
+            "received_values": 0
+          },
+          "zz-handoff-0-20380401": {
+            "offer": "export-0-20380401",
+            "request": "probe-0-266596527",
+            "target": "recovery-266596527",
+            "target_cache": "alternate-received-prefix0-266596527",
+            "max_hops": 3,
+            "ticket": "alt-hop-ticket0-266596527",
+            "status": "queued",
+            "received_values": 0
+          },
+          "probe-copy-20380401": {
+            "offer": "probe-export-20380401",
+            "request": "probe-1-266596527",
+            "target": "recovery-266596527",
+            "target_cache": "probe-cache-20380401",
+            "max_hops": 3,
+            "ticket": "probe-ticket-20380401",
+            "status": "aborted",
+            "rank_bytes": [
+              768,
+              768,
+              768,
+              768,
+              768,
+              768,
+              768,
+              768
+            ],
+            "output_bytes": 1564,
+            "reserve_bytes": 2332,
+            "wire_bytes": 7488,
+            "path": [
+              "alternate-out-0",
+              "alternate-in-2"
+            ],
+            "link_epochs": {
+              "alternate-out-0": 7,
+              "alternate-in-2": 9
+            },
+            "source": "prefill-266596527",
+            "source_epoch": 2,
+            "target_epoch": 6,
+            "parent": null,
+            "segment": 0,
+            "plan": "plan-handoff-0-20380401",
+            "sealed": [],
+            "received_values": 0
+          },
+          "handoff-1-20380401": {
+            "offer": "export-1-20380401",
+            "request": "probe-0-266596527",
+            "target": "decode-266596527",
+            "target_cache": "received-prefix1-266596527",
+            "max_hops": 3,
+            "ticket": "hop-ticket1-266596527",
+            "status": "queued",
+            "received_values": 0
+          },
+          "zz-handoff-1-20380401": {
+            "offer": "export-1-20380401",
+            "request": "probe-0-266596527",
+            "target": "decode-266596527",
+            "target_cache": "alternate-received-prefix1-266596527",
+            "max_hops": 3,
+            "ticket": "alt-hop-ticket1-266596527",
+            "status": "queued",
+            "received_values": 0
+          }
+        },
+        "plans": {
+          "plan-handoff-0-20380401": {
+            "generation": "candidate-266596527",
+            "admitted": [
+              "probe-copy-20380401"
+            ],
+            "deferred": [
+              "handoff-0-20380401",
+              "zz-handoff-0-20380401"
+            ]
+          },
+          "plan-handoff-1-20380401": {
+            "generation": "candidate-266596527",
+            "admitted": [],
+            "deferred": [
+              "handoff-0-20380401",
+              "handoff-1-20380401",
+              "zz-handoff-0-20380401",
+              "zz-handoff-1-20380401"
+            ]
+          }
+        },
+        "links": {
+          "out-0": {
+            "source": "prefill-266596527",
+            "target": "switch-x",
+            "generation": 3,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "in-0": {
+            "source": "switch-x",
+            "target": "prefill-266596527",
+            "generation": 5,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-out-0": {
+            "source": "prefill-266596527",
+            "target": "switch-y",
+            "generation": 7,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-in-0": {
+            "source": "switch-y",
+            "target": "prefill-266596527",
+            "generation": 9,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "out-1": {
+            "source": "decode-266596527",
+            "target": "switch-x",
+            "generation": 3,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "in-1": {
+            "source": "switch-x",
+            "target": "decode-266596527",
+            "generation": 5,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-out-1": {
+            "source": "decode-266596527",
+            "target": "switch-y",
+            "generation": 7,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-in-1": {
+            "source": "switch-y",
+            "target": "decode-266596527",
+            "generation": 9,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "out-2": {
+            "source": "recovery-266596527",
+            "target": "switch-x",
+            "generation": 3,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "in-2": {
+            "source": "switch-x",
+            "target": "recovery-266596527",
+            "generation": 5,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-out-2": {
+            "source": "recovery-266596527",
+            "target": "switch-y",
+            "generation": 7,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-in-2": {
+            "source": "switch-y",
+            "target": "recovery-266596527",
+            "generation": 9,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          }
+        },
+        "link_usage": {
+          "out-0": 0,
+          "in-0": 0,
+          "alternate-out-0": 0,
+          "alternate-in-0": 0,
+          "out-1": 0,
+          "in-1": 0,
+          "alternate-out-1": 0,
+          "alternate-in-1": 0,
+          "out-2": 0,
+          "in-2": 0,
+          "alternate-out-2": 0,
+          "alternate-in-2": 0
+        },
+        "reservations": {
+          "prefill-266596527": 0,
+          "decode-266596527": 0,
+          "recovery-266596527": 0
+        }
+      }
+    },
+    "correction-1": {
       "routing": {
         "active": "stable-266596527",
         "staged": null,

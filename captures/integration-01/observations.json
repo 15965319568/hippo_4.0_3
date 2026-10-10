@@ -4622,6 +4622,1303 @@
           "recovery-932448371": 0
         }
       }
+    },
+    "correction-0": {
+      "routing": {
+        "active": "stable-932448371",
+        "staged": "candidate-932448371",
+        "previous": null,
+        "used": [
+          "stable-932448371",
+          "candidate-932448371"
+        ]
+      },
+      "plans": {
+        "baseline-batch0-932448371": {
+          "generation": "stable-932448371",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch0-932448371/baseline-0-932448371",
+              "request": "baseline-0-932448371",
+              "device": "prefill-932448371",
+              "cache": "cache-a-932448371",
+              "reserve_bytes": 752
+            },
+            {
+              "lease": "baseline-batch0-932448371/baseline-1-932448371",
+              "request": "baseline-1-932448371",
+              "device": "prefill-932448371",
+              "cache": "cache-a-932448371",
+              "reserve_bytes": 752
+            }
+          ],
+          "deferred": [
+            "baseline-2-932448371",
+            "baseline-3-932448371"
+          ]
+        },
+        "baseline-batch1-932448371": {
+          "generation": "stable-932448371",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch1-932448371/baseline-2-932448371",
+              "request": "baseline-2-932448371",
+              "device": "prefill-932448371",
+              "cache": "cache-a-932448371",
+              "reserve_bytes": 752
+            },
+            {
+              "lease": "baseline-batch1-932448371/baseline-3-932448371",
+              "request": "baseline-3-932448371",
+              "device": "prefill-932448371",
+              "cache": "cache-a-932448371",
+              "reserve_bytes": 752
+            }
+          ],
+          "deferred": []
+        },
+        "before-copy-932448371": {
+          "generation": "candidate-932448371",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-0-932448371",
+            "probe-1-932448371",
+            "probe-2-932448371",
+            "probe-3-932448371"
+          ]
+        },
+        "probe-batch0-932448371": {
+          "generation": "candidate-932448371",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch0-932448371/probe-0-932448371",
+              "request": "probe-0-932448371",
+              "device": "decode-932448371",
+              "cache": "cache-b-932448371",
+              "reserve_bytes": 784
+            },
+            {
+              "lease": "probe-batch0-932448371/probe-2-932448371",
+              "request": "probe-2-932448371",
+              "device": "decode-932448371",
+              "cache": "cache-b-932448371",
+              "reserve_bytes": 784
+            }
+          ],
+          "deferred": [
+            "probe-1-932448371",
+            "probe-3-932448371"
+          ]
+        },
+        "000-resume0-932448371": {
+          "generation": "candidate-932448371",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "000-resume0-932448371/probe-0-932448371",
+              "request": "probe-0-932448371",
+              "device": "decode-932448371",
+              "cache": "paused-cache0-932448371",
+              "reserve_bytes": 784
+            }
+          ],
+          "deferred": [
+            "probe-1-932448371",
+            "probe-3-932448371"
+          ]
+        },
+        "000-resume1-932448371": {
+          "generation": "candidate-932448371",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "000-resume1-932448371/probe-0-932448371",
+              "request": "probe-0-932448371",
+              "device": "decode-932448371",
+              "cache": "paused-cache0-932448371",
+              "reserve_bytes": 784
+            }
+          ],
+          "deferred": [
+            "probe-1-932448371",
+            "probe-3-932448371"
+          ]
+        },
+        "waiting-second-copy-932448371": {
+          "generation": "candidate-932448371",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-1-932448371",
+            "probe-3-932448371"
+          ]
+        },
+        "probe-batch1-932448371": {
+          "generation": "candidate-932448371",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch1-932448371/probe-1-932448371",
+              "request": "probe-1-932448371",
+              "device": "recovery-932448371",
+              "cache": "cache-c-932448371",
+              "reserve_bytes": 1552
+            },
+            {
+              "lease": "probe-batch1-932448371/probe-3-932448371",
+              "request": "probe-3-932448371",
+              "device": "recovery-932448371",
+              "cache": "cache-c-932448371",
+              "reserve_bytes": 1552
+            }
+          ],
+          "deferred": []
+        },
+        "old-draining-plan-932448371": {
+          "generation": "stable-932448371",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "old-draining-plan-932448371/old-draining-932448371",
+              "request": "old-draining-932448371",
+              "device": "prefill-932448371",
+              "cache": null,
+              "reserve_bytes": 1128
+            }
+          ],
+          "deferred": []
+        }
+      },
+      "devices": {
+        "decode-932448371": {
+          "epoch": 4,
+          "used_bytes": 784,
+          "reserved_bytes": 0,
+          "free_bytes": 7840
+        },
+        "prefill-932448371": {
+          "epoch": 2,
+          "used_bytes": 0,
+          "reserved_bytes": 0,
+          "free_bytes": 14288
+        },
+        "recovery-932448371": {
+          "epoch": 7,
+          "used_bytes": 0,
+          "reserved_bytes": 0,
+          "free_bytes": 17072
+        }
+      },
+      "decisions": [
+        {
+          "event": "event-20272950-1",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-2",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-3",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-4",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-5",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-6",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-7",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-8",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-9",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-10",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-11",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-12",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-13",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-14",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-15",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-16",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-17",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-18",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-19",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-20",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-21",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-22",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-23",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-24",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-25",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-26",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-27",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-28",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-29",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-30",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-31",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-32",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-33",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-34",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-35",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-36",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-37",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-38",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-39",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-40",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-41",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-42",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-43",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-44",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-45",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-46",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-47",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-48",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-49",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-50",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-51",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-52",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-53",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-54",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-55",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-56",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-57",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-58",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-59",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-60",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-61",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-62",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-63",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-64",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-65",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-66",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-67",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-68",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-69",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-70",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-71",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-72",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-73",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-74",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-75",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-76",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-77",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-78",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-79",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-80",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-81",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-82",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-83",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-84",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-85",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-86",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-87",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-88",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-89",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-90",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-91",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-92",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-93",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-94",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-95",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-96",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-97",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-98",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-99",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-100",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-101",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-102",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-103",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-104",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-105",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-106",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-107",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-108",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-109",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-110",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-111",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-112",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-113",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-114",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-115",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-116",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-117",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-118",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-119",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-120",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-121",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-122",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-123",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-124",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-125",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-126",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-127",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-128",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-129",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-130",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-131",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-132",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-133",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-134",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-135",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-136",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-137",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-138",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-139",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-140",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-141",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-142",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-143",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-144",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-145",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-146",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-147",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-148",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-149",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-150",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-151",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-152",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-153",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-154",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-155",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-156",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-157",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-158",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-159",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-160",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-161",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-162",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-163",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-164",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-165",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-166",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-167",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-168",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-169",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-170",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-171",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-172",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-173",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-174",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-175",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-176",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-177",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-178",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-179",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-180",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-181",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-182",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-183",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-184",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-185",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-186",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-187",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-188",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-189",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-190",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-191",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-192",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-193",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-194",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-195",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-196",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-197",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-198",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-199",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-200",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-201",
+          "accepted": true
+        }
+      ],
+      "signals": {
+        "000-resume0-932448371/probe-0-932448371": {
+          "state": "pending"
+        },
+        "000-resume1-932448371/probe-0-932448371": {
+          "state": "pending"
+        },
+        "baseline-batch0-932448371/baseline-0-932448371": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "baseline-batch0-932448371/baseline-1-932448371": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "baseline-batch1-932448371/baseline-2-932448371": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "baseline-batch1-932448371/baseline-3-932448371": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "old-draining-plan-932448371/old-draining-932448371": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "probe-batch0-932448371/probe-0-932448371": {
+          "state": "pending"
+        },
+        "probe-batch0-932448371/probe-2-932448371": {
+          "state": "invalid"
+        },
+        "probe-batch1-932448371/probe-1-932448371": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "probe-batch1-932448371/probe-3-932448371": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        }
+      },
+      "fabric": {
+        "offers": {
+          "export-0-20272950": {
+            "status": "dropped",
+            "device": "decode-932448371",
+            "epoch": 4,
+            "tokens": 9
+          },
+          "probe-export-20272950": {
+            "status": "dropped",
+            "device": "prefill-932448371",
+            "epoch": 2,
+            "tokens": 8
+          }
+        },
+        "jobs": {
+          "handoff-0-20272950": {
+            "offer": "export-0-20272950",
+            "request": "probe-0-932448371",
+            "target": "recovery-932448371",
+            "target_cache": "received-prefix0-932448371",
+            "max_hops": 3,
+            "ticket": "hop-ticket0-932448371",
+            "status": "queued",
+            "received_values": 0
+          },
+          "zz-handoff-0-20272950": {
+            "offer": "export-0-20272950",
+            "request": "probe-0-932448371",
+            "target": "recovery-932448371",
+            "target_cache": "alternate-received-prefix0-932448371",
+            "max_hops": 3,
+            "ticket": "alt-hop-ticket0-932448371",
+            "status": "queued",
+            "received_values": 0
+          },
+          "probe-copy-20272950": {
+            "offer": "probe-export-20272950",
+            "request": "probe-1-932448371",
+            "target": "recovery-932448371",
+            "target_cache": "probe-cache-20272950",
+            "max_hops": 3,
+            "ticket": "probe-ticket-20272950",
+            "status": "aborted",
+            "rank_bytes": [
+              768,
+              768,
+              768,
+              768,
+              768,
+              768,
+              768,
+              768
+            ],
+            "output_bytes": 1552,
+            "reserve_bytes": 2320,
+            "wire_bytes": 6656,
+            "path": [
+              "alternate-out-0",
+              "alternate-in-2"
+            ],
+            "link_epochs": {
+              "alternate-out-0": 7,
+              "alternate-in-2": 9
+            },
+            "source": "prefill-932448371",
+            "source_epoch": 2,
+            "target_epoch": 6,
+            "parent": null,
+            "segment": 0,
+            "plan": "plan-handoff-0-20272950",
+            "sealed": [],
+            "received_values": 0
+          },
+          "handoff-1-20272950": {
+            "offer": "export-1-20272950",
+            "request": "probe-0-932448371",
+            "target": "decode-932448371",
+            "target_cache": "received-prefix1-932448371",
+            "max_hops": 3,
+            "ticket": "hop-ticket1-932448371",
+            "status": "queued",
+            "received_values": 0
+          },
+          "zz-handoff-1-20272950": {
+            "offer": "export-1-20272950",
+            "request": "probe-0-932448371",
+            "target": "decode-932448371",
+            "target_cache": "alternate-received-prefix1-932448371",
+            "max_hops": 3,
+            "ticket": "alt-hop-ticket1-932448371",
+            "status": "queued",
+            "received_values": 0
+          }
+        },
+        "plans": {
+          "plan-handoff-0-20272950": {
+            "generation": "candidate-932448371",
+            "admitted": [
+              "probe-copy-20272950"
+            ],
+            "deferred": [
+              "handoff-0-20272950",
+              "zz-handoff-0-20272950"
+            ]
+          },
+          "plan-handoff-1-20272950": {
+            "generation": "candidate-932448371",
+            "admitted": [],
+            "deferred": [
+              "handoff-0-20272950",
+              "handoff-1-20272950",
+              "zz-handoff-0-20272950",
+              "zz-handoff-1-20272950"
+            ]
+          }
+        },
+        "links": {
+          "out-0": {
+            "source": "prefill-932448371",
+            "target": "switch-x",
+            "generation": 3,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "in-0": {
+            "source": "switch-x",
+            "target": "prefill-932448371",
+            "generation": 5,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-out-0": {
+            "source": "prefill-932448371",
+            "target": "switch-y",
+            "generation": 7,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-in-0": {
+            "source": "switch-y",
+            "target": "prefill-932448371",
+            "generation": 9,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "out-1": {
+            "source": "decode-932448371",
+            "target": "switch-x",
+            "generation": 3,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "in-1": {
+            "source": "switch-x",
+            "target": "decode-932448371",
+            "generation": 5,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-out-1": {
+            "source": "decode-932448371",
+            "target": "switch-y",
+            "generation": 7,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-in-1": {
+            "source": "switch-y",
+            "target": "decode-932448371",
+            "generation": 9,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "out-2": {
+            "source": "recovery-932448371",
+            "target": "switch-x",
+            "generation": 3,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "in-2": {
+            "source": "switch-x",
+            "target": "recovery-932448371",
+            "generation": 5,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-out-2": {
+            "source": "recovery-932448371",
+            "target": "switch-y",
+            "generation": 7,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-in-2": {
+            "source": "switch-y",
+            "target": "recovery-932448371",
+            "generation": 9,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          }
+        },
+        "link_usage": {
+          "out-0": 0,
+          "in-0": 0,
+          "alternate-out-0": 0,
+          "alternate-in-0": 0,
+          "out-1": 0,
+          "in-1": 0,
+          "alternate-out-1": 0,
+          "alternate-in-1": 0,
+          "out-2": 0,
+          "in-2": 0,
+          "alternate-out-2": 0,
+          "alternate-in-2": 0
+        },
+        "reservations": {
+          "prefill-932448371": 0,
+          "decode-932448371": 0,
+          "recovery-932448371": 0
+        }
+      }
     }
   },
   "restored": {
@@ -7952,6 +9249,1303 @@
       }
     },
     "expired": {
+      "routing": {
+        "active": "stable-932448371",
+        "staged": "candidate-932448371",
+        "previous": null,
+        "used": [
+          "stable-932448371",
+          "candidate-932448371"
+        ]
+      },
+      "plans": {
+        "baseline-batch0-932448371": {
+          "generation": "stable-932448371",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch0-932448371/baseline-0-932448371",
+              "request": "baseline-0-932448371",
+              "device": "prefill-932448371",
+              "cache": "cache-a-932448371",
+              "reserve_bytes": 752
+            },
+            {
+              "lease": "baseline-batch0-932448371/baseline-1-932448371",
+              "request": "baseline-1-932448371",
+              "device": "prefill-932448371",
+              "cache": "cache-a-932448371",
+              "reserve_bytes": 752
+            }
+          ],
+          "deferred": [
+            "baseline-2-932448371",
+            "baseline-3-932448371"
+          ]
+        },
+        "baseline-batch1-932448371": {
+          "generation": "stable-932448371",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch1-932448371/baseline-2-932448371",
+              "request": "baseline-2-932448371",
+              "device": "prefill-932448371",
+              "cache": "cache-a-932448371",
+              "reserve_bytes": 752
+            },
+            {
+              "lease": "baseline-batch1-932448371/baseline-3-932448371",
+              "request": "baseline-3-932448371",
+              "device": "prefill-932448371",
+              "cache": "cache-a-932448371",
+              "reserve_bytes": 752
+            }
+          ],
+          "deferred": []
+        },
+        "before-copy-932448371": {
+          "generation": "candidate-932448371",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-0-932448371",
+            "probe-1-932448371",
+            "probe-2-932448371",
+            "probe-3-932448371"
+          ]
+        },
+        "probe-batch0-932448371": {
+          "generation": "candidate-932448371",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch0-932448371/probe-0-932448371",
+              "request": "probe-0-932448371",
+              "device": "decode-932448371",
+              "cache": "cache-b-932448371",
+              "reserve_bytes": 784
+            },
+            {
+              "lease": "probe-batch0-932448371/probe-2-932448371",
+              "request": "probe-2-932448371",
+              "device": "decode-932448371",
+              "cache": "cache-b-932448371",
+              "reserve_bytes": 784
+            }
+          ],
+          "deferred": [
+            "probe-1-932448371",
+            "probe-3-932448371"
+          ]
+        },
+        "000-resume0-932448371": {
+          "generation": "candidate-932448371",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "000-resume0-932448371/probe-0-932448371",
+              "request": "probe-0-932448371",
+              "device": "decode-932448371",
+              "cache": "paused-cache0-932448371",
+              "reserve_bytes": 784
+            }
+          ],
+          "deferred": [
+            "probe-1-932448371",
+            "probe-3-932448371"
+          ]
+        },
+        "000-resume1-932448371": {
+          "generation": "candidate-932448371",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "000-resume1-932448371/probe-0-932448371",
+              "request": "probe-0-932448371",
+              "device": "decode-932448371",
+              "cache": "paused-cache0-932448371",
+              "reserve_bytes": 784
+            }
+          ],
+          "deferred": [
+            "probe-1-932448371",
+            "probe-3-932448371"
+          ]
+        },
+        "waiting-second-copy-932448371": {
+          "generation": "candidate-932448371",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-1-932448371",
+            "probe-3-932448371"
+          ]
+        },
+        "probe-batch1-932448371": {
+          "generation": "candidate-932448371",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch1-932448371/probe-1-932448371",
+              "request": "probe-1-932448371",
+              "device": "recovery-932448371",
+              "cache": "cache-c-932448371",
+              "reserve_bytes": 1552
+            },
+            {
+              "lease": "probe-batch1-932448371/probe-3-932448371",
+              "request": "probe-3-932448371",
+              "device": "recovery-932448371",
+              "cache": "cache-c-932448371",
+              "reserve_bytes": 1552
+            }
+          ],
+          "deferred": []
+        },
+        "old-draining-plan-932448371": {
+          "generation": "stable-932448371",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "old-draining-plan-932448371/old-draining-932448371",
+              "request": "old-draining-932448371",
+              "device": "prefill-932448371",
+              "cache": null,
+              "reserve_bytes": 1128
+            }
+          ],
+          "deferred": []
+        }
+      },
+      "devices": {
+        "decode-932448371": {
+          "epoch": 4,
+          "used_bytes": 784,
+          "reserved_bytes": 0,
+          "free_bytes": 7840
+        },
+        "prefill-932448371": {
+          "epoch": 2,
+          "used_bytes": 0,
+          "reserved_bytes": 0,
+          "free_bytes": 14288
+        },
+        "recovery-932448371": {
+          "epoch": 7,
+          "used_bytes": 0,
+          "reserved_bytes": 0,
+          "free_bytes": 17072
+        }
+      },
+      "decisions": [
+        {
+          "event": "event-20272950-1",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-2",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-3",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-4",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-5",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-6",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-7",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-8",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-9",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-10",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-11",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-12",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-13",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-14",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-15",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-16",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-17",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-18",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-19",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-20",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-21",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-22",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-23",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-24",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-25",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-26",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-27",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-28",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-29",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-30",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-31",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-32",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-33",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-34",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-35",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-36",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-37",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-38",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-39",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-40",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-41",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-42",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-43",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-44",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-45",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-46",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-47",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-48",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-49",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-50",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-51",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-52",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-53",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-54",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-55",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-56",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-57",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-58",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-59",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-60",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-61",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-62",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-63",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-64",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-65",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-66",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-67",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-68",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-69",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-70",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-71",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-72",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-73",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-74",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-75",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-76",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-77",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-78",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-79",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-80",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-81",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-82",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-83",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-84",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-85",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-86",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-87",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-88",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-89",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-90",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-91",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-92",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-93",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-94",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-95",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-96",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-97",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-98",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-99",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-100",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-101",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-102",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-103",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-104",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-105",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-106",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-107",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-108",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-109",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-110",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-111",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-112",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-113",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-114",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-115",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-116",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-117",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-118",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-119",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-120",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-121",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-122",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-123",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-124",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-125",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-126",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-127",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-128",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-129",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-130",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-131",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-132",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-133",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-134",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-135",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-136",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-137",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-138",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-139",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-140",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-141",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-142",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-143",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-144",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-145",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-146",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-147",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-148",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-149",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-150",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-151",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-152",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-153",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-154",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-155",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-156",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-157",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-158",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-159",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-160",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-161",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-162",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-163",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-164",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-165",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-166",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-167",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-168",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-169",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-170",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-171",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-172",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-173",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-174",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-175",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-176",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-177",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-178",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-179",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-180",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-181",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-182",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-183",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-184",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-185",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-186",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-187",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-188",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-189",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-190",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-191",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-192",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-193",
+          "accepted": false
+        },
+        {
+          "event": "event-20272950-194",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-195",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-196",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-197",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-198",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-199",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-200",
+          "accepted": true
+        },
+        {
+          "event": "event-20272950-201",
+          "accepted": true
+        }
+      ],
+      "signals": {
+        "000-resume0-932448371/probe-0-932448371": {
+          "state": "pending"
+        },
+        "000-resume1-932448371/probe-0-932448371": {
+          "state": "pending"
+        },
+        "baseline-batch0-932448371/baseline-0-932448371": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "baseline-batch0-932448371/baseline-1-932448371": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "baseline-batch1-932448371/baseline-2-932448371": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "baseline-batch1-932448371/baseline-3-932448371": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "old-draining-plan-932448371/old-draining-932448371": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "probe-batch0-932448371/probe-0-932448371": {
+          "state": "pending"
+        },
+        "probe-batch0-932448371/probe-2-932448371": {
+          "state": "invalid"
+        },
+        "probe-batch1-932448371/probe-1-932448371": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        },
+        "probe-batch1-932448371/probe-3-932448371": {
+          "state": "ready",
+          "tokens": 2,
+          "ttft_ns": 100,
+          "tpot": [
+            10,
+            1
+          ]
+        }
+      },
+      "fabric": {
+        "offers": {
+          "export-0-20272950": {
+            "status": "dropped",
+            "device": "decode-932448371",
+            "epoch": 4,
+            "tokens": 9
+          },
+          "probe-export-20272950": {
+            "status": "dropped",
+            "device": "prefill-932448371",
+            "epoch": 2,
+            "tokens": 8
+          }
+        },
+        "jobs": {
+          "handoff-0-20272950": {
+            "offer": "export-0-20272950",
+            "request": "probe-0-932448371",
+            "target": "recovery-932448371",
+            "target_cache": "received-prefix0-932448371",
+            "max_hops": 3,
+            "ticket": "hop-ticket0-932448371",
+            "status": "queued",
+            "received_values": 0
+          },
+          "zz-handoff-0-20272950": {
+            "offer": "export-0-20272950",
+            "request": "probe-0-932448371",
+            "target": "recovery-932448371",
+            "target_cache": "alternate-received-prefix0-932448371",
+            "max_hops": 3,
+            "ticket": "alt-hop-ticket0-932448371",
+            "status": "queued",
+            "received_values": 0
+          },
+          "probe-copy-20272950": {
+            "offer": "probe-export-20272950",
+            "request": "probe-1-932448371",
+            "target": "recovery-932448371",
+            "target_cache": "probe-cache-20272950",
+            "max_hops": 3,
+            "ticket": "probe-ticket-20272950",
+            "status": "aborted",
+            "rank_bytes": [
+              768,
+              768,
+              768,
+              768,
+              768,
+              768,
+              768,
+              768
+            ],
+            "output_bytes": 1552,
+            "reserve_bytes": 2320,
+            "wire_bytes": 6656,
+            "path": [
+              "alternate-out-0",
+              "alternate-in-2"
+            ],
+            "link_epochs": {
+              "alternate-out-0": 7,
+              "alternate-in-2": 9
+            },
+            "source": "prefill-932448371",
+            "source_epoch": 2,
+            "target_epoch": 6,
+            "parent": null,
+            "segment": 0,
+            "plan": "plan-handoff-0-20272950",
+            "sealed": [],
+            "received_values": 0
+          },
+          "handoff-1-20272950": {
+            "offer": "export-1-20272950",
+            "request": "probe-0-932448371",
+            "target": "decode-932448371",
+            "target_cache": "received-prefix1-932448371",
+            "max_hops": 3,
+            "ticket": "hop-ticket1-932448371",
+            "status": "queued",
+            "received_values": 0
+          },
+          "zz-handoff-1-20272950": {
+            "offer": "export-1-20272950",
+            "request": "probe-0-932448371",
+            "target": "decode-932448371",
+            "target_cache": "alternate-received-prefix1-932448371",
+            "max_hops": 3,
+            "ticket": "alt-hop-ticket1-932448371",
+            "status": "queued",
+            "received_values": 0
+          }
+        },
+        "plans": {
+          "plan-handoff-0-20272950": {
+            "generation": "candidate-932448371",
+            "admitted": [
+              "probe-copy-20272950"
+            ],
+            "deferred": [
+              "handoff-0-20272950",
+              "zz-handoff-0-20272950"
+            ]
+          },
+          "plan-handoff-1-20272950": {
+            "generation": "candidate-932448371",
+            "admitted": [],
+            "deferred": [
+              "handoff-0-20272950",
+              "handoff-1-20272950",
+              "zz-handoff-0-20272950",
+              "zz-handoff-1-20272950"
+            ]
+          }
+        },
+        "links": {
+          "out-0": {
+            "source": "prefill-932448371",
+            "target": "switch-x",
+            "generation": 3,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "in-0": {
+            "source": "switch-x",
+            "target": "prefill-932448371",
+            "generation": 5,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-out-0": {
+            "source": "prefill-932448371",
+            "target": "switch-y",
+            "generation": 7,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-in-0": {
+            "source": "switch-y",
+            "target": "prefill-932448371",
+            "generation": 9,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "out-1": {
+            "source": "decode-932448371",
+            "target": "switch-x",
+            "generation": 3,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "in-1": {
+            "source": "switch-x",
+            "target": "decode-932448371",
+            "generation": 5,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-out-1": {
+            "source": "decode-932448371",
+            "target": "switch-y",
+            "generation": 7,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-in-1": {
+            "source": "switch-y",
+            "target": "decode-932448371",
+            "generation": 9,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "out-2": {
+            "source": "recovery-932448371",
+            "target": "switch-x",
+            "generation": 3,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "in-2": {
+            "source": "switch-x",
+            "target": "recovery-932448371",
+            "generation": 5,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-out-2": {
+            "source": "recovery-932448371",
+            "target": "switch-y",
+            "generation": 7,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          },
+          "alternate-in-2": {
+            "source": "switch-y",
+            "target": "recovery-932448371",
+            "generation": 9,
+            "capacity_bytes": 100000000,
+            "enabled": true
+          }
+        },
+        "link_usage": {
+          "out-0": 0,
+          "in-0": 0,
+          "alternate-out-0": 0,
+          "alternate-in-0": 0,
+          "out-1": 0,
+          "in-1": 0,
+          "alternate-out-1": 0,
+          "alternate-in-1": 0,
+          "out-2": 0,
+          "in-2": 0,
+          "alternate-out-2": 0,
+          "alternate-in-2": 0
+        },
+        "reservations": {
+          "prefill-932448371": 0,
+          "decode-932448371": 0,
+          "recovery-932448371": 0
+        }
+      }
+    },
+    "correction-0": {
       "routing": {
         "active": "stable-932448371",
         "staged": "candidate-932448371",
