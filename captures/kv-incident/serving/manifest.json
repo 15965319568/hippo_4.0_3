@@ -1,0 +1,161 @@
+{
+  "models": {
+    "gqa-376015215": {
+      "layers": 2,
+      "kv_heads": 7,
+      "head_dim": 28,
+      "kv_bits": 16,
+      "page_tokens": 5,
+      "page_metadata_bytes": 17
+    }
+  },
+  "devices": {
+    "prefill-376015215": {
+      "tensor_parallel": 2,
+      "alignment_bytes": 16,
+      "capacity_bytes": 54010,
+      "reserved_bytes": 46,
+      "epoch": 1
+    },
+    "decode-376015215": {
+      "tensor_parallel": 4,
+      "alignment_bytes": 64,
+      "capacity_bytes": 27885,
+      "reserved_bytes": 33,
+      "epoch": 3
+    },
+    "recovery-376015215": {
+      "tensor_parallel": 8,
+      "alignment_bytes": 128,
+      "capacity_bytes": 18717,
+      "reserved_bytes": 81,
+      "epoch": 5
+    }
+  },
+  "sources": {
+    "allocator": {
+      "format": "csv",
+      "time_unit": "us",
+      "rank": 3,
+      "allow_ops": [
+        "open",
+        "prefill",
+        "append",
+        "draft",
+        "verify",
+        "seal",
+        "evict",
+        "transfer",
+        "copy",
+        "ack",
+        "close",
+        "reset",
+        "withdraw"
+      ],
+      "devices": [
+        "prefill-376015215",
+        "decode-376015215",
+        "recovery-376015215"
+      ],
+      "files": [
+        "allocator-0.csv",
+        "allocator-1.csv",
+        "allocator-2.csv"
+      ]
+    },
+    "scheduler": {
+      "format": "sqlite",
+      "time_unit": "ns",
+      "rank": 2,
+      "allow_ops": [
+        "open",
+        "prefill",
+        "append",
+        "draft",
+        "verify",
+        "seal",
+        "evict",
+        "transfer",
+        "copy",
+        "ack",
+        "close",
+        "reset",
+        "withdraw"
+      ],
+      "devices": [
+        "prefill-376015215",
+        "decode-376015215",
+        "recovery-376015215"
+      ],
+      "files": [
+        "scheduler-0.sqlite",
+        "scheduler-1.sqlite",
+        "scheduler-2.sqlite"
+      ]
+    },
+    "migration": {
+      "format": "jsonl",
+      "time_unit": "ms",
+      "rank": 3,
+      "allow_ops": [
+        "open",
+        "prefill",
+        "append",
+        "draft",
+        "verify",
+        "seal",
+        "evict",
+        "transfer",
+        "copy",
+        "ack",
+        "close",
+        "reset",
+        "withdraw"
+      ],
+      "devices": [
+        "prefill-376015215",
+        "decode-376015215",
+        "recovery-376015215"
+      ],
+      "files": [
+        "migration-0.jsonl.gz",
+        "migration-1.jsonl.gz",
+        "migration-2.jsonl.gz"
+      ]
+    },
+    "dashboard": {
+      "format": "jsonl",
+      "time_unit": "ns",
+      "rank": 1,
+      "allow_ops": [
+        "open",
+        "prefill",
+        "append",
+        "draft",
+        "verify",
+        "seal",
+        "evict",
+        "transfer",
+        "copy",
+        "ack",
+        "close",
+        "reset",
+        "withdraw"
+      ],
+      "devices": [
+        "prefill-376015215",
+        "decode-376015215",
+        "recovery-376015215"
+      ],
+      "files": [
+        "dashboard-0.jsonl",
+        "dashboard-1.jsonl",
+        "dashboard-2.jsonl"
+      ]
+    }
+  },
+  "query": {
+    "observed_ns": 36028797047405606,
+    "valid_ns": 18014398511183195
+  }
+}
