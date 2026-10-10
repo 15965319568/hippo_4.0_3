@@ -1,0 +1,28 @@
+[
+  {
+    "record_id": "correction-0-324000548",
+    "event": "event-114-324000548",
+    "source": "allocator",
+    "revision": 2,
+    "observed_ns": 36028797103830568,
+    "valid_from_ns": 36028797083714105,
+    "valid_until_ns": null,
+    "approved": true,
+    "parents": [
+      "record-114-324000548"
+    ],
+    "payload": {
+      "step": 114,
+      "operations": [
+        {
+          "op": "verify",
+          "device": "recovery-324000548",
+          "epoch": 6,
+          "sequence": "lease:probe-batch1-324000548/probe-1-324000548",
+          "receipt": "probe-second-0-verify-324000548",
+          "accepted": 1
+        }
+      ]
+    }
+  }
+]

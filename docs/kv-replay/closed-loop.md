@@ -1,11 +1,11 @@
-# 测量驱动的迁移与放量闭环 C6（生效）
+# 测量驱动的迁移与放量闭环 C7（生效）
 
 本契约不是一组独立报表要求。它定义同一个重放状态如何接收请求、消耗真实 KV
 预算、获得客户端测量、决定下一轮补测，最后发布或回滚同一个部署。
 
 ## 输入与共同边界
 
-manifest 在 E6/K6 基础上增加：
+manifest 在 E7/K7 基础上增加：
 
 - deployments[generation]={devices,model,adapter,tokenizer,rope}，devices 是可调度设备列表。
 - tenant_limits[tenant]：该租户所有 reserved/running 租约的 max_output 之和上限。
@@ -16,7 +16,7 @@ manifest 在 E6/K6 基础上增加：
 
 控制操作也带 op/device/epoch。device 表示执行控制事件的设备，和租约目标设备可以
 不同；先检查这个 device 的当前 epoch，再检查可选 guards，然后执行操作。
-E6 的 source.allow_ops/source.devices 同样约束这些控制事件。必要字段、标量类型、
+E7 的 source.allow_ops/source.devices 同样约束这些控制事件。必要字段、标量类型、
 正分母、非负预算、非空设备池由输入保证；未知引用是 missing_dependency。
 
 初始 queue、leases、plans、gates、assessments、wire、clocks 为空。
@@ -34,7 +34,8 @@ generation/tenant/stratum 必须在 manifest 中，否则 request_scope；reques
 
 schedule={schedule,generation,mode}：schedule ID 不可重用（schedule_reuse）。
 mode=serve 只允许当前 active，且该 generation 最近的 gate 不能 blocked=true；
-没有 gate 时可服务。mode=probe 只允许当前 staged。其他情形 routing_gate。
+没有 gate 时可服务。mode=probe 只允许当前 staged；mode=drain 用于已使用部署的续跑，规则见本页续跑部分。
+不满足各模式门槛或未知模式时 routing_gate。
 
 只考虑该 generation 中仍 queued 的请求。每个请求可以不选，也可以选择部署池中
 一个设备上的一个兼容 cache 或冷启动。兼容要求五项域精确相同，cache tokens 是
@@ -60,7 +61,7 @@ warm_tokens 总和、reserve_bytes 总和的相反数。serve 的第一项恒为
 覆盖数为 sum_s min(1,needs[s],本次选择的 stratum=s 请求数)；needs 来自该 generation
 最近一次 assess，没有 assess 则用 min_pairs。仍相同时，选按 request ID 排序后的
 (request ID,device,cache ID或空串) 元组序列中字典序最小的方案。空方案合法。
-逐请求贪心可能占掉另一 stratum 唯一可行的设备；只产出建议而没有预约也不符合契约。
+调度成功后所选请求必须取得下述租约。
 
 每个选中请求生成 ID 为 schedule+'/'+request 的租约和 'lease:'+租约ID 的 sequence。
 租约冻结目标 epoch 和整个 cache 副本，立刻计入预约并持有 cache 页；请求转为 leased。
@@ -69,7 +70,7 @@ plans[schedule]={generation,mode,admitted,deferred}，admitted 按 request ID �
 
 leases[ID] 必须可交换观察以下字段：request,generation,sequence,tenant,stratum,pair,
 attempt,max_output,max_draft,status,device,epoch,cache,cached,warm_tokens,reserve_bytes。
-cache 为预约时名字或 null；cached 为冻结的 K6 cache 对象或 null。结束后可有 result。
+cache 为预约时名字或 null；cached 为冻结的 K7 cache 对象或 null。结束后可有 result。
 这些是外部诊断字段，不是要求调用的内部 helper。
 
 ## 激活、完成与失败
@@ -80,13 +81,13 @@ activate={lease}：租约必须 reserved 且目标设备 epoch 仍匹配，否�
 从目标设备范围内按编号选最小空槽，槽不足 missing_dependency。完成后 status=running。
 创建序列与 prefill 属于同一原子 event；失败不能留下半个序列、消耗的世代或预约转换。
 
-其后使用 K6 的 append/draft/verify/close 操作驱动真实物理状态。close 将租约变为 done，
-result={status,tokens}，tokens 是此次尝试最终稳定输出，不含 prompt 或未接受的草稿。
+其后使用 K7 的 append/draft/verify/close 操作驱动真实物理状态。close 将租约变为 done，
+result={status,tokens}，tokens 是整个逻辑尝试到此为止的累计稳定输出，不含 prompt 或未接受的草稿。
 测量必须绑定这个结果；见 stream-evidence.md。部署发布不会重写已有租约的 generation。
 
 cancel={lease} 只允许 reserved/running，否则 lease_state。活动 sequence、draft 持有
-被清除；若已有 sequence，写入 K6 completed，status=failed、output_tokens=0。
-租约 status=cancelled。reset 按 K6 清理，并令本设备活跃租约 lost、
+被清除；若已有 sequence，写入 K7 completed，status=failed、output_tokens=0。
+租约 status=cancelled。reset 按 K7 清理，并令本设备活跃租约 lost、
 result={status:failed,tokens:[]}。done/cancelled/lost 不再占预约或额外持有 cache。
 其他对象仍持有的物理页继续存在。
 
@@ -96,7 +97,7 @@ assess={assessment,generation,since_ns,as_of_ns}：generation 必须当前 activ
 否则 deployment_state。assessment ID 可覆盖同名旧评估。观察截至本事件的物理状态和
 流，只有 request.arrival_ns 落在闭区间 [since_ns,as_of_ns] 的租约进入窗口。
 
-分别对 (generation,stratum,pair) 取 (attempt,lease ID) 最大的已接纳尝试，包含尚未
+分别对 (generation,stratum,pair) 取 (attempt,segment,lease ID) 最大的已接纳尝试，包含尚未
 完成或失败的重试。不得先过滤成功请求；不能让旧成功样本遮住最新失败。将候选 generation
 与 policy.baseline 的同 stratum/pair 配对；pair 不跨 stratum 合并。
 
@@ -131,7 +132,7 @@ promote={assessment}：先要求评估 fence 等于当前三项 versions，否�
 rollback={assessment}：同样先检查三项 fence。然后要求报告针对 active、approved=false、
 previous 非空，否则 rollback_gate。成功时 active=previous、previous=null。
 
-allocator 版本在每个成功的 K6 物理操作、schedule（包括空方案）、activate、cancel 后
+allocator 版本在每个成功的 K7 物理操作、schedule（包括空方案）、activate、cancel 后
 各加 1。activate 内部 open/prefill 合计只作为一个控制操作计数。
 measurement 在每个成功 wire/calibrate 后加 1，包括重复导出；routing 在每个成功
 stage/promote/rollback 后加 1。enqueue 和 assess 不推进版本。
@@ -139,6 +140,47 @@ stage/promote/rollback 后加 1。enqueue 和 assess 不推进版本。
 同一批次先 assess 后 promote 可以成功；先 assess 后修改测量/资源再 promote 必须失败
 并撤销整个批次。这里没有要求任何私有 hash-chain 表示。
 
-后来可见的 E6 更正/撤回会重建这整条历史，而不只是修改一个报告字段。因此过去的
+后来可见的 E7 更正/撤回会重建这整条历史，而不只是修改一个报告字段。因此过去的
 预约、补测对象、稳定 token、评估资格及发布结果都可能改变。不得将上一查询的决策
 或聚合指标当作不可撤销的既成事实。
+
+
+## 同一请求的抢占与迁移续跑
+
+初始 checkpoints={}。每个租约另外观察 parent（父租约 ID 或 null）、base_tokens
+（本段之前已经稳定提交的输出，不含 prompt）、segment（从0开始）。普通租约的
+这三项分别为 null、[]、0。request.attempt 仍是整个逻辑尝试的编号，抢占不创建
+新的逻辑 attempt，也不改变 arrival_ns、pair、generation、prompt 或 max_output。
+
+suspend={lease,checkpoint,cache} 与其他控制操作一样含 device/epoch，可处于复合
+event 中。lease 必须 running，否则 lease_state；活动 sequence 不能有未验证 draft，
+否则 suspend_draft；checkpoint ID 全历史不可重用，否则 checkpoint_reuse。
+把稳定 sequence 按 K7 seal 为给定 cache，并关闭物理 sequence，completed 按 K7
+success 保留实际输出个数；租约变为 suspended，result={status:suspended,tokens}，
+tokens 是到此为止该逻辑尝试的所有稳定输出。该租约不再占预约或额外 pin。
+checkpoint={lease,request,generation,segment,tokens,output,signature}，tokens 是完整
+prompt+稳定输出，output 不含 prompt，signature 为五项域。request.state=queued，
+request.continuation=checkpoint ID。此操作 allocator 版本合计加1，内部 seal/close
+不另计。任何一步失败撤销所有影响。
+
+续跑仍由 schedule 接纳。存在 continuation 的 queued 请求只能使用与该 checkpoint
+完整 tokens 和域都匹配的、已经 ACK 的缓存；不允许从较短旧前缀或冷启动产生路线。
+缓存可位于 deployment 允许的另一台设备。新的 parent 是 checkpoint.lease，
+base_tokens 是 checkpoint.output，segment=checkpoint.segment+1；其他身份保留。
+reserve_bytes 按上文公式计算，但 additional 使用尚未生成的预算：
+missing+max_output-len(base_tokens)。有 max_draft 时仍保留投机临时页。
+max_inflight、tenant_limits 仍作用于当前活跃物理租约；tenant 计费项仍为 max_output。
+
+activate 在冻结前缀上创建新 sequence 并完成剩余 prefill。该 sequence.prompt 必须
+保持原请求 prompt 长度，committed 包含之前已经提交的输出。后续 decode_budget
+按整个逻辑尝试累计，不能在迁移时重新获得一整份输出预算。队列可多次挂起和续跑。
+物理 cache 的持有由 K7 决定，checkpoint 元数据自身不额外 pin 物理页。
+
+schedule.mode=drain 允许 generation 已出现在 routing.used，且只选有 continuation
+的 queued 请求；其目标的第一项与 serve 一样为0。它用于完成切换前已开始的逻辑
+尝试，不能接纳新的普通请求。其余资源约束、身份冻结、计划字段和版本与 schedule
+一致。普通 serve/probe 的门槛继续生效。
+
+assess 选择最新已接纳尝试时，排序为 (attempt,segment,lease ID)。其余配对、
+分层权重、时间窗口、资源、版本栅栏与发布规则不变。末段尚未完成或失败时，前段
+已有输出不构成一个成功的逻辑样本。测量见 S7。

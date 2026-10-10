@@ -11,15 +11,14 @@ def assess(state, manifest, operation):
         raise ValueError('deployment_state')
     policy=manifest['policy']
     signals=observations(state)
-    # Use the latest admitted physical attempt, including incomplete/failed
-    # retries. Selecting only successful streams would bias rollout approval.
+                                                                           
+                                                                             
     latest={}
     for name,lease in state['leases'].items():
-        if signals[name]['state']!='ready':
-            continue
         request=state['queue'][lease['request']]
         if lease['generation'] not in (generation,policy['baseline']) or not operation['since_ns']<=request['arrival_ns']<=operation['as_of_ns']:
             continue
+        if signals[name]['state']!='ready':continue
         key=(lease['generation'],lease['stratum'],lease['pair'])
         if key not in latest or (lease['attempt'],name)>(state['leases'][latest[key]]['attempt'],latest[key]):
             latest[key]=name
@@ -45,7 +44,7 @@ def assess(state, manifest, operation):
         if bad:groups[stratum]['bad'].append(pair)
     needs={s:max(0,n-len(groups[s]['pairs'])) for s,n in policy['min_pairs'].items()}
     weight=sum(policy['weights'].values())
-    bad_rate=sum(Fraction(policy['weights'][s]*len(g['bad']),max(1,len(g['pairs']))) for s,g in groups.items())/weight
+    bad_rate=Fraction(sum(len(g['bad']) for g in groups.values()),max(1,sum(len(g['pairs']) for g in groups.values())))
     devices=manifest['deployments'][generation]['devices']
     headroom={d:manifest['devices'][d]['capacity_bytes']-manifest['devices'][d]['reserved_bytes']-charged(state,d) for d in devices}
     inflight=sorted(k for k,v in state['transfers'].items() if v['kind']=='copy' and v['target'] in devices)

@@ -1,0 +1,58 @@
+[
+  {
+    "record_id": "correction-1-594959587",
+    "event": "event-114-594959587",
+    "source": "allocator",
+    "revision": 2,
+    "observed_ns": 36028797115920669,
+    "valid_from_ns": 36028797095804105,
+    "valid_until_ns": null,
+    "approved": true,
+    "parents": [
+      "record-114-594959587"
+    ],
+    "payload": {
+      "step": 114,
+      "operations": [
+        {
+          "op": "verify",
+          "device": "recovery-594959587",
+          "epoch": 6,
+          "sequence": "lease:probe-batch1-594959587/probe-1-594959587",
+          "receipt": "probe-second-0-verify-594959587",
+          "accepted": 1
+        }
+      ]
+    }
+  },
+  {
+    "record_id": "correction-0-594959587",
+    "event": "event-58-594959587",
+    "source": "allocator",
+    "revision": 2,
+    "observed_ns": 36028797115920568,
+    "valid_from_ns": 36028797095804105,
+    "valid_until_ns": null,
+    "approved": true,
+    "parents": [
+      "record-58-594959587"
+    ],
+    "payload": {
+      "step": 58,
+      "operations": [
+        {
+          "op": "append",
+          "device": "decode-594959587",
+          "epoch": 4,
+          "sequence": "lease:probe-batch0-594959587/probe-0-594959587",
+          "tokens": [
+            7035613
+          ],
+          "slots": [
+            2
+          ]
+        }
+      ]
+    }
+  }
+]

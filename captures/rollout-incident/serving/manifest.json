@@ -1,36 +1,58 @@
 {
   "models": {
-    "gqa-476015215": {
+    "gqa-536616229": {
       "layers": 2,
-      "kv_heads": 7,
-      "head_dim": 19,
-      "kv_bits": 4,
-      "page_tokens": 5,
-      "page_metadata_bytes": 15
+      "kv_heads": 3,
+      "head_dim": 10,
+      "kv_bits": 8,
+      "page_tokens": 4,
+      "page_metadata_bytes": 21,
+      "layer_groups": [
+        {
+          "layers": 2,
+          "kv_heads": 5,
+          "head_dim": 17,
+          "k_bits": 4,
+          "v_bits": 8,
+          "group_size": 23,
+          "scale_bytes": 2,
+          "zero_bytes": 1
+        },
+        {
+          "layers": 3,
+          "kv_heads": 7,
+          "head_dim": 11,
+          "k_bits": 2,
+          "v_bits": 4,
+          "group_size": 31,
+          "scale_bytes": 4,
+          "zero_bytes": 0
+        }
+      ]
     }
   },
   "devices": {
-    "prefill-476015215": {
+    "prefill-536616229": {
       "tensor_parallel": 2,
       "alignment_bytes": 16,
-      "capacity_bytes": 23504,
-      "reserved_bytes": 14,
+      "capacity_bytes": 40974,
+      "reserved_bytes": 24,
       "epoch": 2,
       "slots": 40
     },
-    "decode-476015215": {
+    "decode-536616229": {
       "tensor_parallel": 4,
       "alignment_bytes": 64,
-      "capacity_bytes": 3173,
-      "reserved_bytes": 11,
+      "capacity_bytes": 10455,
+      "reserved_bytes": 5,
       "epoch": 4,
       "slots": 40
     },
-    "recovery-476015215": {
+    "recovery-536616229": {
       "tensor_parallel": 8,
       "alignment_bytes": 128,
-      "capacity_bytes": 3185,
-      "reserved_bytes": 23,
+      "capacity_bytes": 13020,
+      "reserved_bytes": 10,
       "epoch": 6,
       "slots": 40
     }
@@ -53,6 +75,7 @@
         "ack",
         "close",
         "reset",
+        "suspend",
         "enqueue",
         "schedule",
         "activate",
@@ -66,9 +89,9 @@
         "withdraw"
       ],
       "devices": [
-        "prefill-476015215",
-        "decode-476015215",
-        "recovery-476015215"
+        "prefill-536616229",
+        "decode-536616229",
+        "recovery-536616229"
       ],
       "files": [
         "allocator0.csv",
@@ -93,6 +116,7 @@
         "ack",
         "close",
         "reset",
+        "suspend",
         "enqueue",
         "schedule",
         "activate",
@@ -106,9 +130,9 @@
         "withdraw"
       ],
       "devices": [
-        "prefill-476015215",
-        "decode-476015215",
-        "recovery-476015215"
+        "prefill-536616229",
+        "decode-536616229",
+        "recovery-536616229"
       ],
       "files": [
         "scheduler0.sqlite",
@@ -133,6 +157,7 @@
         "ack",
         "close",
         "reset",
+        "suspend",
         "enqueue",
         "schedule",
         "activate",
@@ -146,9 +171,9 @@
         "withdraw"
       ],
       "devices": [
-        "prefill-476015215",
-        "decode-476015215",
-        "recovery-476015215"
+        "prefill-536616229",
+        "decode-536616229",
+        "recovery-536616229"
       ],
       "files": [
         "client0.jsonl.gz",
@@ -173,6 +198,7 @@
         "ack",
         "close",
         "reset",
+        "suspend",
         "enqueue",
         "schedule",
         "activate",
@@ -186,9 +212,9 @@
         "withdraw"
       ],
       "devices": [
-        "prefill-476015215",
-        "decode-476015215",
-        "recovery-476015215"
+        "prefill-536616229",
+        "decode-536616229",
+        "recovery-536616229"
       ],
       "files": [
         "dashboard0.jsonl",
@@ -198,31 +224,31 @@
     }
   },
   "deployments": {
-    "stable-476015215": {
-      "model": "gqa-476015215",
-      "adapter": "adapter-476015215",
-      "tokenizer": "tokenizer-476015215",
-      "rope": "rope-476015215",
+    "stable-536616229": {
+      "model": "gqa-536616229",
+      "adapter": "adapter-536616229",
+      "tokenizer": "tokenizer-536616229",
+      "rope": "rope-536616229",
       "devices": [
-        "prefill-476015215"
+        "prefill-536616229"
       ]
     },
-    "candidate-476015215": {
-      "model": "gqa-476015215",
-      "adapter": "adapter-476015215",
-      "tokenizer": "tokenizer-476015215",
-      "rope": "rope-476015215",
+    "candidate-536616229": {
+      "model": "gqa-536616229",
+      "adapter": "adapter-536616229",
+      "tokenizer": "tokenizer-536616229",
+      "rope": "rope-536616229",
       "devices": [
-        "decode-476015215",
-        "recovery-476015215"
+        "decode-536616229",
+        "recovery-536616229"
       ]
     }
   },
   "tenant_limits": {
-    "tenant-476015215": 6
+    "tenant-536616229": 6
   },
   "policy": {
-    "baseline": "stable-476015215",
+    "baseline": "stable-536616229",
     "min_pairs": {
       "short": 2,
       "long": 2
@@ -245,7 +271,7 @@
     "max_inflight": 2
   },
   "query": {
-    "observed_ns": 36028797067420871,
-    "valid_ns": 36028797047304205
+    "observed_ns": 36028797103503598,
+    "valid_ns": 36028797083384205
   }
 }

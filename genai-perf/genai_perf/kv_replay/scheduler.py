@@ -2,18 +2,16 @@
 import copy
 import itertools
 from .layout import page_bytes, signature
+from .continuations import context
 
 
 LIVE = ('reserved', 'running')
 
 
-def credits(state, device):
-    total = 0
-    for name, lease in state.get('leases', {}).items():
-        if lease['device'] == device and lease['status'] in LIVE:
-            materialized = sum(p['bytes'] for p in state['pages'].values() if p.get('owner_lease') == name)
-            total += 0
-    return total
+def credits(state,device):
+    reserved=sum(l['reserve_bytes'] for l in state.get('leases',{}).values() if l['device']==device and l['status']=='reserved')
+    return reserved
+
 
 
 def charged(state, device):
@@ -24,17 +22,18 @@ def candidates(state, manifest, request, generation):
     deployment = manifest['deployments'][generation]
     domain = dict(request, **{k:deployment[k] for k in ('model','adapter','tokenizer','rope')})
     width = manifest['models'][deployment['model']]['page_tokens']
+    prefix,committed,parent,segment=context(state,request)
     choices = []
     for device in deployment['devices']:
-        pools = [(None, None)] + [(k,c) for k,c in state['cache'].items()
+        pools = ([(None, None)] if parent is None else []) + [(k,c) for k,c in state['cache'].items()
             if c['device']==device and tuple(c['signature'])==signature(domain)
-            and request['prompt'][:len(c['tokens'])]==c['tokens']]
+            and prefix[:len(c['tokens'])]==c['tokens'] and (parent is None or c['tokens']==prefix)]
         for key, cache in pools:
             cached = len(cache['tokens']) if cache else 0
-            missing = len(request['prompt'])-cached
+            missing = len(prefix)-cached
             if missing < 0 or missing > request['prefill_limit']:
                 continue
-            additional = missing + request['max_output']
+            additional = missing + request['max_output']-len(committed)
             pages = ((cached % width + additional + width-1)//width if additional else 0)
             pages += bool(request['max_draft'])
             choices.append(dict(device=device,epoch=state['epochs'][device],cache=key,
@@ -43,53 +42,28 @@ def candidates(state, manifest, request, generation):
     return sorted(choices,key=lambda c:(c['device'],c['cache'] or ''))
 
 
-def schedule(state, manifest, operation):
-    generation, mode, identifier = operation['generation'], operation['mode'], operation['schedule']
-    if identifier in state['plans']:
-        raise ValueError('schedule_reuse')
-    if mode == 'serve':
-        if generation != state['routing']['active'] or state['gates'].get(generation,{}).get('blocked',False):
-            raise ValueError('routing_gate')
-    elif mode != 'probe' or generation != state['routing']['staged']:
-        raise ValueError('routing_gate')
-    needs = state['gates'].get(generation,{}).get('needs',manifest['policy']['min_pairs'])
-    queued = [(k,r) for k,r in sorted(state['queue'].items()) if r['generation']==generation and r['state']=='queued']
-    # A probe scheduler spends scarce memory first on missing strata. It must
-    # select a jointly feasible set; choosing each request's warmest route alone
-    # can strand a different stratum and prevent the very gate it is probing.
-    live = [v for v in state['leases'].values() if v['status'] in LIVE]
-    count_limit = manifest['policy']['max_inflight']-len(live)
-    options = [[None]+candidates(state,manifest,r,generation) for _,r in queued]
-    best, best_key = [], None
-    for product in itertools.product(*options):
-        selected = [(k,r,c) for (k,r),c in zip(queued,product) if c is not None]
-        if len(selected)>count_limit:
-            continue
-        memory = {d:charged(state,d) for d in manifest['devices']}
-        tenant = {k:sum(v['max_output'] for v in live if v['tenant']==k) for k in manifest['tenant_limits']}
-        for _,request,choice in selected:
-            memory[choice['device']] += choice['reserve_bytes']
-            tenant[request['tenant']] += request['max_output']
-        if any(memory[d] > v['capacity_bytes']-v['reserved_bytes'] for d,v in manifest['devices'].items()):
-            continue
-        if any(tenant[t] > limit for t,limit in manifest['tenant_limits'].items()):
-            continue
-        coverage = sum(min(1,needs[s],sum(r['stratum']==s for _,r,_ in selected)) for s in needs) if mode=='probe' else 0
-        value=(sum(r['priority'] for _,r,_ in selected),len(selected),coverage,sum(c['warm_tokens'] for _,_,c in selected),-sum(c['reserve_bytes'] for _,_,c in selected))
-        tie=tuple((k,c['device'],c['cache'] or '') for k,_,c in selected)
-        key=(tuple(-v for v in value),tie)
-        if best_key is None or key<best_key:
-            best,best_key=selected,key
-    plan=[]
-    for request_id,request,choice in best:
-        name=identifier+'/'+request_id
-        state['leases'][name]=dict(choice,request=request_id,generation=generation,sequence='lease:'+name,
-            tenant=request['tenant'],stratum=request['stratum'],pair=request['pair'],attempt=request['attempt'],
-            max_output=request['max_output'],max_draft=request['max_draft'],status='reserved')
-        request['state']='leased'
-        plan.append(dict(lease=name,request=request_id,device=choice['device'],cache=choice['cache'],reserve_bytes=choice['reserve_bytes']))
-    state['plans'][identifier]=dict(generation=generation,mode=mode,admitted=plan,
-        deferred=sorted(k for k,r in queued if r['state']=='queued'))
+def schedule(state,manifest,operation):
+    generation=operation['generation'];mode=operation['mode'];identifier=operation['schedule']
+    if identifier in state['plans']:raise ValueError('schedule_reuse')
+    allowed=state['routing']['active'] if mode=='serve' else state['routing']['staged']
+    if generation!=allowed:raise ValueError('routing_gate')
+    queued=[(k,r) for k,r in state['queue'].items() if r['generation']==generation and r['state']=='queued']
+    live=[l for l in state['leases'].values() if l['status'] in LIVE]
+    room={d:spec['capacity_bytes']-spec['reserved_bytes']-charged(state,d) for d,spec in manifest['devices'].items()}
+    tenants={t:sum(l['max_output'] for l in live if l['tenant']==t) for t in manifest['tenant_limits']}
+    admitted=[]
+    for key,r in sorted(queued,key=lambda pair:(-pair[1]['priority'],pair[0])):
+        if len(live)+len(admitted)>=manifest['policy']['max_inflight']:break
+        if tenants[r['tenant']]+r['max_output']>manifest['tenant_limits'][r['tenant']]:continue
+        routes=sorted(candidates(state,manifest,r,generation),key=lambda c:(-c['warm_tokens'],c['reserve_bytes'],c['device'],c['cache'] or ''))
+        route=next((c for c in routes if c['reserve_bytes']<=room[c['device']]),None)
+        if route is None:continue
+        name=identifier+'/'+key
+        state['leases'][name]=dict(route,request=key,generation=generation,sequence='lease:'+name,tenant=r['tenant'],stratum=r['stratum'],pair=r['pair'],attempt=r['attempt'],max_output=r['max_output'],max_draft=r['max_draft'],status='reserved',parent=None,base_tokens=[],segment=0)
+        room[route['device']]-=route['reserve_bytes'];tenants[r['tenant']]+=r['max_output'];r['state']='leased'
+        admitted.append(dict(lease=name,request=key,device=route['device'],cache=route['cache'],reserve_bytes=route['reserve_bytes']))
+    state['plans'][identifier]=dict(generation=generation,mode=mode,admitted=sorted(admitted,key=lambda v:v['request']),deferred=sorted(k for k,r in queued if r['state']=='queued'))
+
 
 
 def slots(state, manifest, device, count):
@@ -109,9 +83,11 @@ def activate(state, manifest, operation, apply):
     state['sequence_leases'][lease['sequence']]=operation['lease']
     apply(state,manifest,dict(op='open',device=lease['device'],epoch=lease['epoch'],sequence=lease['sequence'],
         tenant=request['tenant'],**domain,run=lease['generation'],request_id=lease['request'],attempt=lease['attempt'],cache=lease['cache'],lease=operation['lease']))
-    missing=request['prompt'][lease['warm_tokens']:]
+    prefix,_,_,_=context(state,request)
+    missing=prefix[lease['warm_tokens']:]
     width=manifest['models'][domain['model']]['page_tokens']
     count=(lease['warm_tokens']%width+len(missing)+width-1)//width if missing else 0
     apply(state,manifest,dict(op='prefill',device=lease['device'],epoch=lease['epoch'],sequence=lease['sequence'],
         tokens=missing,slots=slots(state,manifest,lease['device'],count)))
+    state['sequences'][lease['sequence']]['prompt']=len(request['prompt'])
     lease['status']='running'

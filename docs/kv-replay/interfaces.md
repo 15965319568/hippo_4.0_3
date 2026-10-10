@@ -1,11 +1,11 @@
-# 迁移放量闭环的公开边界 I6（生效）
+# 迁移放量闭环的公开边界 I7（生效）
 
-入口位于 genai_perf.kv_replay。E6、K6、S6、C6 与本页共同构成全部生效契约。
+入口位于 genai_perf.kv_replay。E7、K7、S7、C7 与本页共同构成全部生效契约。
 
-1. sources.load_evidence(root:Path) -> (manifest,records)，按 E6 读取原始导出。
+1. sources.load_evidence(root:Path) -> (manifest,records)，按 E7 读取原始导出。
 2. session.ReplaySession(manifest)，ingest(records) 增量接收规范化行，允许乱序重复。
 3. snapshot(observed_ns,valid_ns) 返回 evidence,ledger,queue,leases,plans,signals,gates,
-   assessments,routing,versions，具体内容分别由 E6/K6/S6/C6 定义。
+   assessments,routing,versions,checkpoints，具体内容分别由 E7/K7/S7/C7 定义。
 4. 同一个会话可以交错查询过去/现在；查询不改变随后结果。每次快照都相当于从该查询
    可见且生效的证据重建整条执行，包含控制决策反馈，不能独立拼接各阶段缓存结果。
 5. checkpoint() 返回任意可 JSON 往返的值；ReplaySession.from_checkpoint(value)

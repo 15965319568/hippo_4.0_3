@@ -1,4 +1,4 @@
-# 分页 KV 迁移重放 K6（生效）
+# 分页 KV 迁移重放 K7（生效）
 
 本协议描述 CPU 上的推理内存重放，不需要 GPU/权重。它重建同一迁移期间的物理页归属及稳定输出凭据。操作中 device、epoch 必填；epoch 必须等于
 该设备当前世代。未知引用、非法状态、空间不足使整个 event 回滚，包括页世代计数。
@@ -100,3 +100,15 @@ reserved/running 租约各额外持有 cached.pages 的每一页，直到租约�
 有租约的 append/draft 必须满足 committed-prompt+本次 tokens 数 <= max_output；draft 还需 tokens 数 <= max_draft，否则 decode_budget。close 保留该物理尝试已稳定提交的输出 token 序列，与客户端字节流配对。reset 使本设备所有 reserved/running 租约变为 lost；即使当时尚未 activate，也需释放预约和缓存持有。其后迟到的流不能把物理失败改为成功。
 
 ledger.devices 输出 used_bytes（物理页）、reserved_bytes（租约剩余预约）、free_bytes（扣除两者之后）和 epoch。这里的 reserved_bytes 是观察输出，区别于 manifest.devices 中固定的系统预留。失败批次不能推进 allocator/measurement/routing 版本，规则见 closed-loop.md。
+
+
+## 分组量化布局
+
+model 可另外含 layer_groups。存在时它替代顶层 layers/kv_heads/head_dim/kv_bits
+作为实际布局；顶层字段是兼容旧 profile 的汇总。每组含 layers,kv_heads,head_dim,
+k_bits,v_bits,group_size,scale_bytes,zero_bytes。page_tokens 和 page_metadata_bytes
+仍为模型级字段。每层每个 K/V 平面分别存储本地头上的所有值；本地头数量遵循上文
+TP/GQA 规则。位打包不足一字节占一字节，每 group_size 个值存一份 scale+zero，
+不足一组仍占一份。将该平面的位打包区与量化元数据相加，再按目标设备对齐。
+所有组所有层的 K/V 平面相加，最后加一次 page_metadata_bytes。K/V 位宽可以不同。
+迁移和预约使用各自目标设备的实际布局，原始 profile 的汇总值不具有覆盖权。

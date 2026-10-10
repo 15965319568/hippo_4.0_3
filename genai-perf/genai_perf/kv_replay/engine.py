@@ -1,12 +1,12 @@
 """One transactional state machine for evidence-driven KV rollout recovery."""
 import copy
-from . import runtime, scheduler, measure, wire, control
+from . import runtime, scheduler, measure, wire, control, continuations
 from .holders import collect, references
 
 
 def initial(manifest):
     state=runtime.empty(manifest)
-    state.update(queue={},leases={},sequence_leases={},wire={},clocks={},plans={},gates={},assessments={},
+    state.update(queue={},checkpoints={},leases={},sequence_leases={},wire={},clocks={},plans={},gates={},assessments={},
         routing=dict(active=manifest['policy']['baseline'],staged=None,previous=None,used=[manifest['policy']['baseline']]),
         versions=dict(allocator=0,measurement=0,routing=0))
     return state
@@ -33,6 +33,9 @@ def operate(state, manifest, op):
         state['versions']['allocator']+=1
     elif kind=='activate':
         scheduler.activate(state,manifest,op,runtime.apply)
+        state['versions']['allocator']+=1
+    elif kind=='suspend':
+        continuations.suspend(state,manifest,op,runtime.apply)
         state['versions']['allocator']+=1
     elif kind=='cancel':
         lease=state['leases'][op['lease']]
@@ -81,7 +84,7 @@ def snapshot(state,manifest,decisions):
         reserved_bytes=scheduler.credits(state,d),free_bytes=v['capacity_bytes']-v['reserved_bytes']-scheduler.charged(state,d)) for d,v in sorted(manifest['devices'].items())},
         pages=[dict(id=k,references=refs[k],**v) for k,v in sorted(state['pages'].items())],
         sequences=state['sequences'],cache=state['cache'],transfers=state['transfers'],completed=state['completed'],decisions=decisions)
-    return dict(ledger=ledger,queue=state['queue'],leases=state['leases'],plans=state['plans'],
+    return dict(checkpoints=state['checkpoints'],ledger=ledger,queue=state['queue'],leases=state['leases'],plans=state['plans'],
         signals=measure.observations(state),gates=state['gates'],assessments=state['assessments'],routing=state['routing'],versions=state['versions'])
 
 
@@ -89,11 +92,13 @@ def replay(manifest,events):
     state=initial(manifest)
     decisions=[]
     for event in events:
-        candidate=dict(state)
+        candidate=state
+        undo={k:copy.deepcopy(state[k]) for k in ('pages','sequences','cache','transfers','generations','epochs','completed')}
         try:
             for op in event['operations']:
                 operate(candidate,manifest,op)
         except (KeyError,ValueError,StopIteration) as error:
+            state.update(undo)
             decisions.append(dict(event=event['event'],accepted=False,reason=str(error) if isinstance(error,ValueError) else 'missing_dependency'))
         else:
             state=candidate

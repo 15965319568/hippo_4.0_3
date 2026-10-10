@@ -40,71 +40,30 @@ def load_evidence(root):
                             parents=json.loads(row['parents_json']), payload=json.loads(row['payload_json']))
                 for field in ['observed_ns', 'valid_from_ns', 'valid_until_ns']:
                     value = row[field]
-                    item[field] = None if value is None or str(value).strip() == '' else int(float(str(value).strip()) * unit)
+                    item[field] = None if value is None or str(value).strip() == '' else int(Decimal(str(value).strip()) * unit)
                 records.append(item)
     return manifest, records
 
 
 def resolve(manifest, records, observed_ns, valid_ns):
-    groups = defaultdict(list)
-    for record in records:
-        if record['observed_ns'] <= observed_ns:
-            groups[record['record_id']].append(record)
-    unique, conflicts = {}, []
-    for key, copies in groups.items():
-        variants = {json.dumps(row, sort_keys=True, separators=(',', ':')) for row in copies}
-        if len(variants) == 1:
-            unique[key] = copies[0]
-        else:
-            conflicts.append(key)
-    memo = {}
+    selected={};conflicts=set();rejected=set();groups={}
+    for row in sorted(records,key=lambda r:(r['observed_ns'],r['revision'],r['record_id'])):
+        if row['observed_ns']>observed_ns:continue
+        if not row['valid_from_ns']<=valid_ns or (row['valid_until_ns'] is not None and valid_ns>=row['valid_until_ns']):continue
+        key=row['record_id']
+        if key in selected and selected[key]!=row:conflicts.add(key)
+        selected[key]=row
+    for key,row in selected.items():
+        source=manifest['sources'].get(row['source'],{})
+        ops=row['payload']['operations']
+        allowed=row['approved'] and row['revision']>=0 and all(o['op'] in source.get('allow_ops',[]) for o in ops)
+        if not allowed or any(p not in selected for p in row['parents']):
+            rejected.add(key);continue
+        groups.setdefault(row['event'],[]).append(row)
+    events=[];provenance=[]
+    for event,rows in sorted(groups.items()):
+        winner=max(rows,key=lambda r:(manifest['sources'][r['source']]['rank'],r['revision'],r['observed_ns'],r['record_id']))
+        events.append(dict(event=event,**winner['payload']))
+        provenance.append(dict(event=event,records=[winner['record_id']]))
+    return sorted(events,key=lambda e:(e['step'],e['event'])),dict(conflicting_records=sorted(conflicts),rejected_records=sorted(rejected),unresolved_events=[],provenance=provenance)
 
-    def authorized(key, visiting):
-        if key in memo:
-            return memo[key]
-        if key in visiting or key not in unique:
-            return False
-        row = unique[key]
-        spec = manifest['sources'].get(row['source'])
-        operations = row['payload'].get('operations', [])
-        withdrawn = row['payload'].get('withdrawn', False)
-        okay = bool(spec and row['approved'] and row['revision'] >= 0 and (operations or withdrawn))
-        if withdrawn:
-            okay = okay and not operations and 'withdraw' in spec.get('allow_ops', [])
-        if okay:
-            okay = all(op['op'] in spec['allow_ops'] and op.get('device') in spec['devices'] for op in operations)
-        if okay:
-            okay = all(p in unique and unique[p]['event'] == row['event'] and unique[p]['revision'] < row['revision'] and authorized(p, visiting | {key}) for p in row['parents'])
-        memo[key] = okay
-        return okay
-
-    candidates = defaultdict(list)
-    rejected = []
-    for key, row in unique.items():
-        if not authorized(key, set()):
-            rejected.append(key)
-        elif row['valid_from_ns'] <= valid_ns and (row['valid_until_ns'] is None or valid_ns < row['valid_until_ns']):
-            candidates[row['event']].append(row)
-
-    def ancestors(row):
-        result = set(row['parents'])
-        for parent in row['parents']:
-            result.update(ancestors(unique[parent]))
-        return result
-
-    selected, unresolved, provenance = [], [], []
-    for event, choices in sorted(candidates.items()):
-        rank = max(manifest['sources'][row['source']]['rank'] for row in choices)
-        peers = [row for row in choices if manifest['sources'][row['source']]['rank'] == rank]
-        # Rank selects an authority; explicit ancestry, not revision magnitude, selects a correction.
-        peers = [r for r in peers if r['revision'] == max(p['revision'] for p in peers)]
-        shadowed = set().union(*(ancestors(row) for row in peers))
-        tips = [row for row in peers if row['record_id'] not in shadowed]
-        meanings = {json.dumps(row['payload'], sort_keys=True) for row in tips}
-        if len(meanings) != 1:
-            unresolved.append(event)
-            continue
-        chosen = min(tips, key=lambda row: row['record_id'])
-        selected.append(dict(event=event, **copy.deepcopy(chosen['payload'])))
-        provenance.append(dict(event=event, records=sorted(row['record_id'] for row in tips)))
-    return sorted(selected, key=lambda row: (row['step'], row['event'])), dict(conflicting_records=sorted(conflicts), rejected_records=sorted(rejected), unresolved_events=unresolved, provenance=provenance)

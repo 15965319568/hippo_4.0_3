@@ -1,0 +1,277 @@
+{
+  "models": {
+    "gqa-922692958": {
+      "layers": 7,
+      "kv_heads": 5,
+      "head_dim": 35,
+      "kv_bits": 4,
+      "page_tokens": 6,
+      "page_metadata_bytes": 8,
+      "layer_groups": [
+        {
+          "layers": 2,
+          "kv_heads": 5,
+          "head_dim": 17,
+          "k_bits": 4,
+          "v_bits": 8,
+          "group_size": 23,
+          "scale_bytes": 2,
+          "zero_bytes": 1
+        },
+        {
+          "layers": 3,
+          "kv_heads": 7,
+          "head_dim": 11,
+          "k_bits": 2,
+          "v_bits": 4,
+          "group_size": 31,
+          "scale_bytes": 4,
+          "zero_bytes": 0
+        }
+      ]
+    }
+  },
+  "devices": {
+    "prefill-922692958": {
+      "tensor_parallel": 2,
+      "alignment_bytes": 16,
+      "capacity_bytes": 59769,
+      "reserved_bytes": 9,
+      "epoch": 2,
+      "slots": 40
+    },
+    "decode-922692958": {
+      "tensor_parallel": 4,
+      "alignment_bytes": 64,
+      "capacity_bytes": 14805,
+      "reserved_bytes": 5,
+      "epoch": 4,
+      "slots": 40
+    },
+    "recovery-922692958": {
+      "tensor_parallel": 8,
+      "alignment_bytes": 128,
+      "capacity_bytes": 12891,
+      "reserved_bytes": 11,
+      "epoch": 6,
+      "slots": 40
+    }
+  },
+  "sources": {
+    "allocator": {
+      "format": "csv",
+      "time_unit": "us",
+      "rank": 3,
+      "allow_ops": [
+        "open",
+        "prefill",
+        "append",
+        "draft",
+        "verify",
+        "seal",
+        "evict",
+        "transfer",
+        "copy",
+        "ack",
+        "close",
+        "reset",
+        "suspend",
+        "enqueue",
+        "schedule",
+        "activate",
+        "cancel",
+        "wire",
+        "calibrate",
+        "assess",
+        "stage",
+        "promote",
+        "rollback",
+        "withdraw"
+      ],
+      "devices": [
+        "prefill-922692958",
+        "decode-922692958",
+        "recovery-922692958"
+      ],
+      "files": [
+        "allocator0.csv",
+        "allocator1.csv",
+        "allocator2.csv"
+      ]
+    },
+    "scheduler": {
+      "format": "sqlite",
+      "time_unit": "ns",
+      "rank": 3,
+      "allow_ops": [
+        "open",
+        "prefill",
+        "append",
+        "draft",
+        "verify",
+        "seal",
+        "evict",
+        "transfer",
+        "copy",
+        "ack",
+        "close",
+        "reset",
+        "suspend",
+        "enqueue",
+        "schedule",
+        "activate",
+        "cancel",
+        "wire",
+        "calibrate",
+        "assess",
+        "stage",
+        "promote",
+        "rollback",
+        "withdraw"
+      ],
+      "devices": [
+        "prefill-922692958",
+        "decode-922692958",
+        "recovery-922692958"
+      ],
+      "files": [
+        "scheduler0.sqlite",
+        "scheduler1.sqlite",
+        "scheduler2.sqlite"
+      ]
+    },
+    "client": {
+      "format": "jsonl",
+      "time_unit": "ms",
+      "rank": 3,
+      "allow_ops": [
+        "open",
+        "prefill",
+        "append",
+        "draft",
+        "verify",
+        "seal",
+        "evict",
+        "transfer",
+        "copy",
+        "ack",
+        "close",
+        "reset",
+        "suspend",
+        "enqueue",
+        "schedule",
+        "activate",
+        "cancel",
+        "wire",
+        "calibrate",
+        "assess",
+        "stage",
+        "promote",
+        "rollback",
+        "withdraw"
+      ],
+      "devices": [
+        "prefill-922692958",
+        "decode-922692958",
+        "recovery-922692958"
+      ],
+      "files": [
+        "client0.jsonl.gz",
+        "client1.jsonl.gz",
+        "client2.jsonl.gz"
+      ]
+    },
+    "dashboard": {
+      "format": "jsonl",
+      "time_unit": "ns",
+      "rank": 1,
+      "allow_ops": [
+        "open",
+        "prefill",
+        "append",
+        "draft",
+        "verify",
+        "seal",
+        "evict",
+        "transfer",
+        "copy",
+        "ack",
+        "close",
+        "reset",
+        "suspend",
+        "enqueue",
+        "schedule",
+        "activate",
+        "cancel",
+        "wire",
+        "calibrate",
+        "assess",
+        "stage",
+        "promote",
+        "rollback",
+        "withdraw"
+      ],
+      "devices": [
+        "prefill-922692958",
+        "decode-922692958",
+        "recovery-922692958"
+      ],
+      "files": [
+        "dashboard0.jsonl",
+        "dashboard1.jsonl",
+        "dashboard2.jsonl"
+      ]
+    }
+  },
+  "deployments": {
+    "stable-922692958": {
+      "model": "gqa-922692958",
+      "adapter": "adapter-922692958",
+      "tokenizer": "tokenizer-922692958",
+      "rope": "rope-922692958",
+      "devices": [
+        "prefill-922692958"
+      ]
+    },
+    "candidate-922692958": {
+      "model": "gqa-922692958",
+      "adapter": "adapter-922692958",
+      "tokenizer": "tokenizer-922692958",
+      "rope": "rope-922692958",
+      "devices": [
+        "decode-922692958",
+        "recovery-922692958"
+      ]
+    }
+  },
+  "tenant_limits": {
+    "tenant-922692958": 6
+  },
+  "policy": {
+    "baseline": "stable-922692958",
+    "min_pairs": {
+      "short": 2,
+      "long": 2
+    },
+    "weights": {
+      "short": 1,
+      "long": 4
+    },
+    "max_bad_rate": [
+      1,
+      3
+    ],
+    "ttft_regression_ns": 25,
+    "tpot_ratio": [
+      3,
+      2
+    ],
+    "deadline_ns": 2000,
+    "min_headroom_bytes": 1,
+    "max_inflight": 2
+  },
+  "query": {
+    "observed_ns": 36028797071323598,
+    "valid_ns": 36028797051204205
+  }
+}

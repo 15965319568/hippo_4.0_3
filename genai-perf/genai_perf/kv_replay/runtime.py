@@ -44,53 +44,31 @@ def apply(state, manifest, op):
         request = {k: op[k] for k in ['tenant', 'model', 'adapter', 'tokenizer', 'rope', 'run', 'request_id', 'attempt']}
         pages, tokens = prefix(state, op['cache'], request, device, op.get('lease')) if op.get('cache') else ([], [])
         state['sequences'][key] = dict(**request, device=device, pages=pages, committed=len(tokens), prompt=len(tokens), tokens=tokens, draft=None)
-    elif kind in ['prefill', 'draft', 'append']:
-        seq = state['sequences'][op['sequence']]
-        if seq['device'] != device or seq['draft'] is not None:
-            raise ValueError('sequence_state')
-        if kind == 'prefill' and seq['committed'] != seq['prompt']:
-            raise ValueError('prefill_after_decode')
-        before = copy.deepcopy(seq)
-        remaining = list(op['tokens'])
-        slots = iter(op['slots'])
-        size = manifest['models'][seq['model']]['page_tokens']
-        if seq['pages'] and len(state['pages'][seq['pages'][-1]]['tokens']) < size and remaining:
-            tail = seq['pages'][-1]
-            if references(state)[tail] > 2 or kind == 'draft':
-                tail = allocate(state, manifest, device, seq['model'], next(slots), state['pages'][tail]['tokens'])
-                seq['pages'][-1] = tail
-            count = min(size - len(state['pages'][tail]['tokens']), len(remaining))
-            state['pages'][tail]['tokens'] += remaining[:count]
-            remaining = remaining[count:]
-        while remaining:
-            seq['pages'].append(allocate(state, manifest, device, seq['model'], next(slots), remaining[:size]))
-            remaining = remaining[size:]
-        if next(slots, None) is not None:
-            raise ValueError('unused_slots')
-        seq['tokens'] += op['tokens']
-        if kind == 'draft':
-            seq['draft'] = dict(before=before, receipt=op['receipt'], proposed=list(op['tokens']))
-            # Saved pages remain physically held throughout target verification.
-            state['transfers']['draft:' + op['sequence']] = dict(pages=before['pages'], device=device, kind='draft')
+    elif kind in ['prefill','draft','append']:
+        seq=state['sequences'][op['sequence']]
+        if seq['device']!=device or seq['draft'] is not None:raise ValueError('sequence_state')
+        before=copy.deepcopy(seq);combined=seq['tokens']+list(op['tokens'])
+        width=manifest['models'][seq['model']]['page_tokens'];slots=iter(op['slots'])
+        pages=list(seq['pages'])
+        for offset in range(0,len(combined),width):
+            index=offset//width;values=combined[offset:offset+width]
+            if index<len(pages):state['pages'][pages[index]]['tokens']=values
+            else:pages.append(allocate(state,manifest,device,seq['model'],next(slots),values))
+        seq.update(pages=pages,tokens=combined)
+        if kind=='draft':
+            seq['draft']=dict(before=before,receipt=op['receipt'],proposed=list(op['tokens']))
+            state['transfers']['draft:'+op['sequence']]=dict(pages=before['pages'],device=device,kind='draft')
         else:
-            seq['committed'] = len(seq['tokens'])
-            if kind == 'prefill':
-                seq['prompt'] = seq['committed']
-    elif kind == 'verify':
-        seq = state['sequences'][op['sequence']]
-        draft = seq['draft']
-        if seq['device'] != device or not draft or op['receipt'] != draft['receipt'] or not 0 <= op['accepted'] <= len(draft['proposed']):
-            raise ValueError('verification_receipt')
-        wanted = draft['before']['tokens'] + draft['proposed'][:op['accepted']]
-        if op['accepted'] == 0:
-            state['sequences'][op['sequence']] = draft['before']
-        else:
-            size = manifest['models'][seq['model']]['page_tokens']
-            seq['pages'] = seq['pages'][:(len(wanted) + size - 1) // size]
-            for i, page in enumerate(seq['pages']):
-                state['pages'][page]['tokens'] = wanted[i*size:(i+1)*size]
-            seq.update(tokens=wanted, committed=len(wanted), draft=None)
-        del state['transfers']['draft:' + op['sequence']]
+            seq['committed']=len(combined)
+            if kind=='prefill':seq['prompt']=len(combined)
+    elif kind=='verify':
+        seq=state['sequences'][op['sequence']];draft=seq['draft']
+        if not draft or op['receipt']!=draft['receipt']:raise ValueError('verification_receipt')
+        accepted=max(0,min(op['accepted'],len(draft['proposed'])))
+        values=draft['before']['tokens']+draft['proposed'][:accepted]
+        width=manifest['models'][seq['model']]['page_tokens']
+        seq.update(tokens=values,committed=len(values),pages=seq['pages'][:(len(values)+width-1)//width],draft=None)
+        del state['transfers']['draft:'+op['sequence']]
     elif kind == 'seal':
         seq = state['sequences'][op['sequence']]
         if seq['device'] != device or seq['draft'] is not None or op['cache'] in state['cache']:
@@ -108,26 +86,16 @@ def apply(state, manifest, op):
             raise ValueError('transfer_slots')
         target_pages = [allocate(state, manifest, op['target'], cached['signature'][1], slot, [None] * len(state['pages'][page]['tokens'])) for slot, page in zip(op['slots'], cached['pages'])]
         state['transfers'][op['transfer']] = dict(kind='copy', ticket=op['ticket'], device=device, target=op['target'], target_epoch=op['target_epoch'], source_pages=list(cached['pages']), pages=list(cached['pages']) + target_pages, target_pages=target_pages, cache=copy.deepcopy(cached), target_cache=op['target_cache'])
-    elif kind == 'copy':
-        transfer = state['transfers'][op['transfer']]
-        if transfer['kind'] != 'copy' or transfer['target'] != device or transfer['target_epoch'] != op['epoch'] or False:
-            raise ValueError('transfer_receipt')
-        index, offset = op['page_index'], op['offset']
-        if not 0 <= index < len(transfer['source_pages']):
-            raise ValueError('copy_range')
-        source = state['pages'][transfer['source_pages'][index]]
-        if source['epoch'] != op['source_epoch'] or source['generation'] != op['source_generation']:
-            raise ValueError('stale_page')
-        values = op['tokens']
-        if offset < 0 or offset + len(values) > len(source['tokens']) or not values:
-            raise ValueError('copy_range')
-        if values != source['tokens'][offset:offset + len(values)]:
-            raise ValueError('copy_data')
-        target = state['pages'][transfer['target_pages'][index]]
-        target['tokens'][offset:offset + len(values)] = values
+    elif kind=='copy':
+        transfer=state['transfers'][op['transfer']]
+        if transfer['target']!=device:raise ValueError('transfer_receipt')
+        page=state['pages'][transfer['target_pages'][op['page_index']]]
+        begin=op['offset'];end=begin+len(op['tokens'])
+        if begin<0 or end>len(page['tokens']):raise ValueError('copy_range')
+        page['tokens'][begin:end]=op['tokens']
     elif kind == 'ack':
         transfer = state['transfers'][op['transfer']]
-        if transfer['kind'] != 'copy' or transfer['target'] != device or transfer['target_epoch'] != op['epoch'] or False or transfer['target_cache'] in state['cache']:
+        if transfer['kind'] != 'copy' or transfer['target'] != device or transfer['target_epoch'] != op['epoch'] or transfer['ticket'] != op['ticket'] or transfer['target_cache'] in state['cache']:
             raise ValueError('transfer_ack')
         if any(token is None for page in transfer['target_pages'] for token in state['pages'][page]['tokens']):
             raise ValueError('incomplete_transfer')

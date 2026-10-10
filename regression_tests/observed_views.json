@@ -1,0 +1,3798 @@
+{
+  "rollout-incident": {
+    "before": {
+      "plans": {
+        "baseline-batch0-536616229": {
+          "generation": "stable-536616229",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch0-536616229/baseline-0-536616229",
+              "request": "baseline-0-536616229",
+              "device": "prefill-536616229",
+              "cache": "cache-a-536616229",
+              "reserve_bytes": 2730
+            },
+            {
+              "lease": "baseline-batch0-536616229/baseline-1-536616229",
+              "request": "baseline-1-536616229",
+              "device": "prefill-536616229",
+              "cache": "cache-a-536616229",
+              "reserve_bytes": 2730
+            }
+          ],
+          "deferred": [
+            "baseline-2-536616229",
+            "baseline-3-536616229"
+          ]
+        },
+        "baseline-batch1-536616229": {
+          "generation": "stable-536616229",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch1-536616229/baseline-2-536616229",
+              "request": "baseline-2-536616229",
+              "device": "prefill-536616229",
+              "cache": "cache-a-536616229",
+              "reserve_bytes": 2730
+            },
+            {
+              "lease": "baseline-batch1-536616229/baseline-3-536616229",
+              "request": "baseline-3-536616229",
+              "device": "prefill-536616229",
+              "cache": "cache-a-536616229",
+              "reserve_bytes": 2730
+            }
+          ],
+          "deferred": []
+        },
+        "before-copy-536616229": {
+          "generation": "candidate-536616229",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-0-536616229",
+            "probe-1-536616229",
+            "probe-2-536616229",
+            "probe-3-536616229"
+          ]
+        },
+        "probe-batch0-536616229": {
+          "generation": "candidate-536616229",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch0-536616229/probe-0-536616229",
+              "request": "probe-0-536616229",
+              "device": "decode-536616229",
+              "cache": "cache-b-536616229",
+              "reserve_bytes": 2090
+            },
+            {
+              "lease": "probe-batch0-536616229/probe-2-536616229",
+              "request": "probe-2-536616229",
+              "device": "decode-536616229",
+              "cache": "cache-b-536616229",
+              "reserve_bytes": 2090
+            }
+          ],
+          "deferred": [
+            "probe-1-536616229",
+            "probe-3-536616229"
+          ]
+        },
+        "000-resume0-536616229": {
+          "generation": "candidate-536616229",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "000-resume0-536616229/probe-0-536616229",
+              "request": "probe-0-536616229",
+              "device": "recovery-536616229",
+              "cache": "received-prefix0-536616229",
+              "reserve_bytes": 2602
+            }
+          ],
+          "deferred": [
+            "probe-1-536616229",
+            "probe-3-536616229"
+          ]
+        },
+        "000-resume1-536616229": {
+          "generation": "candidate-536616229",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "000-resume1-536616229/probe-0-536616229",
+              "request": "probe-0-536616229",
+              "device": "decode-536616229",
+              "cache": "received-prefix1-536616229",
+              "reserve_bytes": 2090
+            }
+          ],
+          "deferred": [
+            "probe-1-536616229",
+            "probe-3-536616229"
+          ]
+        },
+        "waiting-second-copy-536616229": {
+          "generation": "candidate-536616229",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-1-536616229",
+            "probe-3-536616229"
+          ]
+        },
+        "probe-batch1-536616229": {
+          "generation": "candidate-536616229",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch1-536616229/probe-1-536616229",
+              "request": "probe-1-536616229",
+              "device": "recovery-536616229",
+              "cache": "cache-c-536616229",
+              "reserve_bytes": 2602
+            },
+            {
+              "lease": "probe-batch1-536616229/probe-3-536616229",
+              "request": "probe-3-536616229",
+              "device": "recovery-536616229",
+              "cache": "cache-c-536616229",
+              "reserve_bytes": 2602
+            }
+          ],
+          "deferred": []
+        },
+        "old-draining-plan-536616229": {
+          "generation": "stable-536616229",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "old-draining-plan-536616229/old-draining-536616229",
+              "request": "old-draining-536616229",
+              "device": "prefill-536616229",
+              "cache": null,
+              "reserve_bytes": 4095
+            }
+          ],
+          "deferred": []
+        },
+        "production-plan-536616229": {
+          "generation": "candidate-536616229",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "production-plan-536616229/production-retry-536616229",
+              "request": "production-retry-536616229",
+              "device": "recovery-536616229",
+              "cache": "cache-c-536616229",
+              "reserve_bytes": 2602
+            }
+          ],
+          "deferred": []
+        }
+      },
+      "gates": {
+        "candidate-536616229": {
+          "generation": "candidate-536616229",
+          "groups": {
+            "short": {
+              "pairs": [
+                "pair-0-536616229",
+                "pair-1-536616229"
+              ],
+              "bad": [],
+              "pending": []
+            },
+            "long": {
+              "pairs": [
+                "pair-2-536616229",
+                "pair-3-536616229"
+              ],
+              "bad": [
+                "pair-2-536616229"
+              ],
+              "pending": []
+            }
+          },
+          "needs": {
+            "short": 0,
+            "long": 0
+          },
+          "bad_rate": [
+            2,
+            5
+          ],
+          "approved": false,
+          "blocked": true,
+          "headroom": {
+            "decode-536616229": 10450,
+            "recovery-536616229": 13010
+          },
+          "inflight": [],
+          "fence": {
+            "allocator": 71,
+            "measurement": 56,
+            "routing": 2
+          }
+        }
+      },
+      "routing": {
+        "active": "stable-536616229",
+        "staged": null,
+        "previous": null,
+        "used": [
+          "stable-536616229",
+          "candidate-536616229"
+        ]
+      },
+      "checkpoints": {
+        "checkpoint0-536616229": {
+          "lease": "probe-batch0-536616229/probe-0-536616229",
+          "request": "probe-0-536616229",
+          "generation": "candidate-536616229",
+          "segment": 0,
+          "tokens": [
+            6742145,
+            22924734,
+            30861468,
+            74666418,
+            75131415,
+            31272996
+          ],
+          "output": [
+            31272996
+          ],
+          "signature": [
+            "tenant-536616229",
+            "gqa-536616229",
+            "adapter-536616229",
+            "tokenizer-536616229",
+            "rope-536616229"
+          ]
+        },
+        "checkpoint1-536616229": {
+          "lease": "000-resume0-536616229/probe-0-536616229",
+          "request": "probe-0-536616229",
+          "generation": "candidate-536616229",
+          "segment": 1,
+          "tokens": [
+            6742145,
+            22924734,
+            30861468,
+            74666418,
+            75131415,
+            31272996
+          ],
+          "output": [
+            31272996
+          ],
+          "signature": [
+            "tenant-536616229",
+            "gqa-536616229",
+            "adapter-536616229",
+            "tokenizer-536616229",
+            "rope-536616229"
+          ]
+        }
+      },
+      "signals": {
+        "000-resume0-536616229/probe-0-536616229": {
+          "state": "pending",
+          "generation": "candidate-536616229",
+          "request": "probe-0-536616229",
+          "attempt": 0
+        },
+        "000-resume1-536616229/probe-0-536616229": {
+          "state": "ready",
+          "generation": "candidate-536616229",
+          "request": "probe-0-536616229",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 111,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083584216
+        },
+        "baseline-batch0-536616229/baseline-0-536616229": {
+          "state": "ready",
+          "generation": "stable-536616229",
+          "request": "baseline-0-536616229",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083584225
+        },
+        "baseline-batch0-536616229/baseline-1-536616229": {
+          "state": "ready",
+          "generation": "stable-536616229",
+          "request": "baseline-1-536616229",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083594225
+        },
+        "baseline-batch1-536616229/baseline-2-536616229": {
+          "state": "ready",
+          "generation": "stable-536616229",
+          "request": "baseline-2-536616229",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083604225
+        },
+        "baseline-batch1-536616229/baseline-3-536616229": {
+          "state": "ready",
+          "generation": "stable-536616229",
+          "request": "baseline-3-536616229",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083614225
+        },
+        "old-draining-plan-536616229/old-draining-536616229": {
+          "state": "ready",
+          "generation": "stable-536616229",
+          "request": "old-draining-536616229",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083684225
+        },
+        "probe-batch0-536616229/probe-0-536616229": {
+          "state": "pending",
+          "generation": "candidate-536616229",
+          "request": "probe-0-536616229",
+          "attempt": 0
+        },
+        "probe-batch0-536616229/probe-2-536616229": {
+          "state": "ready",
+          "generation": "candidate-536616229",
+          "request": "probe-2-536616229",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083604225
+        },
+        "probe-batch1-536616229/probe-1-536616229": {
+          "state": "ready",
+          "generation": "candidate-536616229",
+          "request": "probe-1-536616229",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083594225
+        },
+        "probe-batch1-536616229/probe-3-536616229": {
+          "state": "ready",
+          "generation": "candidate-536616229",
+          "request": "probe-3-536616229",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083614225
+        },
+        "production-plan-536616229/production-retry-536616229": {
+          "state": "failed",
+          "generation": "candidate-536616229",
+          "request": "production-retry-536616229",
+          "attempt": 1
+        }
+      }
+    },
+    "after": {
+      "plans": {
+        "baseline-batch0-536616229": {
+          "generation": "stable-536616229",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch0-536616229/baseline-0-536616229",
+              "request": "baseline-0-536616229",
+              "device": "prefill-536616229",
+              "cache": "cache-a-536616229",
+              "reserve_bytes": 2730
+            },
+            {
+              "lease": "baseline-batch0-536616229/baseline-1-536616229",
+              "request": "baseline-1-536616229",
+              "device": "prefill-536616229",
+              "cache": "cache-a-536616229",
+              "reserve_bytes": 2730
+            }
+          ],
+          "deferred": [
+            "baseline-2-536616229",
+            "baseline-3-536616229"
+          ]
+        },
+        "baseline-batch1-536616229": {
+          "generation": "stable-536616229",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch1-536616229/baseline-2-536616229",
+              "request": "baseline-2-536616229",
+              "device": "prefill-536616229",
+              "cache": "cache-a-536616229",
+              "reserve_bytes": 2730
+            },
+            {
+              "lease": "baseline-batch1-536616229/baseline-3-536616229",
+              "request": "baseline-3-536616229",
+              "device": "prefill-536616229",
+              "cache": "cache-a-536616229",
+              "reserve_bytes": 2730
+            }
+          ],
+          "deferred": []
+        },
+        "before-copy-536616229": {
+          "generation": "candidate-536616229",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-0-536616229",
+            "probe-1-536616229",
+            "probe-2-536616229",
+            "probe-3-536616229"
+          ]
+        },
+        "probe-batch0-536616229": {
+          "generation": "candidate-536616229",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch0-536616229/probe-0-536616229",
+              "request": "probe-0-536616229",
+              "device": "decode-536616229",
+              "cache": "cache-b-536616229",
+              "reserve_bytes": 2090
+            },
+            {
+              "lease": "probe-batch0-536616229/probe-2-536616229",
+              "request": "probe-2-536616229",
+              "device": "decode-536616229",
+              "cache": "cache-b-536616229",
+              "reserve_bytes": 2090
+            }
+          ],
+          "deferred": [
+            "probe-1-536616229",
+            "probe-3-536616229"
+          ]
+        },
+        "000-resume0-536616229": {
+          "generation": "candidate-536616229",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "000-resume0-536616229/probe-0-536616229",
+              "request": "probe-0-536616229",
+              "device": "recovery-536616229",
+              "cache": "received-prefix0-536616229",
+              "reserve_bytes": 2602
+            }
+          ],
+          "deferred": [
+            "probe-1-536616229",
+            "probe-3-536616229"
+          ]
+        },
+        "000-resume1-536616229": {
+          "generation": "candidate-536616229",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "000-resume1-536616229/probe-0-536616229",
+              "request": "probe-0-536616229",
+              "device": "decode-536616229",
+              "cache": "received-prefix1-536616229",
+              "reserve_bytes": 2090
+            }
+          ],
+          "deferred": [
+            "probe-1-536616229",
+            "probe-3-536616229"
+          ]
+        },
+        "waiting-second-copy-536616229": {
+          "generation": "candidate-536616229",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-1-536616229",
+            "probe-3-536616229"
+          ]
+        },
+        "probe-batch1-536616229": {
+          "generation": "candidate-536616229",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch1-536616229/probe-1-536616229",
+              "request": "probe-1-536616229",
+              "device": "recovery-536616229",
+              "cache": "cache-c-536616229",
+              "reserve_bytes": 2602
+            },
+            {
+              "lease": "probe-batch1-536616229/probe-3-536616229",
+              "request": "probe-3-536616229",
+              "device": "recovery-536616229",
+              "cache": "cache-c-536616229",
+              "reserve_bytes": 2602
+            }
+          ],
+          "deferred": []
+        },
+        "old-draining-plan-536616229": {
+          "generation": "stable-536616229",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "old-draining-plan-536616229/old-draining-536616229",
+              "request": "old-draining-536616229",
+              "device": "prefill-536616229",
+              "cache": null,
+              "reserve_bytes": 4095
+            }
+          ],
+          "deferred": []
+        }
+      },
+      "gates": {
+        "candidate-536616229": {
+          "generation": "candidate-536616229",
+          "groups": {
+            "short": {
+              "pairs": [
+                "pair-0-536616229"
+              ],
+              "bad": [],
+              "pending": [
+                "pair-1-536616229"
+              ]
+            },
+            "long": {
+              "pairs": [
+                "pair-2-536616229",
+                "pair-3-536616229"
+              ],
+              "bad": [],
+              "pending": []
+            }
+          },
+          "needs": {
+            "short": 1,
+            "long": 0
+          },
+          "bad_rate": [
+            0,
+            1
+          ],
+          "approved": false,
+          "blocked": true,
+          "headroom": {
+            "decode-536616229": 10450,
+            "recovery-536616229": 13010
+          },
+          "inflight": [],
+          "fence": {
+            "allocator": 69,
+            "measurement": 51,
+            "routing": 1
+          }
+        }
+      },
+      "routing": {
+        "active": "stable-536616229",
+        "staged": "candidate-536616229",
+        "previous": null,
+        "used": [
+          "stable-536616229",
+          "candidate-536616229"
+        ]
+      },
+      "checkpoints": {
+        "checkpoint0-536616229": {
+          "lease": "probe-batch0-536616229/probe-0-536616229",
+          "request": "probe-0-536616229",
+          "generation": "candidate-536616229",
+          "segment": 0,
+          "tokens": [
+            6742145,
+            22924734,
+            30861468,
+            74666418,
+            75131415,
+            31272996
+          ],
+          "output": [
+            31272996
+          ],
+          "signature": [
+            "tenant-536616229",
+            "gqa-536616229",
+            "adapter-536616229",
+            "tokenizer-536616229",
+            "rope-536616229"
+          ]
+        },
+        "checkpoint1-536616229": {
+          "lease": "000-resume0-536616229/probe-0-536616229",
+          "request": "probe-0-536616229",
+          "generation": "candidate-536616229",
+          "segment": 1,
+          "tokens": [
+            6742145,
+            22924734,
+            30861468,
+            74666418,
+            75131415,
+            31272996
+          ],
+          "output": [
+            31272996
+          ],
+          "signature": [
+            "tenant-536616229",
+            "gqa-536616229",
+            "adapter-536616229",
+            "tokenizer-536616229",
+            "rope-536616229"
+          ]
+        }
+      },
+      "signals": {
+        "000-resume0-536616229/probe-0-536616229": {
+          "state": "pending",
+          "generation": "candidate-536616229",
+          "request": "probe-0-536616229",
+          "attempt": 0
+        },
+        "000-resume1-536616229/probe-0-536616229": {
+          "state": "ready",
+          "generation": "candidate-536616229",
+          "request": "probe-0-536616229",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 111,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083584216
+        },
+        "baseline-batch0-536616229/baseline-0-536616229": {
+          "state": "ready",
+          "generation": "stable-536616229",
+          "request": "baseline-0-536616229",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083584225
+        },
+        "baseline-batch0-536616229/baseline-1-536616229": {
+          "state": "ready",
+          "generation": "stable-536616229",
+          "request": "baseline-1-536616229",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083594225
+        },
+        "baseline-batch1-536616229/baseline-2-536616229": {
+          "state": "ready",
+          "generation": "stable-536616229",
+          "request": "baseline-2-536616229",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083604225
+        },
+        "baseline-batch1-536616229/baseline-3-536616229": {
+          "state": "ready",
+          "generation": "stable-536616229",
+          "request": "baseline-3-536616229",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083614225
+        },
+        "old-draining-plan-536616229/old-draining-536616229": {
+          "state": "ready",
+          "generation": "stable-536616229",
+          "request": "old-draining-536616229",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083684225
+        },
+        "probe-batch0-536616229/probe-0-536616229": {
+          "state": "pending",
+          "generation": "candidate-536616229",
+          "request": "probe-0-536616229",
+          "attempt": 0
+        },
+        "probe-batch0-536616229/probe-2-536616229": {
+          "state": "ready",
+          "generation": "candidate-536616229",
+          "request": "probe-2-536616229",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083604225
+        },
+        "probe-batch1-536616229/probe-1-536616229": {
+          "state": "invalid",
+          "generation": "candidate-536616229",
+          "request": "probe-1-536616229",
+          "attempt": 0
+        },
+        "probe-batch1-536616229/probe-3-536616229": {
+          "state": "ready",
+          "generation": "candidate-536616229",
+          "request": "probe-3-536616229",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083614225
+        }
+      }
+    }
+  },
+  "integration-01": {
+    "before": {
+      "plans": {
+        "baseline-batch0-940734013": {
+          "generation": "stable-940734013",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch0-940734013/baseline-0-940734013",
+              "request": "baseline-0-940734013",
+              "device": "prefill-940734013",
+              "cache": "cache-a-940734013",
+              "reserve_bytes": 4684
+            },
+            {
+              "lease": "baseline-batch0-940734013/baseline-1-940734013",
+              "request": "baseline-1-940734013",
+              "device": "prefill-940734013",
+              "cache": "cache-a-940734013",
+              "reserve_bytes": 4684
+            }
+          ],
+          "deferred": [
+            "baseline-2-940734013",
+            "baseline-3-940734013"
+          ]
+        },
+        "baseline-batch1-940734013": {
+          "generation": "stable-940734013",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch1-940734013/baseline-2-940734013",
+              "request": "baseline-2-940734013",
+              "device": "prefill-940734013",
+              "cache": "cache-a-940734013",
+              "reserve_bytes": 4684
+            },
+            {
+              "lease": "baseline-batch1-940734013/baseline-3-940734013",
+              "request": "baseline-3-940734013",
+              "device": "prefill-940734013",
+              "cache": "cache-a-940734013",
+              "reserve_bytes": 4684
+            }
+          ],
+          "deferred": []
+        },
+        "before-copy-940734013": {
+          "generation": "candidate-940734013",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-0-940734013",
+            "probe-1-940734013",
+            "probe-2-940734013",
+            "probe-3-940734013"
+          ]
+        },
+        "probe-batch0-940734013": {
+          "generation": "candidate-940734013",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch0-940734013/probe-0-940734013",
+              "request": "probe-0-940734013",
+              "device": "decode-940734013",
+              "cache": "cache-b-940734013",
+              "reserve_bytes": 3244
+            },
+            {
+              "lease": "probe-batch0-940734013/probe-2-940734013",
+              "request": "probe-2-940734013",
+              "device": "decode-940734013",
+              "cache": "cache-b-940734013",
+              "reserve_bytes": 3244
+            }
+          ],
+          "deferred": [
+            "probe-1-940734013",
+            "probe-3-940734013"
+          ]
+        },
+        "000-resume0-940734013": {
+          "generation": "candidate-940734013",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "000-resume0-940734013/probe-0-940734013",
+              "request": "probe-0-940734013",
+              "device": "recovery-940734013",
+              "cache": "received-prefix0-940734013",
+              "reserve_bytes": 3116
+            }
+          ],
+          "deferred": [
+            "probe-1-940734013",
+            "probe-3-940734013"
+          ]
+        },
+        "000-resume1-940734013": {
+          "generation": "candidate-940734013",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "000-resume1-940734013/probe-0-940734013",
+              "request": "probe-0-940734013",
+              "device": "decode-940734013",
+              "cache": "received-prefix1-940734013",
+              "reserve_bytes": 3244
+            }
+          ],
+          "deferred": [
+            "probe-1-940734013",
+            "probe-3-940734013"
+          ]
+        },
+        "waiting-second-copy-940734013": {
+          "generation": "candidate-940734013",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-1-940734013",
+            "probe-3-940734013"
+          ]
+        },
+        "probe-batch1-940734013": {
+          "generation": "candidate-940734013",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch1-940734013/probe-1-940734013",
+              "request": "probe-1-940734013",
+              "device": "recovery-940734013",
+              "cache": "cache-c-940734013",
+              "reserve_bytes": 3116
+            },
+            {
+              "lease": "probe-batch1-940734013/probe-3-940734013",
+              "request": "probe-3-940734013",
+              "device": "recovery-940734013",
+              "cache": "cache-c-940734013",
+              "reserve_bytes": 3116
+            }
+          ],
+          "deferred": []
+        },
+        "old-draining-plan-940734013": {
+          "generation": "stable-940734013",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "old-draining-plan-940734013/old-draining-940734013",
+              "request": "old-draining-940734013",
+              "device": "prefill-940734013",
+              "cache": null,
+              "reserve_bytes": 7026
+            }
+          ],
+          "deferred": []
+        }
+      },
+      "gates": {
+        "candidate-940734013": {
+          "generation": "candidate-940734013",
+          "groups": {
+            "short": {
+              "pairs": [
+                "pair-1-940734013"
+              ],
+              "bad": [],
+              "pending": [
+                "pair-0-940734013"
+              ]
+            },
+            "long": {
+              "pairs": [
+                "pair-2-940734013",
+                "pair-3-940734013"
+              ],
+              "bad": [],
+              "pending": []
+            }
+          },
+          "needs": {
+            "short": 1,
+            "long": 0
+          },
+          "bad_rate": [
+            0,
+            1
+          ],
+          "approved": false,
+          "blocked": true,
+          "headroom": {
+            "decode-940734013": 16220,
+            "recovery-940734013": 15580
+          },
+          "inflight": [],
+          "fence": {
+            "allocator": 69,
+            "measurement": 51,
+            "routing": 1
+          }
+        }
+      },
+      "routing": {
+        "active": "stable-940734013",
+        "staged": "candidate-940734013",
+        "previous": null,
+        "used": [
+          "stable-940734013",
+          "candidate-940734013"
+        ]
+      },
+      "checkpoints": {
+        "checkpoint0-940734013": {
+          "lease": "probe-batch0-940734013/probe-0-940734013",
+          "request": "probe-0-940734013",
+          "generation": "candidate-940734013",
+          "segment": 0,
+          "tokens": [
+            19664500,
+            620205,
+            106454,
+            97487084,
+            4696079,
+            83280467,
+            3695554,
+            25649885,
+            67520478
+          ],
+          "output": [
+            67520478
+          ],
+          "signature": [
+            "tenant-940734013",
+            "gqa-940734013",
+            "adapter-940734013",
+            "tokenizer-940734013",
+            "rope-940734013"
+          ]
+        },
+        "checkpoint1-940734013": {
+          "lease": "000-resume0-940734013/probe-0-940734013",
+          "request": "probe-0-940734013",
+          "generation": "candidate-940734013",
+          "segment": 1,
+          "tokens": [
+            19664500,
+            620205,
+            106454,
+            97487084,
+            4696079,
+            83280467,
+            3695554,
+            25649885,
+            67520478
+          ],
+          "output": [
+            67520478
+          ],
+          "signature": [
+            "tenant-940734013",
+            "gqa-940734013",
+            "adapter-940734013",
+            "tokenizer-940734013",
+            "rope-940734013"
+          ]
+        }
+      },
+      "signals": {
+        "000-resume0-940734013/probe-0-940734013": {
+          "state": "pending",
+          "generation": "candidate-940734013",
+          "request": "probe-0-940734013",
+          "attempt": 0
+        },
+        "000-resume1-940734013/probe-0-940734013": {
+          "state": "pending",
+          "generation": "candidate-940734013",
+          "request": "probe-0-940734013",
+          "attempt": 0
+        },
+        "baseline-batch0-940734013/baseline-0-940734013": {
+          "state": "ready",
+          "generation": "stable-940734013",
+          "request": "baseline-0-940734013",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083514225
+        },
+        "baseline-batch0-940734013/baseline-1-940734013": {
+          "state": "ready",
+          "generation": "stable-940734013",
+          "request": "baseline-1-940734013",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083524225
+        },
+        "baseline-batch1-940734013/baseline-2-940734013": {
+          "state": "ready",
+          "generation": "stable-940734013",
+          "request": "baseline-2-940734013",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083534225
+        },
+        "baseline-batch1-940734013/baseline-3-940734013": {
+          "state": "ready",
+          "generation": "stable-940734013",
+          "request": "baseline-3-940734013",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083544225
+        },
+        "old-draining-plan-940734013/old-draining-940734013": {
+          "state": "ready",
+          "generation": "stable-940734013",
+          "request": "old-draining-940734013",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083614225
+        },
+        "probe-batch0-940734013/probe-0-940734013": {
+          "state": "pending",
+          "generation": "candidate-940734013",
+          "request": "probe-0-940734013",
+          "attempt": 0
+        },
+        "probe-batch0-940734013/probe-2-940734013": {
+          "state": "ready",
+          "generation": "candidate-940734013",
+          "request": "probe-2-940734013",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083534225
+        },
+        "probe-batch1-940734013/probe-1-940734013": {
+          "state": "ready",
+          "generation": "candidate-940734013",
+          "request": "probe-1-940734013",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083524225
+        },
+        "probe-batch1-940734013/probe-3-940734013": {
+          "state": "ready",
+          "generation": "candidate-940734013",
+          "request": "probe-3-940734013",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083544225
+        }
+      }
+    },
+    "after": {
+      "plans": {
+        "baseline-batch0-940734013": {
+          "generation": "stable-940734013",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch0-940734013/baseline-0-940734013",
+              "request": "baseline-0-940734013",
+              "device": "prefill-940734013",
+              "cache": "cache-a-940734013",
+              "reserve_bytes": 4684
+            },
+            {
+              "lease": "baseline-batch0-940734013/baseline-1-940734013",
+              "request": "baseline-1-940734013",
+              "device": "prefill-940734013",
+              "cache": "cache-a-940734013",
+              "reserve_bytes": 4684
+            }
+          ],
+          "deferred": [
+            "baseline-2-940734013",
+            "baseline-3-940734013"
+          ]
+        },
+        "baseline-batch1-940734013": {
+          "generation": "stable-940734013",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch1-940734013/baseline-2-940734013",
+              "request": "baseline-2-940734013",
+              "device": "prefill-940734013",
+              "cache": "cache-a-940734013",
+              "reserve_bytes": 4684
+            },
+            {
+              "lease": "baseline-batch1-940734013/baseline-3-940734013",
+              "request": "baseline-3-940734013",
+              "device": "prefill-940734013",
+              "cache": "cache-a-940734013",
+              "reserve_bytes": 4684
+            }
+          ],
+          "deferred": []
+        },
+        "before-copy-940734013": {
+          "generation": "candidate-940734013",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-0-940734013",
+            "probe-1-940734013",
+            "probe-2-940734013",
+            "probe-3-940734013"
+          ]
+        },
+        "probe-batch0-940734013": {
+          "generation": "candidate-940734013",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch0-940734013/probe-0-940734013",
+              "request": "probe-0-940734013",
+              "device": "decode-940734013",
+              "cache": "cache-b-940734013",
+              "reserve_bytes": 3244
+            },
+            {
+              "lease": "probe-batch0-940734013/probe-2-940734013",
+              "request": "probe-2-940734013",
+              "device": "decode-940734013",
+              "cache": "cache-b-940734013",
+              "reserve_bytes": 3244
+            }
+          ],
+          "deferred": [
+            "probe-1-940734013",
+            "probe-3-940734013"
+          ]
+        },
+        "000-resume0-940734013": {
+          "generation": "candidate-940734013",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "000-resume0-940734013/probe-0-940734013",
+              "request": "probe-0-940734013",
+              "device": "recovery-940734013",
+              "cache": "received-prefix0-940734013",
+              "reserve_bytes": 3116
+            }
+          ],
+          "deferred": [
+            "probe-1-940734013",
+            "probe-3-940734013"
+          ]
+        },
+        "000-resume1-940734013": {
+          "generation": "candidate-940734013",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "000-resume1-940734013/probe-0-940734013",
+              "request": "probe-0-940734013",
+              "device": "decode-940734013",
+              "cache": "received-prefix1-940734013",
+              "reserve_bytes": 3244
+            }
+          ],
+          "deferred": [
+            "probe-1-940734013",
+            "probe-3-940734013"
+          ]
+        },
+        "waiting-second-copy-940734013": {
+          "generation": "candidate-940734013",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-1-940734013",
+            "probe-3-940734013"
+          ]
+        },
+        "probe-batch1-940734013": {
+          "generation": "candidate-940734013",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch1-940734013/probe-1-940734013",
+              "request": "probe-1-940734013",
+              "device": "recovery-940734013",
+              "cache": "cache-c-940734013",
+              "reserve_bytes": 3116
+            },
+            {
+              "lease": "probe-batch1-940734013/probe-3-940734013",
+              "request": "probe-3-940734013",
+              "device": "recovery-940734013",
+              "cache": "cache-c-940734013",
+              "reserve_bytes": 3116
+            }
+          ],
+          "deferred": []
+        },
+        "old-draining-plan-940734013": {
+          "generation": "stable-940734013",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "old-draining-plan-940734013/old-draining-940734013",
+              "request": "old-draining-940734013",
+              "device": "prefill-940734013",
+              "cache": null,
+              "reserve_bytes": 7026
+            }
+          ],
+          "deferred": []
+        }
+      },
+      "gates": {
+        "candidate-940734013": {
+          "generation": "candidate-940734013",
+          "groups": {
+            "short": {
+              "pairs": [],
+              "bad": [],
+              "pending": [
+                "pair-0-940734013",
+                "pair-1-940734013"
+              ]
+            },
+            "long": {
+              "pairs": [
+                "pair-2-940734013",
+                "pair-3-940734013"
+              ],
+              "bad": [],
+              "pending": []
+            }
+          },
+          "needs": {
+            "short": 2,
+            "long": 0
+          },
+          "bad_rate": [
+            0,
+            1
+          ],
+          "approved": false,
+          "blocked": true,
+          "headroom": {
+            "decode-940734013": 16220,
+            "recovery-940734013": 15580
+          },
+          "inflight": [],
+          "fence": {
+            "allocator": 69,
+            "measurement": 51,
+            "routing": 1
+          }
+        }
+      },
+      "routing": {
+        "active": "stable-940734013",
+        "staged": "candidate-940734013",
+        "previous": null,
+        "used": [
+          "stable-940734013",
+          "candidate-940734013"
+        ]
+      },
+      "checkpoints": {
+        "checkpoint0-940734013": {
+          "lease": "probe-batch0-940734013/probe-0-940734013",
+          "request": "probe-0-940734013",
+          "generation": "candidate-940734013",
+          "segment": 0,
+          "tokens": [
+            19664500,
+            620205,
+            106454,
+            97487084,
+            4696079,
+            83280467,
+            3695554,
+            25649885,
+            67520478
+          ],
+          "output": [
+            67520478
+          ],
+          "signature": [
+            "tenant-940734013",
+            "gqa-940734013",
+            "adapter-940734013",
+            "tokenizer-940734013",
+            "rope-940734013"
+          ]
+        },
+        "checkpoint1-940734013": {
+          "lease": "000-resume0-940734013/probe-0-940734013",
+          "request": "probe-0-940734013",
+          "generation": "candidate-940734013",
+          "segment": 1,
+          "tokens": [
+            19664500,
+            620205,
+            106454,
+            97487084,
+            4696079,
+            83280467,
+            3695554,
+            25649885,
+            67520478
+          ],
+          "output": [
+            67520478
+          ],
+          "signature": [
+            "tenant-940734013",
+            "gqa-940734013",
+            "adapter-940734013",
+            "tokenizer-940734013",
+            "rope-940734013"
+          ]
+        }
+      },
+      "signals": {
+        "000-resume0-940734013/probe-0-940734013": {
+          "state": "pending",
+          "generation": "candidate-940734013",
+          "request": "probe-0-940734013",
+          "attempt": 0
+        },
+        "000-resume1-940734013/probe-0-940734013": {
+          "state": "pending",
+          "generation": "candidate-940734013",
+          "request": "probe-0-940734013",
+          "attempt": 0
+        },
+        "baseline-batch0-940734013/baseline-0-940734013": {
+          "state": "ready",
+          "generation": "stable-940734013",
+          "request": "baseline-0-940734013",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083514225
+        },
+        "baseline-batch0-940734013/baseline-1-940734013": {
+          "state": "ready",
+          "generation": "stable-940734013",
+          "request": "baseline-1-940734013",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083524225
+        },
+        "baseline-batch1-940734013/baseline-2-940734013": {
+          "state": "ready",
+          "generation": "stable-940734013",
+          "request": "baseline-2-940734013",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083534225
+        },
+        "baseline-batch1-940734013/baseline-3-940734013": {
+          "state": "ready",
+          "generation": "stable-940734013",
+          "request": "baseline-3-940734013",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083544225
+        },
+        "old-draining-plan-940734013/old-draining-940734013": {
+          "state": "ready",
+          "generation": "stable-940734013",
+          "request": "old-draining-940734013",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083614225
+        },
+        "probe-batch0-940734013/probe-0-940734013": {
+          "state": "pending",
+          "generation": "candidate-940734013",
+          "request": "probe-0-940734013",
+          "attempt": 0
+        },
+        "probe-batch0-940734013/probe-2-940734013": {
+          "state": "ready",
+          "generation": "candidate-940734013",
+          "request": "probe-2-940734013",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083534225
+        },
+        "probe-batch1-940734013/probe-1-940734013": {
+          "state": "invalid",
+          "generation": "candidate-940734013",
+          "request": "probe-1-940734013",
+          "attempt": 0
+        },
+        "probe-batch1-940734013/probe-3-940734013": {
+          "state": "ready",
+          "generation": "candidate-940734013",
+          "request": "probe-3-940734013",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083544225
+        }
+      }
+    }
+  },
+  "integration-02": {
+    "before": {
+      "plans": {
+        "baseline-batch0-922692958": {
+          "generation": "stable-922692958",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch0-922692958/baseline-0-922692958",
+              "request": "baseline-0-922692958",
+              "device": "prefill-922692958",
+              "cache": "cache-a-922692958",
+              "reserve_bytes": 3984
+            },
+            {
+              "lease": "baseline-batch0-922692958/baseline-1-922692958",
+              "request": "baseline-1-922692958",
+              "device": "prefill-922692958",
+              "cache": "cache-a-922692958",
+              "reserve_bytes": 3984
+            }
+          ],
+          "deferred": [
+            "baseline-2-922692958",
+            "baseline-3-922692958"
+          ]
+        },
+        "baseline-batch1-922692958": {
+          "generation": "stable-922692958",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch1-922692958/baseline-2-922692958",
+              "request": "baseline-2-922692958",
+              "device": "prefill-922692958",
+              "cache": "cache-a-922692958",
+              "reserve_bytes": 3984
+            },
+            {
+              "lease": "baseline-batch1-922692958/baseline-3-922692958",
+              "request": "baseline-3-922692958",
+              "device": "prefill-922692958",
+              "cache": "cache-a-922692958",
+              "reserve_bytes": 3984
+            }
+          ],
+          "deferred": []
+        },
+        "before-copy-922692958": {
+          "generation": "candidate-922692958",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-0-922692958",
+            "probe-1-922692958",
+            "probe-2-922692958",
+            "probe-3-922692958"
+          ]
+        },
+        "probe-batch0-922692958": {
+          "generation": "candidate-922692958",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch0-922692958/probe-0-922692958",
+              "request": "probe-0-922692958",
+              "device": "decode-922692958",
+              "cache": "cache-b-922692958",
+              "reserve_bytes": 2960
+            },
+            {
+              "lease": "probe-batch0-922692958/probe-2-922692958",
+              "request": "probe-2-922692958",
+              "device": "decode-922692958",
+              "cache": "cache-b-922692958",
+              "reserve_bytes": 2960
+            }
+          ],
+          "deferred": [
+            "probe-1-922692958",
+            "probe-3-922692958"
+          ]
+        },
+        "000-resume0-922692958": {
+          "generation": "candidate-922692958",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-1-922692958",
+            "probe-3-922692958"
+          ]
+        },
+        "000-resume1-922692958": {
+          "generation": "candidate-922692958",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-1-922692958",
+            "probe-3-922692958"
+          ]
+        },
+        "waiting-second-copy-922692958": {
+          "generation": "candidate-922692958",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-1-922692958",
+            "probe-3-922692958"
+          ]
+        },
+        "probe-batch1-922692958": {
+          "generation": "candidate-922692958",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch1-922692958/probe-1-922692958",
+              "request": "probe-1-922692958",
+              "device": "recovery-922692958",
+              "cache": "cache-c-922692958",
+              "reserve_bytes": 2576
+            }
+          ],
+          "deferred": [
+            "probe-3-922692958"
+          ]
+        },
+        "old-draining-plan-922692958": {
+          "generation": "stable-922692958",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "old-draining-plan-922692958/old-draining-922692958",
+              "request": "old-draining-922692958",
+              "device": "prefill-922692958",
+              "cache": null,
+              "reserve_bytes": 5976
+            }
+          ],
+          "deferred": []
+        }
+      },
+      "gates": {
+        "candidate-922692958": {
+          "generation": "candidate-922692958",
+          "groups": {
+            "short": {
+              "pairs": [
+                "pair-1-922692958"
+              ],
+              "bad": [],
+              "pending": [
+                "pair-0-922692958"
+              ]
+            },
+            "long": {
+              "pairs": [],
+              "bad": [],
+              "pending": [
+                "pair-2-922692958"
+              ]
+            }
+          },
+          "needs": {
+            "short": 1,
+            "long": 2
+          },
+          "bad_rate": [
+            0,
+            1
+          ],
+          "approved": false,
+          "blocked": true,
+          "headroom": {
+            "decode-922692958": 8880,
+            "recovery-922692958": 12880
+          },
+          "inflight": [],
+          "fence": {
+            "allocator": 45,
+            "measurement": 36,
+            "routing": 1
+          }
+        }
+      },
+      "routing": {
+        "active": "stable-922692958",
+        "staged": "candidate-922692958",
+        "previous": null,
+        "used": [
+          "stable-922692958",
+          "candidate-922692958"
+        ]
+      },
+      "checkpoints": {},
+      "signals": {
+        "baseline-batch0-922692958/baseline-0-922692958": {
+          "state": "ready",
+          "generation": "stable-922692958",
+          "request": "baseline-0-922692958",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797051404225
+        },
+        "baseline-batch0-922692958/baseline-1-922692958": {
+          "state": "ready",
+          "generation": "stable-922692958",
+          "request": "baseline-1-922692958",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797051414225
+        },
+        "baseline-batch1-922692958/baseline-2-922692958": {
+          "state": "ready",
+          "generation": "stable-922692958",
+          "request": "baseline-2-922692958",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797051424225
+        },
+        "baseline-batch1-922692958/baseline-3-922692958": {
+          "state": "ready",
+          "generation": "stable-922692958",
+          "request": "baseline-3-922692958",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797051434225
+        },
+        "old-draining-plan-922692958/old-draining-922692958": {
+          "state": "ready",
+          "generation": "stable-922692958",
+          "request": "old-draining-922692958",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797051504225
+        },
+        "probe-batch0-922692958/probe-0-922692958": {
+          "state": "pending",
+          "generation": "candidate-922692958",
+          "request": "probe-0-922692958",
+          "attempt": 0
+        },
+        "probe-batch0-922692958/probe-2-922692958": {
+          "state": "invalid",
+          "generation": "candidate-922692958",
+          "request": "probe-2-922692958",
+          "attempt": 0
+        },
+        "probe-batch1-922692958/probe-1-922692958": {
+          "state": "ready",
+          "generation": "candidate-922692958",
+          "request": "probe-1-922692958",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797051414225
+        }
+      }
+    },
+    "after": {
+      "plans": {
+        "baseline-batch0-922692958": {
+          "generation": "stable-922692958",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch0-922692958/baseline-0-922692958",
+              "request": "baseline-0-922692958",
+              "device": "prefill-922692958",
+              "cache": "cache-a-922692958",
+              "reserve_bytes": 3984
+            },
+            {
+              "lease": "baseline-batch0-922692958/baseline-1-922692958",
+              "request": "baseline-1-922692958",
+              "device": "prefill-922692958",
+              "cache": "cache-a-922692958",
+              "reserve_bytes": 3984
+            }
+          ],
+          "deferred": [
+            "baseline-2-922692958",
+            "baseline-3-922692958"
+          ]
+        },
+        "baseline-batch1-922692958": {
+          "generation": "stable-922692958",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch1-922692958/baseline-2-922692958",
+              "request": "baseline-2-922692958",
+              "device": "prefill-922692958",
+              "cache": "cache-a-922692958",
+              "reserve_bytes": 3984
+            },
+            {
+              "lease": "baseline-batch1-922692958/baseline-3-922692958",
+              "request": "baseline-3-922692958",
+              "device": "prefill-922692958",
+              "cache": "cache-a-922692958",
+              "reserve_bytes": 3984
+            }
+          ],
+          "deferred": []
+        },
+        "before-copy-922692958": {
+          "generation": "candidate-922692958",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-0-922692958",
+            "probe-1-922692958",
+            "probe-2-922692958",
+            "probe-3-922692958"
+          ]
+        },
+        "probe-batch0-922692958": {
+          "generation": "candidate-922692958",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch0-922692958/probe-0-922692958",
+              "request": "probe-0-922692958",
+              "device": "decode-922692958",
+              "cache": "cache-b-922692958",
+              "reserve_bytes": 2960
+            },
+            {
+              "lease": "probe-batch0-922692958/probe-2-922692958",
+              "request": "probe-2-922692958",
+              "device": "decode-922692958",
+              "cache": "cache-b-922692958",
+              "reserve_bytes": 2960
+            }
+          ],
+          "deferred": [
+            "probe-1-922692958",
+            "probe-3-922692958"
+          ]
+        },
+        "000-resume0-922692958": {
+          "generation": "candidate-922692958",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-1-922692958",
+            "probe-3-922692958"
+          ]
+        },
+        "000-resume1-922692958": {
+          "generation": "candidate-922692958",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-1-922692958",
+            "probe-3-922692958"
+          ]
+        },
+        "waiting-second-copy-922692958": {
+          "generation": "candidate-922692958",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-1-922692958",
+            "probe-3-922692958"
+          ]
+        },
+        "probe-batch1-922692958": {
+          "generation": "candidate-922692958",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch1-922692958/probe-1-922692958",
+              "request": "probe-1-922692958",
+              "device": "recovery-922692958",
+              "cache": "cache-c-922692958",
+              "reserve_bytes": 2576
+            }
+          ],
+          "deferred": [
+            "probe-3-922692958"
+          ]
+        },
+        "old-draining-plan-922692958": {
+          "generation": "stable-922692958",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "old-draining-plan-922692958/old-draining-922692958",
+              "request": "old-draining-922692958",
+              "device": "prefill-922692958",
+              "cache": null,
+              "reserve_bytes": 5976
+            }
+          ],
+          "deferred": []
+        }
+      },
+      "gates": {
+        "candidate-922692958": {
+          "generation": "candidate-922692958",
+          "groups": {
+            "short": {
+              "pairs": [],
+              "bad": [],
+              "pending": [
+                "pair-0-922692958",
+                "pair-1-922692958"
+              ]
+            },
+            "long": {
+              "pairs": [],
+              "bad": [],
+              "pending": [
+                "pair-2-922692958"
+              ]
+            }
+          },
+          "needs": {
+            "short": 2,
+            "long": 2
+          },
+          "bad_rate": [
+            0,
+            1
+          ],
+          "approved": false,
+          "blocked": true,
+          "headroom": {
+            "decode-922692958": 8880,
+            "recovery-922692958": 12880
+          },
+          "inflight": [],
+          "fence": {
+            "allocator": 45,
+            "measurement": 36,
+            "routing": 1
+          }
+        }
+      },
+      "routing": {
+        "active": "stable-922692958",
+        "staged": "candidate-922692958",
+        "previous": null,
+        "used": [
+          "stable-922692958",
+          "candidate-922692958"
+        ]
+      },
+      "checkpoints": {},
+      "signals": {
+        "baseline-batch0-922692958/baseline-0-922692958": {
+          "state": "ready",
+          "generation": "stable-922692958",
+          "request": "baseline-0-922692958",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797051404225
+        },
+        "baseline-batch0-922692958/baseline-1-922692958": {
+          "state": "ready",
+          "generation": "stable-922692958",
+          "request": "baseline-1-922692958",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797051414225
+        },
+        "baseline-batch1-922692958/baseline-2-922692958": {
+          "state": "ready",
+          "generation": "stable-922692958",
+          "request": "baseline-2-922692958",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797051424225
+        },
+        "baseline-batch1-922692958/baseline-3-922692958": {
+          "state": "ready",
+          "generation": "stable-922692958",
+          "request": "baseline-3-922692958",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797051434225
+        },
+        "old-draining-plan-922692958/old-draining-922692958": {
+          "state": "ready",
+          "generation": "stable-922692958",
+          "request": "old-draining-922692958",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797051504225
+        },
+        "probe-batch0-922692958/probe-0-922692958": {
+          "state": "pending",
+          "generation": "candidate-922692958",
+          "request": "probe-0-922692958",
+          "attempt": 0
+        },
+        "probe-batch0-922692958/probe-2-922692958": {
+          "state": "invalid",
+          "generation": "candidate-922692958",
+          "request": "probe-2-922692958",
+          "attempt": 0
+        },
+        "probe-batch1-922692958/probe-1-922692958": {
+          "state": "invalid",
+          "generation": "candidate-922692958",
+          "request": "probe-1-922692958",
+          "attempt": 0
+        }
+      }
+    }
+  },
+  "integration-03": {
+    "before": {
+      "plans": {
+        "baseline-batch0-594959587": {
+          "generation": "stable-594959587",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch0-594959587/baseline-0-594959587",
+              "request": "baseline-0-594959587",
+              "device": "prefill-594959587",
+              "cache": "cache-a-594959587",
+              "reserve_bytes": 5186
+            },
+            {
+              "lease": "baseline-batch0-594959587/baseline-1-594959587",
+              "request": "baseline-1-594959587",
+              "device": "prefill-594959587",
+              "cache": "cache-a-594959587",
+              "reserve_bytes": 5186
+            }
+          ],
+          "deferred": [
+            "baseline-2-594959587",
+            "baseline-3-594959587"
+          ]
+        },
+        "baseline-batch1-594959587": {
+          "generation": "stable-594959587",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch1-594959587/baseline-2-594959587",
+              "request": "baseline-2-594959587",
+              "device": "prefill-594959587",
+              "cache": "cache-a-594959587",
+              "reserve_bytes": 5186
+            },
+            {
+              "lease": "baseline-batch1-594959587/baseline-3-594959587",
+              "request": "baseline-3-594959587",
+              "device": "prefill-594959587",
+              "cache": "cache-a-594959587",
+              "reserve_bytes": 5186
+            }
+          ],
+          "deferred": []
+        },
+        "before-copy-594959587": {
+          "generation": "candidate-594959587",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-0-594959587",
+            "probe-1-594959587",
+            "probe-2-594959587",
+            "probe-3-594959587"
+          ]
+        },
+        "probe-batch0-594959587": {
+          "generation": "candidate-594959587",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch0-594959587/probe-0-594959587",
+              "request": "probe-0-594959587",
+              "device": "decode-594959587",
+              "cache": "cache-b-594959587",
+              "reserve_bytes": 3618
+            },
+            {
+              "lease": "probe-batch0-594959587/probe-2-594959587",
+              "request": "probe-2-594959587",
+              "device": "decode-594959587",
+              "cache": "cache-b-594959587",
+              "reserve_bytes": 3618
+            }
+          ],
+          "deferred": [
+            "probe-1-594959587",
+            "probe-3-594959587"
+          ]
+        },
+        "000-resume0-594959587": {
+          "generation": "candidate-594959587",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "000-resume0-594959587/probe-0-594959587",
+              "request": "probe-0-594959587",
+              "device": "recovery-594959587",
+              "cache": "received-prefix0-594959587",
+              "reserve_bytes": 3106
+            }
+          ],
+          "deferred": [
+            "probe-1-594959587",
+            "probe-3-594959587"
+          ]
+        },
+        "000-resume1-594959587": {
+          "generation": "candidate-594959587",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "000-resume1-594959587/probe-0-594959587",
+              "request": "probe-0-594959587",
+              "device": "decode-594959587",
+              "cache": "received-prefix1-594959587",
+              "reserve_bytes": 3618
+            }
+          ],
+          "deferred": [
+            "probe-1-594959587",
+            "probe-3-594959587"
+          ]
+        },
+        "waiting-second-copy-594959587": {
+          "generation": "candidate-594959587",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-1-594959587",
+            "probe-3-594959587"
+          ]
+        },
+        "probe-batch1-594959587": {
+          "generation": "candidate-594959587",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch1-594959587/probe-1-594959587",
+              "request": "probe-1-594959587",
+              "device": "recovery-594959587",
+              "cache": "cache-c-594959587",
+              "reserve_bytes": 3106
+            },
+            {
+              "lease": "probe-batch1-594959587/probe-3-594959587",
+              "request": "probe-3-594959587",
+              "device": "recovery-594959587",
+              "cache": "cache-c-594959587",
+              "reserve_bytes": 3106
+            }
+          ],
+          "deferred": []
+        },
+        "old-draining-plan-594959587": {
+          "generation": "stable-594959587",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "old-draining-plan-594959587/old-draining-594959587",
+              "request": "old-draining-594959587",
+              "device": "prefill-594959587",
+              "cache": null,
+              "reserve_bytes": 7779
+            }
+          ],
+          "deferred": []
+        },
+        "production-plan-594959587": {
+          "generation": "candidate-594959587",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "production-plan-594959587/production-retry-594959587",
+              "request": "production-retry-594959587",
+              "device": "recovery-594959587",
+              "cache": "cache-c-594959587",
+              "reserve_bytes": 3106
+            }
+          ],
+          "deferred": []
+        }
+      },
+      "gates": {
+        "candidate-594959587": {
+          "generation": "candidate-594959587",
+          "groups": {
+            "short": {
+              "pairs": [
+                "pair-0-594959587",
+                "pair-1-594959587"
+              ],
+              "bad": [],
+              "pending": []
+            },
+            "long": {
+              "pairs": [
+                "pair-2-594959587",
+                "pair-3-594959587"
+              ],
+              "bad": [
+                "pair-2-594959587"
+              ],
+              "pending": []
+            }
+          },
+          "needs": {
+            "short": 0,
+            "long": 0
+          },
+          "bad_rate": [
+            2,
+            5
+          ],
+          "approved": false,
+          "blocked": true,
+          "headroom": {
+            "decode-594959587": 18090,
+            "recovery-594959587": 15530
+          },
+          "inflight": [],
+          "fence": {
+            "allocator": 71,
+            "measurement": 56,
+            "routing": 2
+          }
+        }
+      },
+      "routing": {
+        "active": "stable-594959587",
+        "staged": null,
+        "previous": null,
+        "used": [
+          "stable-594959587",
+          "candidate-594959587"
+        ]
+      },
+      "checkpoints": {
+        "checkpoint0-594959587": {
+          "lease": "probe-batch0-594959587/probe-0-594959587",
+          "request": "probe-0-594959587",
+          "generation": "candidate-594959587",
+          "segment": 0,
+          "tokens": [
+            85909670,
+            66178630,
+            17520538,
+            68472944,
+            43153152,
+            1342928,
+            46476368,
+            29811606,
+            77176047,
+            87254052
+          ],
+          "output": [
+            87254052
+          ],
+          "signature": [
+            "tenant-594959587",
+            "gqa-594959587",
+            "adapter-594959587",
+            "tokenizer-594959587",
+            "rope-594959587"
+          ]
+        },
+        "checkpoint1-594959587": {
+          "lease": "000-resume0-594959587/probe-0-594959587",
+          "request": "probe-0-594959587",
+          "generation": "candidate-594959587",
+          "segment": 1,
+          "tokens": [
+            85909670,
+            66178630,
+            17520538,
+            68472944,
+            43153152,
+            1342928,
+            46476368,
+            29811606,
+            77176047,
+            87254052
+          ],
+          "output": [
+            87254052
+          ],
+          "signature": [
+            "tenant-594959587",
+            "gqa-594959587",
+            "adapter-594959587",
+            "tokenizer-594959587",
+            "rope-594959587"
+          ]
+        }
+      },
+      "signals": {
+        "000-resume0-594959587/probe-0-594959587": {
+          "state": "pending",
+          "generation": "candidate-594959587",
+          "request": "probe-0-594959587",
+          "attempt": 0
+        },
+        "000-resume1-594959587/probe-0-594959587": {
+          "state": "ready",
+          "generation": "candidate-594959587",
+          "request": "probe-0-594959587",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 111,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797096004216
+        },
+        "baseline-batch0-594959587/baseline-0-594959587": {
+          "state": "ready",
+          "generation": "stable-594959587",
+          "request": "baseline-0-594959587",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797096004225
+        },
+        "baseline-batch0-594959587/baseline-1-594959587": {
+          "state": "ready",
+          "generation": "stable-594959587",
+          "request": "baseline-1-594959587",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797096014225
+        },
+        "baseline-batch1-594959587/baseline-2-594959587": {
+          "state": "ready",
+          "generation": "stable-594959587",
+          "request": "baseline-2-594959587",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797096024225
+        },
+        "baseline-batch1-594959587/baseline-3-594959587": {
+          "state": "ready",
+          "generation": "stable-594959587",
+          "request": "baseline-3-594959587",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797096034225
+        },
+        "old-draining-plan-594959587/old-draining-594959587": {
+          "state": "ready",
+          "generation": "stable-594959587",
+          "request": "old-draining-594959587",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797096104225
+        },
+        "probe-batch0-594959587/probe-0-594959587": {
+          "state": "pending",
+          "generation": "candidate-594959587",
+          "request": "probe-0-594959587",
+          "attempt": 0
+        },
+        "probe-batch0-594959587/probe-2-594959587": {
+          "state": "ready",
+          "generation": "candidate-594959587",
+          "request": "probe-2-594959587",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797096024225
+        },
+        "probe-batch1-594959587/probe-1-594959587": {
+          "state": "ready",
+          "generation": "candidate-594959587",
+          "request": "probe-1-594959587",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797096014225
+        },
+        "probe-batch1-594959587/probe-3-594959587": {
+          "state": "ready",
+          "generation": "candidate-594959587",
+          "request": "probe-3-594959587",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797096034225
+        },
+        "production-plan-594959587/production-retry-594959587": {
+          "state": "failed",
+          "generation": "candidate-594959587",
+          "request": "production-retry-594959587",
+          "attempt": 1
+        }
+      }
+    },
+    "after": {
+      "plans": {
+        "baseline-batch0-594959587": {
+          "generation": "stable-594959587",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch0-594959587/baseline-0-594959587",
+              "request": "baseline-0-594959587",
+              "device": "prefill-594959587",
+              "cache": "cache-a-594959587",
+              "reserve_bytes": 5186
+            },
+            {
+              "lease": "baseline-batch0-594959587/baseline-1-594959587",
+              "request": "baseline-1-594959587",
+              "device": "prefill-594959587",
+              "cache": "cache-a-594959587",
+              "reserve_bytes": 5186
+            }
+          ],
+          "deferred": [
+            "baseline-2-594959587",
+            "baseline-3-594959587"
+          ]
+        },
+        "baseline-batch1-594959587": {
+          "generation": "stable-594959587",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch1-594959587/baseline-2-594959587",
+              "request": "baseline-2-594959587",
+              "device": "prefill-594959587",
+              "cache": "cache-a-594959587",
+              "reserve_bytes": 5186
+            },
+            {
+              "lease": "baseline-batch1-594959587/baseline-3-594959587",
+              "request": "baseline-3-594959587",
+              "device": "prefill-594959587",
+              "cache": "cache-a-594959587",
+              "reserve_bytes": 5186
+            }
+          ],
+          "deferred": []
+        },
+        "before-copy-594959587": {
+          "generation": "candidate-594959587",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-0-594959587",
+            "probe-1-594959587",
+            "probe-2-594959587",
+            "probe-3-594959587"
+          ]
+        },
+        "probe-batch0-594959587": {
+          "generation": "candidate-594959587",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch0-594959587/probe-0-594959587",
+              "request": "probe-0-594959587",
+              "device": "decode-594959587",
+              "cache": "cache-b-594959587",
+              "reserve_bytes": 3618
+            },
+            {
+              "lease": "probe-batch0-594959587/probe-2-594959587",
+              "request": "probe-2-594959587",
+              "device": "decode-594959587",
+              "cache": "cache-b-594959587",
+              "reserve_bytes": 3618
+            }
+          ],
+          "deferred": [
+            "probe-1-594959587",
+            "probe-3-594959587"
+          ]
+        },
+        "000-resume0-594959587": {
+          "generation": "candidate-594959587",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "000-resume0-594959587/probe-0-594959587",
+              "request": "probe-0-594959587",
+              "device": "decode-594959587",
+              "cache": "paused-cache0-594959587",
+              "reserve_bytes": 3618
+            }
+          ],
+          "deferred": [
+            "probe-1-594959587",
+            "probe-3-594959587"
+          ]
+        },
+        "000-resume1-594959587": {
+          "generation": "candidate-594959587",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "000-resume1-594959587/probe-0-594959587",
+              "request": "probe-0-594959587",
+              "device": "decode-594959587",
+              "cache": "paused-cache0-594959587",
+              "reserve_bytes": 3618
+            }
+          ],
+          "deferred": [
+            "probe-1-594959587",
+            "probe-3-594959587"
+          ]
+        },
+        "waiting-second-copy-594959587": {
+          "generation": "candidate-594959587",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-1-594959587",
+            "probe-3-594959587"
+          ]
+        },
+        "probe-batch1-594959587": {
+          "generation": "candidate-594959587",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch1-594959587/probe-1-594959587",
+              "request": "probe-1-594959587",
+              "device": "recovery-594959587",
+              "cache": "cache-c-594959587",
+              "reserve_bytes": 3106
+            },
+            {
+              "lease": "probe-batch1-594959587/probe-3-594959587",
+              "request": "probe-3-594959587",
+              "device": "recovery-594959587",
+              "cache": "cache-c-594959587",
+              "reserve_bytes": 3106
+            }
+          ],
+          "deferred": []
+        },
+        "old-draining-plan-594959587": {
+          "generation": "stable-594959587",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "old-draining-plan-594959587/old-draining-594959587",
+              "request": "old-draining-594959587",
+              "device": "prefill-594959587",
+              "cache": null,
+              "reserve_bytes": 7779
+            }
+          ],
+          "deferred": []
+        }
+      },
+      "gates": {
+        "candidate-594959587": {
+          "generation": "candidate-594959587",
+          "groups": {
+            "short": {
+              "pairs": [],
+              "bad": [],
+              "pending": [
+                "pair-0-594959587",
+                "pair-1-594959587"
+              ]
+            },
+            "long": {
+              "pairs": [],
+              "bad": [],
+              "pending": [
+                "pair-2-594959587",
+                "pair-3-594959587"
+              ]
+            }
+          },
+          "needs": {
+            "short": 2,
+            "long": 2
+          },
+          "bad_rate": [
+            0,
+            1
+          ],
+          "approved": false,
+          "blocked": true,
+          "headroom": {
+            "decode-594959587": 14472,
+            "recovery-594959587": 15530
+          },
+          "inflight": [],
+          "fence": {
+            "allocator": 54,
+            "measurement": 46,
+            "routing": 1
+          }
+        }
+      },
+      "routing": {
+        "active": "stable-594959587",
+        "staged": "candidate-594959587",
+        "previous": null,
+        "used": [
+          "stable-594959587",
+          "candidate-594959587"
+        ]
+      },
+      "checkpoints": {
+        "checkpoint0-594959587": {
+          "lease": "probe-batch0-594959587/probe-0-594959587",
+          "request": "probe-0-594959587",
+          "generation": "candidate-594959587",
+          "segment": 0,
+          "tokens": [
+            85909670,
+            66178630,
+            17520538,
+            68472944,
+            43153152,
+            1342928,
+            46476368,
+            29811606,
+            77176047,
+            7035613
+          ],
+          "output": [
+            7035613
+          ],
+          "signature": [
+            "tenant-594959587",
+            "gqa-594959587",
+            "adapter-594959587",
+            "tokenizer-594959587",
+            "rope-594959587"
+          ]
+        },
+        "checkpoint1-594959587": {
+          "lease": "000-resume0-594959587/probe-0-594959587",
+          "request": "probe-0-594959587",
+          "generation": "candidate-594959587",
+          "segment": 1,
+          "tokens": [
+            85909670,
+            66178630,
+            17520538,
+            68472944,
+            43153152,
+            1342928,
+            46476368,
+            29811606,
+            77176047,
+            7035613
+          ],
+          "output": [
+            7035613
+          ],
+          "signature": [
+            "tenant-594959587",
+            "gqa-594959587",
+            "adapter-594959587",
+            "tokenizer-594959587",
+            "rope-594959587"
+          ]
+        }
+      },
+      "signals": {
+        "000-resume0-594959587/probe-0-594959587": {
+          "state": "pending",
+          "generation": "candidate-594959587",
+          "request": "probe-0-594959587",
+          "attempt": 0
+        },
+        "000-resume1-594959587/probe-0-594959587": {
+          "state": "invalid",
+          "generation": "candidate-594959587",
+          "request": "probe-0-594959587",
+          "attempt": 0
+        },
+        "baseline-batch0-594959587/baseline-0-594959587": {
+          "state": "ready",
+          "generation": "stable-594959587",
+          "request": "baseline-0-594959587",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797096004225
+        },
+        "baseline-batch0-594959587/baseline-1-594959587": {
+          "state": "ready",
+          "generation": "stable-594959587",
+          "request": "baseline-1-594959587",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797096014225
+        },
+        "baseline-batch1-594959587/baseline-2-594959587": {
+          "state": "ready",
+          "generation": "stable-594959587",
+          "request": "baseline-2-594959587",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797096024225
+        },
+        "baseline-batch1-594959587/baseline-3-594959587": {
+          "state": "ready",
+          "generation": "stable-594959587",
+          "request": "baseline-3-594959587",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797096034225
+        },
+        "old-draining-plan-594959587/old-draining-594959587": {
+          "state": "ready",
+          "generation": "stable-594959587",
+          "request": "old-draining-594959587",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797096104225
+        },
+        "probe-batch0-594959587/probe-0-594959587": {
+          "state": "pending",
+          "generation": "candidate-594959587",
+          "request": "probe-0-594959587",
+          "attempt": 0
+        },
+        "probe-batch0-594959587/probe-2-594959587": {
+          "state": "invalid",
+          "generation": "candidate-594959587",
+          "request": "probe-2-594959587",
+          "attempt": 0
+        },
+        "probe-batch1-594959587/probe-1-594959587": {
+          "state": "invalid",
+          "generation": "candidate-594959587",
+          "request": "probe-1-594959587",
+          "attempt": 0
+        },
+        "probe-batch1-594959587/probe-3-594959587": {
+          "state": "invalid",
+          "generation": "candidate-594959587",
+          "request": "probe-3-594959587",
+          "attempt": 0
+        }
+      }
+    }
+  },
+  "integration-04": {
+    "before": {
+      "plans": {
+        "baseline-batch0-324000548": {
+          "generation": "stable-324000548",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch0-324000548/baseline-0-324000548",
+              "request": "baseline-0-324000548",
+              "device": "prefill-324000548",
+              "cache": "cache-a-324000548",
+              "reserve_bytes": 4656
+            },
+            {
+              "lease": "baseline-batch0-324000548/baseline-1-324000548",
+              "request": "baseline-1-324000548",
+              "device": "prefill-324000548",
+              "cache": "cache-a-324000548",
+              "reserve_bytes": 4656
+            }
+          ],
+          "deferred": [
+            "baseline-2-324000548",
+            "baseline-3-324000548"
+          ]
+        },
+        "baseline-batch1-324000548": {
+          "generation": "stable-324000548",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch1-324000548/baseline-2-324000548",
+              "request": "baseline-2-324000548",
+              "device": "prefill-324000548",
+              "cache": "cache-a-324000548",
+              "reserve_bytes": 4656
+            },
+            {
+              "lease": "baseline-batch1-324000548/baseline-3-324000548",
+              "request": "baseline-3-324000548",
+              "device": "prefill-324000548",
+              "cache": "cache-a-324000548",
+              "reserve_bytes": 4656
+            }
+          ],
+          "deferred": []
+        },
+        "before-copy-324000548": {
+          "generation": "candidate-324000548",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-0-324000548",
+            "probe-1-324000548",
+            "probe-2-324000548",
+            "probe-3-324000548"
+          ]
+        },
+        "probe-batch0-324000548": {
+          "generation": "candidate-324000548",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch0-324000548/probe-0-324000548",
+              "request": "probe-0-324000548",
+              "device": "decode-324000548",
+              "cache": "cache-b-324000548",
+              "reserve_bytes": 3216
+            },
+            {
+              "lease": "probe-batch0-324000548/probe-2-324000548",
+              "request": "probe-2-324000548",
+              "device": "decode-324000548",
+              "cache": "cache-b-324000548",
+              "reserve_bytes": 3216
+            }
+          ],
+          "deferred": [
+            "probe-1-324000548",
+            "probe-3-324000548"
+          ]
+        },
+        "000-resume0-324000548": {
+          "generation": "candidate-324000548",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "000-resume0-324000548/probe-0-324000548",
+              "request": "probe-0-324000548",
+              "device": "recovery-324000548",
+              "cache": "received-prefix0-324000548",
+              "reserve_bytes": 3088
+            }
+          ],
+          "deferred": [
+            "probe-1-324000548",
+            "probe-3-324000548"
+          ]
+        },
+        "000-resume1-324000548": {
+          "generation": "candidate-324000548",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-0-324000548",
+            "probe-1-324000548",
+            "probe-3-324000548"
+          ]
+        },
+        "waiting-second-copy-324000548": {
+          "generation": "candidate-324000548",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-0-324000548",
+            "probe-1-324000548",
+            "probe-3-324000548"
+          ]
+        },
+        "probe-batch1-324000548": {
+          "generation": "candidate-324000548",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch1-324000548/probe-1-324000548",
+              "request": "probe-1-324000548",
+              "device": "recovery-324000548",
+              "cache": "cache-c-324000548",
+              "reserve_bytes": 3088
+            },
+            {
+              "lease": "probe-batch1-324000548/probe-3-324000548",
+              "request": "probe-3-324000548",
+              "device": "recovery-324000548",
+              "cache": "cache-c-324000548",
+              "reserve_bytes": 3088
+            }
+          ],
+          "deferred": [
+            "probe-0-324000548"
+          ]
+        },
+        "old-draining-plan-324000548": {
+          "generation": "stable-324000548",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "old-draining-plan-324000548/old-draining-324000548",
+              "request": "old-draining-324000548",
+              "device": "prefill-324000548",
+              "cache": null,
+              "reserve_bytes": 6984
+            }
+          ],
+          "deferred": []
+        }
+      },
+      "gates": {
+        "candidate-324000548": {
+          "generation": "candidate-324000548",
+          "groups": {
+            "short": {
+              "pairs": [
+                "pair-1-324000548"
+              ],
+              "bad": [],
+              "pending": [
+                "pair-0-324000548"
+              ]
+            },
+            "long": {
+              "pairs": [
+                "pair-2-324000548",
+                "pair-3-324000548"
+              ],
+              "bad": [],
+              "pending": []
+            }
+          },
+          "needs": {
+            "short": 1,
+            "long": 0
+          },
+          "bad_rate": [
+            0,
+            1
+          ],
+          "approved": false,
+          "blocked": true,
+          "headroom": {
+            "decode-324000548": 11256,
+            "recovery-324000548": 15440
+          },
+          "inflight": [],
+          "fence": {
+            "allocator": 65,
+            "measurement": 46,
+            "routing": 1
+          }
+        }
+      },
+      "routing": {
+        "active": "stable-324000548",
+        "staged": "candidate-324000548",
+        "previous": null,
+        "used": [
+          "stable-324000548",
+          "candidate-324000548"
+        ]
+      },
+      "checkpoints": {
+        "checkpoint0-324000548": {
+          "lease": "probe-batch0-324000548/probe-0-324000548",
+          "request": "probe-0-324000548",
+          "generation": "candidate-324000548",
+          "segment": 0,
+          "tokens": [
+            23932101,
+            52625952,
+            92021029,
+            41322789,
+            44453443,
+            3782515,
+            57474502,
+            46853066,
+            82993388
+          ],
+          "output": [
+            82993388
+          ],
+          "signature": [
+            "tenant-324000548",
+            "gqa-324000548",
+            "adapter-324000548",
+            "tokenizer-324000548",
+            "rope-324000548"
+          ]
+        },
+        "checkpoint1-324000548": {
+          "lease": "000-resume0-324000548/probe-0-324000548",
+          "request": "probe-0-324000548",
+          "generation": "candidate-324000548",
+          "segment": 1,
+          "tokens": [
+            23932101,
+            52625952,
+            92021029,
+            41322789,
+            44453443,
+            3782515,
+            57474502,
+            46853066,
+            82993388
+          ],
+          "output": [
+            82993388
+          ],
+          "signature": [
+            "tenant-324000548",
+            "gqa-324000548",
+            "adapter-324000548",
+            "tokenizer-324000548",
+            "rope-324000548"
+          ]
+        }
+      },
+      "signals": {
+        "000-resume0-324000548/probe-0-324000548": {
+          "state": "pending",
+          "generation": "candidate-324000548",
+          "request": "probe-0-324000548",
+          "attempt": 0
+        },
+        "baseline-batch0-324000548/baseline-0-324000548": {
+          "state": "ready",
+          "generation": "stable-324000548",
+          "request": "baseline-0-324000548",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083914225
+        },
+        "baseline-batch0-324000548/baseline-1-324000548": {
+          "state": "ready",
+          "generation": "stable-324000548",
+          "request": "baseline-1-324000548",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083924225
+        },
+        "baseline-batch1-324000548/baseline-2-324000548": {
+          "state": "ready",
+          "generation": "stable-324000548",
+          "request": "baseline-2-324000548",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083934225
+        },
+        "baseline-batch1-324000548/baseline-3-324000548": {
+          "state": "ready",
+          "generation": "stable-324000548",
+          "request": "baseline-3-324000548",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083944225
+        },
+        "old-draining-plan-324000548/old-draining-324000548": {
+          "state": "ready",
+          "generation": "stable-324000548",
+          "request": "old-draining-324000548",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797084014225
+        },
+        "probe-batch0-324000548/probe-0-324000548": {
+          "state": "pending",
+          "generation": "candidate-324000548",
+          "request": "probe-0-324000548",
+          "attempt": 0
+        },
+        "probe-batch0-324000548/probe-2-324000548": {
+          "state": "ready",
+          "generation": "candidate-324000548",
+          "request": "probe-2-324000548",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083934225
+        },
+        "probe-batch1-324000548/probe-1-324000548": {
+          "state": "ready",
+          "generation": "candidate-324000548",
+          "request": "probe-1-324000548",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083924225
+        },
+        "probe-batch1-324000548/probe-3-324000548": {
+          "state": "ready",
+          "generation": "candidate-324000548",
+          "request": "probe-3-324000548",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083944225
+        }
+      }
+    },
+    "after": {
+      "plans": {
+        "baseline-batch0-324000548": {
+          "generation": "stable-324000548",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch0-324000548/baseline-0-324000548",
+              "request": "baseline-0-324000548",
+              "device": "prefill-324000548",
+              "cache": "cache-a-324000548",
+              "reserve_bytes": 4656
+            },
+            {
+              "lease": "baseline-batch0-324000548/baseline-1-324000548",
+              "request": "baseline-1-324000548",
+              "device": "prefill-324000548",
+              "cache": "cache-a-324000548",
+              "reserve_bytes": 4656
+            }
+          ],
+          "deferred": [
+            "baseline-2-324000548",
+            "baseline-3-324000548"
+          ]
+        },
+        "baseline-batch1-324000548": {
+          "generation": "stable-324000548",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "baseline-batch1-324000548/baseline-2-324000548",
+              "request": "baseline-2-324000548",
+              "device": "prefill-324000548",
+              "cache": "cache-a-324000548",
+              "reserve_bytes": 4656
+            },
+            {
+              "lease": "baseline-batch1-324000548/baseline-3-324000548",
+              "request": "baseline-3-324000548",
+              "device": "prefill-324000548",
+              "cache": "cache-a-324000548",
+              "reserve_bytes": 4656
+            }
+          ],
+          "deferred": []
+        },
+        "before-copy-324000548": {
+          "generation": "candidate-324000548",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-0-324000548",
+            "probe-1-324000548",
+            "probe-2-324000548",
+            "probe-3-324000548"
+          ]
+        },
+        "probe-batch0-324000548": {
+          "generation": "candidate-324000548",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch0-324000548/probe-0-324000548",
+              "request": "probe-0-324000548",
+              "device": "decode-324000548",
+              "cache": "cache-b-324000548",
+              "reserve_bytes": 3216
+            },
+            {
+              "lease": "probe-batch0-324000548/probe-2-324000548",
+              "request": "probe-2-324000548",
+              "device": "decode-324000548",
+              "cache": "cache-b-324000548",
+              "reserve_bytes": 3216
+            }
+          ],
+          "deferred": [
+            "probe-1-324000548",
+            "probe-3-324000548"
+          ]
+        },
+        "000-resume0-324000548": {
+          "generation": "candidate-324000548",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "000-resume0-324000548/probe-0-324000548",
+              "request": "probe-0-324000548",
+              "device": "recovery-324000548",
+              "cache": "received-prefix0-324000548",
+              "reserve_bytes": 3088
+            }
+          ],
+          "deferred": [
+            "probe-1-324000548",
+            "probe-3-324000548"
+          ]
+        },
+        "000-resume1-324000548": {
+          "generation": "candidate-324000548",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-0-324000548",
+            "probe-1-324000548",
+            "probe-3-324000548"
+          ]
+        },
+        "waiting-second-copy-324000548": {
+          "generation": "candidate-324000548",
+          "mode": "probe",
+          "admitted": [],
+          "deferred": [
+            "probe-0-324000548",
+            "probe-1-324000548",
+            "probe-3-324000548"
+          ]
+        },
+        "probe-batch1-324000548": {
+          "generation": "candidate-324000548",
+          "mode": "probe",
+          "admitted": [
+            {
+              "lease": "probe-batch1-324000548/probe-1-324000548",
+              "request": "probe-1-324000548",
+              "device": "recovery-324000548",
+              "cache": "cache-c-324000548",
+              "reserve_bytes": 3088
+            },
+            {
+              "lease": "probe-batch1-324000548/probe-3-324000548",
+              "request": "probe-3-324000548",
+              "device": "recovery-324000548",
+              "cache": "cache-c-324000548",
+              "reserve_bytes": 3088
+            }
+          ],
+          "deferred": [
+            "probe-0-324000548"
+          ]
+        },
+        "old-draining-plan-324000548": {
+          "generation": "stable-324000548",
+          "mode": "serve",
+          "admitted": [
+            {
+              "lease": "old-draining-plan-324000548/old-draining-324000548",
+              "request": "old-draining-324000548",
+              "device": "prefill-324000548",
+              "cache": null,
+              "reserve_bytes": 6984
+            }
+          ],
+          "deferred": []
+        }
+      },
+      "gates": {
+        "candidate-324000548": {
+          "generation": "candidate-324000548",
+          "groups": {
+            "short": {
+              "pairs": [],
+              "bad": [],
+              "pending": [
+                "pair-0-324000548",
+                "pair-1-324000548"
+              ]
+            },
+            "long": {
+              "pairs": [
+                "pair-2-324000548",
+                "pair-3-324000548"
+              ],
+              "bad": [],
+              "pending": []
+            }
+          },
+          "needs": {
+            "short": 2,
+            "long": 0
+          },
+          "bad_rate": [
+            0,
+            1
+          ],
+          "approved": false,
+          "blocked": true,
+          "headroom": {
+            "decode-324000548": 11256,
+            "recovery-324000548": 15440
+          },
+          "inflight": [],
+          "fence": {
+            "allocator": 65,
+            "measurement": 46,
+            "routing": 1
+          }
+        }
+      },
+      "routing": {
+        "active": "stable-324000548",
+        "staged": "candidate-324000548",
+        "previous": null,
+        "used": [
+          "stable-324000548",
+          "candidate-324000548"
+        ]
+      },
+      "checkpoints": {
+        "checkpoint0-324000548": {
+          "lease": "probe-batch0-324000548/probe-0-324000548",
+          "request": "probe-0-324000548",
+          "generation": "candidate-324000548",
+          "segment": 0,
+          "tokens": [
+            23932101,
+            52625952,
+            92021029,
+            41322789,
+            44453443,
+            3782515,
+            57474502,
+            46853066,
+            82993388
+          ],
+          "output": [
+            82993388
+          ],
+          "signature": [
+            "tenant-324000548",
+            "gqa-324000548",
+            "adapter-324000548",
+            "tokenizer-324000548",
+            "rope-324000548"
+          ]
+        },
+        "checkpoint1-324000548": {
+          "lease": "000-resume0-324000548/probe-0-324000548",
+          "request": "probe-0-324000548",
+          "generation": "candidate-324000548",
+          "segment": 1,
+          "tokens": [
+            23932101,
+            52625952,
+            92021029,
+            41322789,
+            44453443,
+            3782515,
+            57474502,
+            46853066,
+            82993388
+          ],
+          "output": [
+            82993388
+          ],
+          "signature": [
+            "tenant-324000548",
+            "gqa-324000548",
+            "adapter-324000548",
+            "tokenizer-324000548",
+            "rope-324000548"
+          ]
+        }
+      },
+      "signals": {
+        "000-resume0-324000548/probe-0-324000548": {
+          "state": "pending",
+          "generation": "candidate-324000548",
+          "request": "probe-0-324000548",
+          "attempt": 0
+        },
+        "baseline-batch0-324000548/baseline-0-324000548": {
+          "state": "ready",
+          "generation": "stable-324000548",
+          "request": "baseline-0-324000548",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083914225
+        },
+        "baseline-batch0-324000548/baseline-1-324000548": {
+          "state": "ready",
+          "generation": "stable-324000548",
+          "request": "baseline-1-324000548",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083924225
+        },
+        "baseline-batch1-324000548/baseline-2-324000548": {
+          "state": "ready",
+          "generation": "stable-324000548",
+          "request": "baseline-2-324000548",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083934225
+        },
+        "baseline-batch1-324000548/baseline-3-324000548": {
+          "state": "ready",
+          "generation": "stable-324000548",
+          "request": "baseline-3-324000548",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083944225
+        },
+        "old-draining-plan-324000548/old-draining-324000548": {
+          "state": "ready",
+          "generation": "stable-324000548",
+          "request": "old-draining-324000548",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797084014225
+        },
+        "probe-batch0-324000548/probe-0-324000548": {
+          "state": "pending",
+          "generation": "candidate-324000548",
+          "request": "probe-0-324000548",
+          "attempt": 0
+        },
+        "probe-batch0-324000548/probe-2-324000548": {
+          "state": "ready",
+          "generation": "candidate-324000548",
+          "request": "probe-2-324000548",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083934225
+        },
+        "probe-batch1-324000548/probe-1-324000548": {
+          "state": "invalid",
+          "generation": "candidate-324000548",
+          "request": "probe-1-324000548",
+          "attempt": 0
+        },
+        "probe-batch1-324000548/probe-3-324000548": {
+          "state": "ready",
+          "generation": "candidate-324000548",
+          "request": "probe-3-324000548",
+          "attempt": 0,
+          "tokens": 2,
+          "ttft_ns": 100,
+          "latency_ns": 120,
+          "tpot": [
+            10,
+            1
+          ],
+          "finish_ns": 36028797083944225
+        }
+      }
+    }
+  }
+}
